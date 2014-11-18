@@ -19,6 +19,7 @@ public class Launcher {
 			
 			JPPFJob jppfJob = new JPPFJob();
 			jppfJob.setName("LDAP Injection Job");
+			jppfJob.getSLA().setBroadcastJob(true);
 			
 			LDAPScript ldapScript = new LDAPScript("192.168.1.28", 10389);
 			ldapScript.addBindRequest("uid=admin,ou=system", "secret");
