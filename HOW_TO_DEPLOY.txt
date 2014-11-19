@@ -1,0 +1,42 @@
+PRE-REQUIS
+ - Le controleur et les noeuds doivent avoir la même version de la JRE (La version 8 est recommandée)
+ - Le controleur et les noeuds doivent être dans le même LAN (cette étape pourra être omise avec une configuration plus poussée de JPPF)
+
+
+
+1/ CONFIGURATION
+
+	1.1/ Téléchargement et configuration du driver
+
+ - Télécharger (sur la machine qui aura le rôle de controleur) l'archive du JPPF-Driver à l'adresse suivante :
+	http://sourceforge.net/projects/jppf-project/files/jppf-project/jppf%204.2.4/JPPF-4.2.4-driver.zip/download
+ - Dézipper l'archive
+ - Ouvrir le fichier de configuration du driver JPPF-4.x.x-driver/config/jppf-driver.properties
+	et modifier les propriétés suivantes telles que :
+		jppf.load.balancing.algorithm = manual
+		jppf.load.balancing.profile = manual_profile
+
+	1.2/ Téléchargement des noeuds
+
+ - Télécharger (sur la machine qui aura le rôle de l'agent) l'archive du JPPF-Node à l'adresse suivante :
+	http://sourceforge.net/projects/jppf-project/files/jppf-project/jppf%204.2.4/JPPF-4.2.4-node.zip/download
+ - Dézipper l'archive
+
+
+
+2/ DEPLOIEMENT
+
+	2.1/ Lancement du driver sur le controleur
+
+ - Lancer l'exécutable du driver :
+	JPPF-4.x.x-driver/startDriver.sh
+
+	2.2/ Lancement des noeuds sur les agents
+
+ - Lancer l'exécutable du noeud sur chaque agent voulu :
+	JPPF-4.x.x-node/startNode.sh
+/!\ Lorsque les noeuds indiquent qu'ils sont initialisés, JPPF est prêt à être utilisé
+
+	2.3/ Lancement du projet Pi-Injector
+
+ - Aller à la racine du projet et lancer la compilation et l'exécution avec "ant"
