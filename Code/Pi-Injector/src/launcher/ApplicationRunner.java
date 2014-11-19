@@ -61,7 +61,7 @@ public class ApplicationRunner {
 				System.out.println(
 						taskName + 
 						", an exception was raised: " + 
-						task.getThrowable ().getMessage());
+						task.getThrowable().getMessage());
 			}
 			else {
 				System.out.println(

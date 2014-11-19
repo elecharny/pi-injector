@@ -42,7 +42,7 @@ public class LDAPInjectionTask extends AbstractTask<LDAPResults> {
 			
 			// TODO: Changer cette boucle en while true avec un mécanisme d'arrêt depuis
 			// le client (interrupt ...)
-			for (int i = 0; i < 10000; i++) {
+			for (int i = 0; i < 500; i++) {
 			
 				long startScriptLoopTime = System.nanoTime();
 				
