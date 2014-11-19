@@ -1,8 +1,0 @@
-2014-11-19 16:05:31,765 [INFO ][org.jppf.utils.VersionUtils.logVersionInformation(87)]: --------------------------------------------------------------------------------
-2014-11-19 16:05:31,767 [INFO ][org.jppf.utils.VersionUtils.logVersionInformation(88)]: JPPF Version: 4.2.3, Build number: 1390, Build date: 2014-10-19 07:35 CEST
-2014-11-19 16:05:31,767 [INFO ][org.jppf.utils.VersionUtils.logVersionInformation(89)]: starting client with PID=10480, UUID=4D84614D-B936-AF10-D71B-2BC1C5342B45
-2014-11-19 16:05:31,769 [INFO ][org.jppf.utils.VersionUtils.logVersionInformation(90)]: --------------------------------------------------------------------------------
-2014-11-19 16:05:31,770 [INFO ][org.jppf.client.AbstractGenericClient.init(114)]: JPPF client starting with sslEnabled = false
-2014-11-19 16:05:32,389 [INFO ][org.jppf.client.AbstractGenericClient.newConnection(278)]: connection [jppf_discovery-1-1] created
-2014-11-19 16:05:32,422 [INFO ][org.jppf.client.ClassServerDelegateImpl.init(81)]: [client: jppf_discovery-1-1 - ClassServer] Attempting connection to the class server at 192.168.1.15:11111
-2014-11-19 16:05:33,423 [INFO ][org.jppf.client.ClassServerDelegateImpl.init(91)]: [client: jppf_discovery-1-1 - ClassServer] Reconnected to the class server
