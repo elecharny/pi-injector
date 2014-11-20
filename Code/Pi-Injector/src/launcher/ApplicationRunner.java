@@ -12,7 +12,7 @@ import org.jppf.client.JPPFClient;
 import org.jppf.client.JPPFJob;
 import org.jppf.node.protocol.Task;
 
-import resultsData.RequestType;
+import resultsData.RequestTimer;
 import scripts.LDAPScript.LDAPRequestType;
 
 public class ApplicationRunner {
@@ -78,13 +78,13 @@ public class ApplicationRunner {
 						", execution result: \n");
 
 				@SuppressWarnings("unchecked")
-				ArrayList<RequestType<LDAPRequestType>> ldapResults = (ArrayList<RequestType<LDAPRequestType>>) task.getResult();
-				for (RequestType<LDAPRequestType> data : ldapResults) {
-					if(minCurrentTime != 0 && minCurrentTime >= data.getDatetime()){
-						minCurrentTime = data.getDatetime();
+				ArrayList<RequestTimer<LDAPRequestType>> ldapResults = (ArrayList<RequestTimer<LDAPRequestType>>) task.getResult();
+				for (RequestTimer<LDAPRequestType> data : ldapResults) {
+					if(minCurrentTime != 0 && minCurrentTime >= data.getStartTime()){
+						minCurrentTime = data.getStartTime();
 					}
 					if(minCurrentTime == 0){
-						minCurrentTime = data.getDatetime();
+						minCurrentTime = data.getStartTime();
 					}
 					break;
 				}
@@ -108,7 +108,7 @@ public class ApplicationRunner {
 						", execution result: \n");
 
 				@SuppressWarnings("unchecked")
-				ArrayList<RequestType<LDAPRequestType>> ldapResults = (ArrayList<RequestType<LDAPRequestType>>) task.getResult();
+				ArrayList<RequestTimer<LDAPRequestType>> ldapResults = (ArrayList<RequestTimer<LDAPRequestType>>) task.getResult();
 
 				PrintWriter writer;
 				try {
@@ -121,15 +121,15 @@ public class ApplicationRunner {
 					Boolean flag = true;
 					Boolean first = true;
 
-					for (RequestType<LDAPRequestType> data : ldapResults) {
+					for (RequestTimer<LDAPRequestType> data : ldapResults) {
 
 						if(!first){
 							if(flag){
-								min = data.getDatetime()/1000000000L;
+								min = data.getStartTime()/1000000000L;
 								flag = false;
 							}
 
-							if(data.getDatetime()/1000000000L <= min){
+							if(data.getStartTime()/1000000000L <= min){
 								nbRequestSec++;
 							}else{
 								writer.println(nbSec + ";" + nbRequestSec);
@@ -139,15 +139,15 @@ public class ApplicationRunner {
 									agregation.put(nbSec, nbRequestSec);
 								}
 								nbRequestSec = 1;
-								nbSec += data.getDatetime()/1000000000L - min;
-								min =  data.getDatetime()/1000000000L;
+								nbSec += data.getStartTime()/1000000000L - min;
+								min =  data.getStartTime()/1000000000L;
 							}
 						}else{
 							first = false;
 
 							//Va nous servire pour pouvoir agréger les données, car la premiére valeur est le currenttime
-							if(minCurrentTime < data.getDatetime()){
-								nbSec = (int) ((data.getDatetime() - minCurrentTime)/1000L);
+							if(minCurrentTime < data.getStartTime()){
+								nbSec = (int) ((data.getStartTime() - minCurrentTime)/1000L);
 							}
 						}
 					}	
