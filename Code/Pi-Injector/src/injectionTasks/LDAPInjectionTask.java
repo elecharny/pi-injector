@@ -28,7 +28,7 @@ public class LDAPInjectionTask extends AbstractTask<ArrayList<RequestType<LDAPRe
 	public LDAPInjectionTask(LDAPScript script) {
 		this.script = script;
 		//results = new LDAPResults();
-		 results = new ArrayList<RequestType<LDAPRequestType>>();
+		results = new ArrayList<RequestType<LDAPRequestType>>();
 	}
 
 	
@@ -50,7 +50,7 @@ public class LDAPInjectionTask extends AbstractTask<ArrayList<RequestType<LDAPRe
 			first.setDatetime(System.currentTimeMillis());
 			results.add(first);
 			
-			for (int i = 0; i < 50000; i++) {
+			for (int i = 0; i < 500; i++) {
 			
 				for (LDAPRequestWithParams request : script.getScriptRequestsList()) {
 					

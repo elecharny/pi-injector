@@ -65,16 +65,29 @@ public class ApplicationRunner {
 		long minCurrentTime = 0;
 
 		for (Task<?> task : results) {
-			@SuppressWarnings("unchecked")
-			ArrayList<RequestType<LDAPRequestType>> ldapResults = (ArrayList<RequestType<LDAPRequestType>>) task.getResult();
-			for (RequestType<LDAPRequestType> data : ldapResults) {
-				if(minCurrentTime != 0 && minCurrentTime >= data.getDatetime()){
-					minCurrentTime = data.getDatetime();
+			String taskName = task.getId();
+			if (task.getThrowable() != null) {
+				System.out.println(
+						taskName +
+						", an exception was raised: " +
+						task.getThrowable().getMessage());
+			}
+			else {
+				System.out.println(
+						taskName +
+						", execution result: \n");
+
+				@SuppressWarnings("unchecked")
+				ArrayList<RequestType<LDAPRequestType>> ldapResults = (ArrayList<RequestType<LDAPRequestType>>) task.getResult();
+				for (RequestType<LDAPRequestType> data : ldapResults) {
+					if(minCurrentTime != 0 && minCurrentTime >= data.getDatetime()){
+						minCurrentTime = data.getDatetime();
+					}
+					if(minCurrentTime == 0){
+						minCurrentTime = data.getDatetime();
+					}
+					break;
 				}
-				if(minCurrentTime == 0){
-					minCurrentTime = data.getDatetime();
-				}
-				break;
 			}
 		}
 
