@@ -1,30 +1,34 @@
 package injectionTasks;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import org.apache.directory.api.ldap.model.exception.LdapException;
 import org.apache.directory.ldap.client.api.LdapConnection;
 import org.apache.directory.ldap.client.api.LdapNetworkConnection;
 import org.jppf.node.protocol.AbstractTask;
 
-import resultsData.LDAPResults;
+
+
+import resultsData.RequestType;
 import scripts.LDAPScript;
 import scripts.LDAPScript.LDAPRequestType;
 import scripts.LDAPScript.LDAPRequestWithParams;
 
-public class LDAPInjectionTask extends AbstractTask<LDAPResults> {
+public class LDAPInjectionTask extends AbstractTask<ArrayList<RequestType<LDAPRequestType>>> {
 	
 	private static final long serialVersionUID = 1L;
 	
 	private LDAPScript		script;
-	private LDAPResults		results;
+	private ArrayList<RequestType<LDAPRequestType>>	results;
 	
 	private LdapConnection	connection;
 
 	
 	public LDAPInjectionTask(LDAPScript script) {
 		this.script = script;
-		results = new LDAPResults();
+		//results = new LDAPResults();
+		 results = new ArrayList<RequestType<LDAPRequestType>>();
 	}
 
 	
@@ -38,32 +42,43 @@ public class LDAPInjectionTask extends AbstractTask<LDAPResults> {
 			connection = new LdapNetworkConnection(
 					script.getServername(), script.getServerport());
 			
-			long startTotalExecutionTime = System.nanoTime();
+			// on commence par save en premier le current time du noeud qui va servir a agréger nos données
 			
-			// TODO: Changer cette boucle en while true avec un mécanisme d'arrêt depuis
-			// le client (interrupt ...)
-			for (int i = 0; i < 500; i++) {
+			Thread.sleep((long) (1000 * Math.random() * 10));
 			
-				long startScriptLoopTime = System.nanoTime();
-				
+			RequestType<LDAPRequestType> first = new RequestType<LDAPRequestType>();
+			first.setDatetime(System.currentTimeMillis());
+			results.add(first);
+			
+			for (int i = 0; i < 50000; i++) {
+			
+
+				//long startScriptLoopTime = System.nanoTime();
+				System.out.println("JE BOUCLA");
 				for (LDAPRequestWithParams request : script.getScriptRequestsList()) {
 					
-					long startCurrentOperationTime = System.nanoTime();
-
-					executeRequest(request);
+				//	long startCurrentOperationTime = System.nanoTime();
 					
-					results.addRequestExecutionTime(i,
+					RequestType<LDAPRequestType> data = new RequestType<LDAPRequestType>();
+					data.setDatetime(System.nanoTime());
+					executeRequest(request, data);
+					
+					results.add(data);
+				//	data.setDuree( System.nanoTime() - startCurrentOperationTime);
+					
+					
+					/*results.addRequestExecutionTime(i,
 							request.getRequestType(),
-							System.nanoTime() - startCurrentOperationTime);
+							System.nanoTime() - startCurrentOperationTime);*/
 				}
 				
-				results.addScriptExecutionTime(i,
-						System.nanoTime() - startScriptLoopTime);
+				/*results.addScriptExecutionTime(i,
+						System.nanoTime() - startScriptLoopTime);*/
 			}
 			
 			
-			results.setTotalExecutionTime(
-					System.nanoTime() - startTotalExecutionTime);
+			/*results.setTotalExecutionTime(
+					System.nanoTime() - startTotalExecutionTime);*/
 			
 			connection.close();
 			
@@ -92,17 +107,22 @@ public class LDAPInjectionTask extends AbstractTask<LDAPResults> {
 	}
 	
 	
-	public void executeRequest(LDAPRequestWithParams request) throws Exception {
+
+	public void executeRequest(LDAPRequestWithParams request, RequestType<LDAPRequestType> data) throws Exception {
 		
 		if (connection != null) {
 			
 			LDAPRequestType requestType = request.getRequestType();
 			
 			if (requestType == LDAPRequestType.BIND) {
+				long startCurrentOperationTime = System.nanoTime();
+
+				data.setType(LDAPRequestType.BIND);
 				
 				connection.bind(
 						(String)request.getParams().get(0),
 						(String)request.getParams().get(1));
+				data.setDuree( System.nanoTime() - startCurrentOperationTime);
 			}
 			else {
 				System.out.println("Type de requête inconnue...");

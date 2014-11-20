@@ -24,12 +24,16 @@ public class Launcher {
 				nbNodes = (Integer)jmxConn.invoke(JPPFDriverAdminMBean.MBEAN_NAME, "nbNodes");
 			}
 			
+			System.out.println("NOMBRE DE NOEUD            " + nbNodes);
+			
+			System.out.println();
+			
 			ApplicationRunner runner = new ApplicationRunner();
 			
 			JPPFJob jppfJob = new JPPFJob();
 			jppfJob.setName("LDAP Injection Job");
 			
-			LDAPScript ldapScript = new LDAPScript("192.168.1.28", 10389);
+			LDAPScript ldapScript = new LDAPScript("192.168.0.18", 10389);
 			ldapScript.addBindRequest("uid=admin,ou=system", "secret");
 			
 			for (int i = 0; i < nbNodes; i++) {
