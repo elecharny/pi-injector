@@ -14,8 +14,6 @@ import org.jppf.client.JPPFClient;
 import org.jppf.client.JPPFJob;
 import org.jppf.node.protocol.Task;
 
-import resultsData.LDAPResults;
-import resultsData.LDAPResults.RequestData;
 import resultsData.RequestType;
 import scripts.LDAPScript.LDAPRequestType;
 
@@ -69,6 +67,7 @@ public class ApplicationRunner {
 		long minCurrentTime = 0;
 		
 		for (Task<?> task : results) {
+			@SuppressWarnings("unchecked")
 			ArrayList<RequestType<LDAPRequestType>> ldapResults = (ArrayList<RequestType<LDAPRequestType>>) task.getResult();
 			for (RequestType<LDAPRequestType> data : ldapResults) {
 				if(minCurrentTime != 0 && minCurrentTime >= data.getDatetime()){
@@ -97,6 +96,7 @@ public class ApplicationRunner {
 						taskName +
 						", execution result: \n");
 
+				@SuppressWarnings("unchecked")
 				ArrayList<RequestType<LDAPRequestType>> ldapResults = (ArrayList<RequestType<LDAPRequestType>>) task.getResult();
 
 				PrintWriter writer;
@@ -152,6 +152,7 @@ public class ApplicationRunner {
 		}
 		// maintenant on crée le fichier total
 		PrintWriter writer;
+		
 		try {
 			writer = new PrintWriter("resultatFinal" + ".txt", "UTF-8");
 			// Get a set of the entries
@@ -161,7 +162,6 @@ public class ApplicationRunner {
 		      // Display elements
 		      while(i.hasNext()) {
 		         Map.Entry me = (Map.Entry)i.next();
-		         System.out.println("CLE :" +  me.getKey());
 		         writer.println(me.getKey() + ";" + me.getValue());
 
 		      }
