@@ -52,9 +52,6 @@ public class LDAPInjectionTask extends AbstractTask<ArrayList<RequestType<LDAPRe
 			
 			for (int i = 0; i < 50000; i++) {
 			
-
-				//long startScriptLoopTime = System.nanoTime();
-				System.out.println("JE BOUCLA");
 				for (LDAPRequestWithParams request : script.getScriptRequestsList()) {
 					
 				//	long startCurrentOperationTime = System.nanoTime();
@@ -64,22 +61,11 @@ public class LDAPInjectionTask extends AbstractTask<ArrayList<RequestType<LDAPRe
 					executeRequest(request, data);
 					
 					results.add(data);
-				//	data.setDuree( System.nanoTime() - startCurrentOperationTime);
-					
-					
-					/*results.addRequestExecutionTime(i,
-							request.getRequestType(),
-							System.nanoTime() - startCurrentOperationTime);*/
+
 				}
-				
-				/*results.addScriptExecutionTime(i,
-						System.nanoTime() - startScriptLoopTime);*/
+
 			}
-			
-			
-			/*results.setTotalExecutionTime(
-					System.nanoTime() - startTotalExecutionTime);*/
-			
+					
 			connection.close();
 			
 			// Permet d'éviter une exception LdapNetworkConnection

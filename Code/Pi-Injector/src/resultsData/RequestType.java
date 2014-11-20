@@ -4,9 +4,6 @@ import java.io.Serializable;
 
 public class RequestType<E extends Enum<?>> implements Serializable {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	public E type;
