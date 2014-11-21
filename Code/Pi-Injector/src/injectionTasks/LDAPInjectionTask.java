@@ -50,7 +50,7 @@ public class LDAPInjectionTask extends AbstractTask<ArrayList<RequestTimer<LDAPR
 			first.setStartTime(System.currentTimeMillis());
 			results.add(first);
 			
-			for (int i = 0; i < 1000000; i++) {
+			for (int i = 0; i < 500; i++) {
 			
 				for (LDAPRequestWithParams request : script.getScriptRequestsList()) {
 					

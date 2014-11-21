@@ -12,6 +12,8 @@ import org.jppf.client.JPPFClient;
 import org.jppf.client.JPPFJob;
 import org.jppf.node.protocol.Task;
 
+import resultsData.DataContainer;
+import resultsData.FileDataPrinter;
 import resultsData.RequestTimer;
 import scripts.LDAPScript.LDAPRequestType;
 
@@ -94,6 +96,7 @@ public class ApplicationRunner {
 
 
 		for (Task<?> task : results) {
+			ArrayList<DataContainer> listData = new ArrayList<DataContainer>();
 			String taskName = task.getId();
 
 			if (task.getThrowable() != null) {
@@ -110,55 +113,46 @@ public class ApplicationRunner {
 				@SuppressWarnings("unchecked")
 				ArrayList<RequestTimer<LDAPRequestType>> ldapResults = (ArrayList<RequestTimer<LDAPRequestType>>) task.getResult();
 
-				PrintWriter writer;
-				try {
 
-					writer = new PrintWriter(task.getId() + ".txt", "UTF-8");
+				long min = 0;
+				int nbRequestSec = 0;
+				int nbSec = 0;
+				Boolean flag = true;
+				Boolean first = true;
 
-					long min = 0;
-					int nbRequestSec = 0;
-					int nbSec = 0;
-					Boolean flag = true;
-					Boolean first = true;
+				for (RequestTimer<LDAPRequestType> data : ldapResults) {
 
-					for (RequestTimer<LDAPRequestType> data : ldapResults) {
-
-						if(!first){
-							if(flag){
-								min = data.getStartTime()/1000000000L;
-								flag = false;
-							}
-
-							if(data.getStartTime()/1000000000L <= min){
-								nbRequestSec++;
-							}else{
-								writer.println(nbSec + ";" + nbRequestSec);
-								if(agregation.containsKey(nbSec)){
-									agregation.put(nbSec, agregation.get(nbSec) + nbRequestSec);
-								}else{
-									agregation.put(nbSec, nbRequestSec);
-								}
-								nbRequestSec = 1;
-								nbSec += data.getStartTime()/1000000000L - min;
-								min =  data.getStartTime()/1000000000L;
-							}
-						}else{
-							first = false;
-
-							//Va nous servire pour pouvoir agréger les données, car la premiére valeur est le currenttime
-							if(minCurrentTime < data.getStartTime()){
-								nbSec = (int) ((data.getStartTime() - minCurrentTime)/1000L);
-							}
+					if(!first){
+						if(flag){
+							min = data.getStartTime()/1000000000L;
+							flag = false;
 						}
-					}	
 
-					writer.close();
-				} catch (FileNotFoundException e) {
-					e.printStackTrace();
-				} catch (UnsupportedEncodingException e) {
-					e.printStackTrace();
+						if(data.getStartTime()/1000000000L <= min){
+							nbRequestSec++;
+						}else{
+							listData.add(new DataContainer(nbRequestSec, nbSec));
+							//writer.println(nbSec + ";" + nbRequestSec);
+							if(agregation.containsKey(nbSec)){
+								agregation.put(nbSec, agregation.get(nbSec) + nbRequestSec);
+							}else{
+								agregation.put(nbSec, nbRequestSec);
+							}
+							nbRequestSec = 1;
+							nbSec += data.getStartTime()/1000000000L - min;
+							min =  data.getStartTime()/1000000000L;
+						}
+					}else{
+						first = false;
+
+						//Va nous servire pour pouvoir agréger les données, car la premiére valeur est le currenttime
+						if(minCurrentTime < data.getStartTime()){
+							nbSec = (int) ((data.getStartTime() - minCurrentTime)/1000L);
+						}
+					}
 				}
-
+				// On lance l'écriture du fichier
+				new Thread(new FileDataPrinter(listData, task.getId())).start();
 			}
 		}
 		// maintenant on crée le fichier total
