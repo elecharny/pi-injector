@@ -5,13 +5,14 @@ import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
+import java.util.Map.Entry;
 import java.util.TreeMap;
 
 import org.jppf.client.JPPFClient;
 import org.jppf.client.JPPFJob;
 import org.jppf.node.protocol.Task;
 
+import resultsData.DataByInjector;
 import resultsData.DataContainer;
 import resultsData.FileDataPrinter;
 import resultsData.RequestTimer;
@@ -60,14 +61,25 @@ public class ApplicationRunner {
 			final List<Task<?>>	results
 			) {
 
+		//on va stocker la liste de nom des tache
+		List<String> listNameTask = new ArrayList<String>();
+		
 		System.out.printf("Results for job '%s' :\n", jobName);
 
 		// on va créé des liste pour chaque graphe voulu et on va les save dans un fichier
-		TreeMap<Integer, Integer> agregation = new TreeMap<Integer, Integer>();
+		//TreeMap<Integer, Integer> agregation = new TreeMap<Integer, Integer>();
+		
+		TreeMap<Integer, List<DataByInjector>> agregation = new TreeMap<Integer, List<DataByInjector>>();
+		
 		long minCurrentTime = 0;
 
+		
+		
 		for (Task<?> task : results) {
 			String taskName = task.getId();
+			
+			listNameTask.add(taskName);
+			
 			if (task.getThrowable() != null) {
 				System.out.println(
 						taskName +
@@ -82,11 +94,13 @@ public class ApplicationRunner {
 				@SuppressWarnings("unchecked")
 				ArrayList<RequestTimer<LDAPRequestType>> ldapResults = (ArrayList<RequestTimer<LDAPRequestType>>) task.getResult();
 				for (RequestTimer<LDAPRequestType> data : ldapResults) {
-					if(minCurrentTime != 0 && minCurrentTime >= data.getStartTime()){
+					if(minCurrentTime != 0 && minCurrentTime > data.getStartTime()){
 						minCurrentTime = data.getStartTime();
+						System.out.println("MINNNNNNN " + minCurrentTime);
 					}
 					if(minCurrentTime == 0){
 						minCurrentTime = data.getStartTime();
+						System.out.println("MINNNNNNN " + minCurrentTime);
 					}
 					break;
 				}
@@ -97,6 +111,8 @@ public class ApplicationRunner {
 
 		for (Task<?> task : results) {
 			ArrayList<DataContainer> listData = new ArrayList<DataContainer>();
+			
+			
 			String taskName = task.getId();
 
 			if (task.getThrowable() != null) {
@@ -134,9 +150,14 @@ public class ApplicationRunner {
 							listData.add(new DataContainer(nbRequestSec, nbSec));
 							//writer.println(nbSec + ";" + nbRequestSec);
 							if(agregation.containsKey(nbSec)){
-								agregation.put(nbSec, agregation.get(nbSec) + nbRequestSec);
+								//agregation.put(nbSec, agregation.get(nbSec) + nbRequestSec);
+								agregation.get(nbSec).add(new DataByInjector(taskName, nbRequestSec));
+
 							}else{
-								agregation.put(nbSec, nbRequestSec);
+								//agregation.put(nbSec, nbRequestSec);
+								ArrayList<DataByInjector> list = new ArrayList<DataByInjector>();
+								list.add(new DataByInjector(taskName, nbRequestSec));
+								agregation.put(nbSec, list);
 							}
 							nbRequestSec = 1;
 							nbSec += data.getStartTime()/1000000000L - min;
@@ -160,8 +181,22 @@ public class ApplicationRunner {
 
 		try {
 			writer = new PrintWriter("resultatFinal" + ".txt", "UTF-8");
-			for(Map.Entry<Integer,Integer> entry : agregation.entrySet()) {
-				writer.println(entry.getKey() + ";" + entry.getValue());
+			int agreg;
+			for(Entry<Integer, List<DataByInjector>> entry : agregation.entrySet()) {
+				StringBuilder str = new StringBuilder();
+				str.append(entry.getKey()+ ";");
+				agreg = 0;
+				for(String name : listNameTask){
+					for(DataByInjector data : entry.getValue())
+					if(data.getTaskID().equals(name)){
+						str.append(data.getNbRequest() +";");
+						agreg += data.getNbRequest();
+					}else{
+						str.append("0;");
+					}
+				}
+				str.append(agreg);
+				writer.println(str);
 			}
 			writer.close();
 
@@ -170,7 +205,5 @@ public class ApplicationRunner {
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
-
-
 	}
 }
