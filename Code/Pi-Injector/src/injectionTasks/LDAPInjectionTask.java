@@ -19,15 +19,14 @@ public class LDAPInjectionTask extends AbstractTask<ArrayList<RequestTimer<LDAPR
 	
 	private static final long serialVersionUID = 1L;
 	
-	private LDAPScript		script;
+	private LDAPScript									script;
 	private ArrayList<RequestTimer<LDAPRequestType>>	results;
 	
-	private LdapConnection	connection;
+	private LdapConnection								connection;
 
 	
 	public LDAPInjectionTask(LDAPScript script) {
 		this.script = script;
-		//results = new LDAPResults();
 		results = new ArrayList<RequestTimer<LDAPRequestType>>();
 	}
 
@@ -42,28 +41,19 @@ public class LDAPInjectionTask extends AbstractTask<ArrayList<RequestTimer<LDAPR
 			connection = new LdapNetworkConnection(
 					script.getServername(), script.getServerport());
 			
-			// on commence par save en premier le current time du noeud qui va servir a agréger nos données
-			
-			Thread.sleep((long) (1000 * Math.random() * 10));
-			
 			RequestTimer<LDAPRequestType> first = new RequestTimer<LDAPRequestType>();
 			first.setStartTime(System.currentTimeMillis());
 			results.add(first);
 			
-			for (int i = 0; i < 500; i++) {
-			
+			// TODO: Boucle infinie ici
+			for (int i = 0; i < 1000; i++) {
 				for (LDAPRequestWithParams request : script.getScriptRequestsList()) {
 					
-				//	long startCurrentOperationTime = System.nanoTime();
+					RequestTimer<LDAPRequestType> result = executeRequest(request);
 					
-					RequestTimer<LDAPRequestType> data = new RequestTimer<LDAPRequestType>();
-					data.setStartTime(System.nanoTime());
-					executeRequest(request, data);
-					
-					results.add(data);
-
+					if (result != null)
+						results.add(result);
 				}
-
 			}
 					
 			connection.close();
@@ -94,27 +84,34 @@ public class LDAPInjectionTask extends AbstractTask<ArrayList<RequestTimer<LDAPR
 	
 	
 
-	public void executeRequest(LDAPRequestWithParams request, RequestTimer<LDAPRequestType> data) throws Exception {
+	public RequestTimer<LDAPRequestType> executeRequest(LDAPRequestWithParams request) throws Exception {
+		
+		RequestTimer<LDAPRequestType> data = null;
 		
 		if (connection != null) {
 			
 			LDAPRequestType requestType = request.getRequestType();
+			int paramsCount = request.getParams().size();
 			
-			if (requestType == LDAPRequestType.BIND) {
-				long startCurrentOperationTime = System.nanoTime();
+			if (requestType == LDAPRequestType.BIND && paramsCount == 2) {
 
+				data = new RequestTimer<LDAPRequestType>();
 				data.setRequestType(LDAPRequestType.BIND);
+				
+				data.setStartTime(System.nanoTime());
 				
 				connection.bind(
 						(String)request.getParams().get(0),
 						(String)request.getParams().get(1));
-				data.setExecutionTime( System.nanoTime() - startCurrentOperationTime);
+				
+				data.setExecutionTime(System.nanoTime() - data.getStartTime());
 			}
+			// TODO: Rajouter les exécutions des autres types de requêtes
 			else {
 				System.out.println("Type de requête inconnue...");
 			}
-			
-			// TODO: Rajouter les exécutions des autres types de requêtes
 		}
+		
+		return data;
 	}
 }
