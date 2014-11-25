@@ -63,23 +63,23 @@ public class ApplicationRunner {
 
 		//on va stocker la liste de nom des tache
 		List<String> listNameTask = new ArrayList<String>();
-		
+
 		System.out.printf("Results for job '%s' :\n", jobName);
 
 		// on va créé des liste pour chaque graphe voulu et on va les save dans un fichier
 		//TreeMap<Integer, Integer> agregation = new TreeMap<Integer, Integer>();
-		
+
 		TreeMap<Integer, List<DataByInjector>> agregation = new TreeMap<Integer, List<DataByInjector>>();
-		
+
 		long minCurrentTime = 0;
 
-		
-		
+
+
 		for (Task<?> task : results) {
 			String taskName = task.getId();
-			
+
 			listNameTask.add(taskName);
-			
+
 			if (task.getThrowable() != null) {
 				System.out.println(
 						taskName +
@@ -111,8 +111,8 @@ public class ApplicationRunner {
 
 		for (Task<?> task : results) {
 			ArrayList<DataContainer> listData = new ArrayList<DataContainer>();
-			
-			
+
+
 			String taskName = task.getId();
 
 			if (task.getThrowable() != null) {
@@ -135,8 +135,13 @@ public class ApplicationRunner {
 				int nbSec = 0;
 				Boolean flag = true;
 				Boolean first = true;
+				
+				System.out.println("Taille de la liste = " + ldapResults.size());
 
+				int cpt = 0;
 				for (RequestTimer<LDAPRequestType> data : ldapResults) {
+					cpt++;
+
 
 					if(!first){
 						if(flag){
@@ -144,17 +149,14 @@ public class ApplicationRunner {
 							flag = false;
 						}
 
-						if(data.getStartTime()/1000000000L <= min){
+						if(data.getStartTime()/1000000000L <= min && cpt <= ldapResults.size()){
 							nbRequestSec++;
 						}else{
 							listData.add(new DataContainer(nbRequestSec, nbSec));
-							//writer.println(nbSec + ";" + nbRequestSec);
 							if(agregation.containsKey(nbSec)){
-								//agregation.put(nbSec, agregation.get(nbSec) + nbRequestSec);
 								agregation.get(nbSec).add(new DataByInjector(taskName, nbRequestSec));
 
 							}else{
-								//agregation.put(nbSec, nbRequestSec);
 								ArrayList<DataByInjector> list = new ArrayList<DataByInjector>();
 								list.add(new DataByInjector(taskName, nbRequestSec));
 								agregation.put(nbSec, list);
@@ -187,11 +189,16 @@ public class ApplicationRunner {
 				str.append(entry.getKey()+ ";");
 				agreg = 0;
 				for(String name : listNameTask){
+					Boolean isPresent = false;
 					for(DataByInjector data : entry.getValue())
-					if(data.getTaskID().equals(name)){
-						str.append(data.getNbRequest() +";");
-						agreg += data.getNbRequest();
-					}else{
+					{
+						if(data.getTaskID().equals(name)){
+							str.append(data.getNbRequest() +";");
+							agreg += data.getNbRequest();
+							isPresent = true;
+						}
+					}
+					if(!isPresent){
 						str.append("0;");
 					}
 				}

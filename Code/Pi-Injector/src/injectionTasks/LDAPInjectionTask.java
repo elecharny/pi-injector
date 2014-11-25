@@ -47,7 +47,7 @@ public class LDAPInjectionTask extends AbstractTask<ArrayList<RequestTimer<LDAPR
 			results.add(first);
 			
 			// TODO: Boucle infinie ici
-			for (int i = 0; i < 500; i++) {
+			for (int i = 0; i < 150000; i++) {
 				for (LDAPRequestWithParams request : script.getScriptRequestsList()) {
 					
 					RequestTimer<LDAPRequestType> result = executeRequest(request);
