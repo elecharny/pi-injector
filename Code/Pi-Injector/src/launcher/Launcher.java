@@ -26,8 +26,6 @@ public class Launcher {
 			
 			System.out.println("NOMBRE DE NOEUDS : " + nbNodes);
 			
-			System.out.println();
-			
 			ApplicationRunner runner = new ApplicationRunner();
 			
 			JPPFJob jppfJob = new JPPFJob();
