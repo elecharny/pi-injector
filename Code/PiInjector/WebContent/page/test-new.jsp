@@ -1,12 +1,14 @@
 
 <div class="container">
-	<img src="img/logo.png" height="100px">
-</div>
-
-<div class="container">
 	<h3>Test configuration</h3>
 	
 	<form class="form-horizontal" role="form" id="form_test" method="post" action="">
+		<div class="form-group">
+			<label class="control-label col-sm-4" for="form_test_">Test name</label>
+			<div class="col-sm-8">
+				<input class="form-control" id="form_test_" type="text" placeholder="">
+			</div>
+	 	</div>
 		<div class="form-group">
 			<label class="control-label col-sm-4" for="form_test_">Number of injectors</label>
 			<div class="col-sm-8">
