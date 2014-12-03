@@ -15,7 +15,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		
 		<!-- Chart.js -->
-		<script src="lib/chart.js/Chart.js"></script>
+		<script src="lib/chart.js/Chart.min.js"></script>
 		
 		<!-- JavaScript -->
 		<script type="text/javascript" src="javascript/javascript.js" charset="UTF-8"></script>
