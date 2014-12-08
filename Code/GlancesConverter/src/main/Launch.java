@@ -44,6 +44,7 @@ public class Launch {
 			String fileName = "../Log_serveur/glances.csv";
 			File file = getResource(fileName);
 			List<String> lines = readFile(file);
+			
 			List<String> result = new ArrayList<String>();
 			StringBuilder header = new StringBuilder();
 			for(int i = 0; i < search.length; i++) {

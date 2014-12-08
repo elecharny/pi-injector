@@ -1,0 +1,223 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.apache.pi-injector</groupId>
+	<artifactId>pi-injector</artifactId>
+	<version>1.0</version>
+	<name>Pi-Injector</name>
+	<properties>
+		<tomcat.version>8.0.15</tomcat.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-core</artifactId>
+			<version>${tomcat.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-logging-juli</artifactId>
+			<version>${tomcat.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+			<version>${tomcat.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tomcat</groupId>
+			<artifactId>tomcat-jasper</artifactId>
+			<version>${tomcat.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tomcat</groupId>
+			<artifactId>tomcat-jasper-el</artifactId>
+			<version>${tomcat.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tomcat</groupId>
+			<artifactId>tomcat-jsp-api</artifactId>
+			<version>${tomcat.version}</version>
+		</dependency>
+		
+		
+		
+		<dependency>
+      <groupId>org.apache.pi-injector</groupId>
+      <artifactId>jppf-client.jar</artifactId>
+      <version>1.0</version>
+      <scope>system</scope>
+	  <systemPath>${basedir}/WebContent/WEB-INF/lib/jppf-client.jar</systemPath>
+    </dependency>
+	
+    <dependency>
+      <groupId>org.apache.pi-injector</groupId>
+      <artifactId>slf4j-api-1.7.7.jar</artifactId>
+      <version>1.0</version>
+      <scope>system</scope>
+	  <systemPath>${basedir}/WebContent/WEB-INF/lib/slf4j-api-1.7.7.jar</systemPath>
+    </dependency>
+	
+    <dependency>
+      <groupId>org.apache.pi-injector</groupId>
+      <artifactId>api-all-1.0.0-M25.jar</artifactId>
+      <version>1.0</version>
+      <scope>system</scope>
+	  <systemPath>${basedir}/WebContent/WEB-INF/lib/api-all-1.0.0-M25.jar</systemPath>
+    </dependency>
+	
+    <dependency>
+      <groupId>org.apache.pi-injector</groupId>
+      <artifactId>slf4j-log4j12-1.7.7.jar</artifactId>
+      <version>1.0</version>
+      <scope>system</scope>
+	  <systemPath>${basedir}/WebContent/WEB-INF/lib/slf4j-log4j12-1.7.7.jar</systemPath>
+    </dependency>
+	
+    <dependency>
+      <groupId>org.apache.pi-injector</groupId>
+      <artifactId>commons-pool-1.6.jar</artifactId>
+      <version>1.0</version>
+      <scope>system</scope>
+	  <systemPath>${basedir}/WebContent/WEB-INF/lib/commons-pool-1.6.jar</systemPath>
+    </dependency>
+	
+    <dependency>
+      <groupId>org.apache.pi-injector</groupId>
+      <artifactId>jppf-common-node.jar</artifactId>
+      <version>1.0</version>
+      <scope>system</scope>
+	  <systemPath>${basedir}/WebContent/WEB-INF/lib/jppf-common-node.jar</systemPath>
+    </dependency>
+	
+    <dependency>
+      <groupId>org.apache.pi-injector</groupId>
+      <artifactId>jppf-jmxremote_optional-1.1.jar</artifactId>
+      <version>1.0</version>
+      <scope>system</scope>
+	  <systemPath>${basedir}/WebContent/WEB-INF/lib/jppf-jmxremote_optional-1.1.jar</systemPath>
+    </dependency>
+	
+    <dependency>
+      <groupId>org.apache.pi-injector</groupId>
+      <artifactId>commons-collections-3.2.1.jar</artifactId>
+      <version>1.0</version>
+      <scope>system</scope>
+	  <systemPath>${basedir}/WebContent/WEB-INF/lib/commons-collections-3.2.1.jar</systemPath>
+    </dependency>
+	
+    <dependency>
+      <groupId>org.apache.pi-injector</groupId>
+      <artifactId>xpp3-1.1.4c.jar</artifactId>
+      <version>1.0</version>
+      <scope>system</scope>
+	  <systemPath>${basedir}/WebContent/WEB-INF/lib/xpp3-1.1.4c.jar</systemPath>
+    </dependency>
+	
+    <dependency>
+      <groupId>org.apache.pi-injector</groupId>
+      <artifactId>xml-apis-2.0.2.jar</artifactId>
+      <version>1.0</version>
+      <scope>system</scope>
+	  <systemPath>${basedir}/WebContent/WEB-INF/lib/xml-apis-2.0.2.jar</systemPath>
+    </dependency>
+	
+    <dependency>
+      <groupId>org.apache.pi-injector</groupId>
+      <artifactId>commons-lang-2.6.jar</artifactId>
+      <version>1.0</version>
+      <scope>system</scope>
+	  <systemPath>${basedir}/WebContent/WEB-INF/lib/commons-lang-2.6.jar</systemPath>
+    </dependency>
+	
+    <dependency>
+      <groupId>org.apache.pi-injector</groupId>
+      <artifactId>dom4j-1.6.1.jar</artifactId>
+      <version>1.0</version>
+      <scope>system</scope>
+	  <systemPath>${basedir}/WebContent/WEB-INF/lib/dom4j-1.6.1.jar</systemPath>
+    </dependency>
+	
+    <dependency>
+      <groupId>org.apache.pi-injector</groupId>
+      <artifactId>jppf-common.jar</artifactId>
+      <version>1.0</version>
+      <scope>system</scope>
+	  <systemPath>${basedir}/WebContent/WEB-INF/lib/jppf-common.jar</systemPath>
+    </dependency>
+	
+    <dependency>
+      <groupId>org.apache.pi-injector</groupId>
+      <artifactId>commons-io-2.4.jar</artifactId>
+      <version>1.0</version>
+      <scope>system</scope>
+	  <systemPath>${basedir}/WebContent/WEB-INF/lib/commons-io-2.4.jar</systemPath>
+    </dependency>
+	
+    <dependency>
+      <groupId>org.apache.pi-injector</groupId>
+      <artifactId>log4j-1.2.17.jar</artifactId>
+      <version>1.0</version>
+      <scope>system</scope>
+	  <systemPath>${basedir}/WebContent/WEB-INF/lib/log4j-1.2.17.jar</systemPath>
+    </dependency>
+	
+    <dependency>
+      <groupId>org.apache.pi-injector</groupId>
+      <artifactId>antlr-2.7.7.jar</artifactId>
+      <version>1.0</version>
+      <scope>system</scope>
+	  <systemPath>${basedir}/WebContent/WEB-INF/lib/antlr-2.7.7.jar</systemPath>
+    </dependency>
+	
+    <dependency>
+      <groupId>org.apache.pi-injector</groupId>
+      <artifactId>mina-core-2.0.9.jar</artifactId>
+      <version>1.0</version>
+      <scope>system</scope>
+	  <systemPath>${basedir}/WebContent/WEB-INF/lib/mina-core-2.0.9.jar</systemPath>
+    </dependency>
+		
+		
+		
+		
+		
+		
+	</dependencies>
+	<build>
+		<finalName>Pi-Injector</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.2</version>
+				<inherited>true</inherited>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>appassembler-maven-plugin</artifactId>
+				<version>1.1.1</version>
+				<configuration>
+					<assembleDirectory>target</assembleDirectory>
+					<programs>
+						<program>
+							<mainClass>main.java.launcher.Main</mainClass>
+							<name>webapp</name>
+						</program>
+					</programs>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>assemble</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
