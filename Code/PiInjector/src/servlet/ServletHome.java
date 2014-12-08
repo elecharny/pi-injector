@@ -25,14 +25,27 @@ public class ServletHome extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 		PrintWriter out = response.getWriter();
 		
-		try {
-			ServletContext sc = this.getServletContext();
-			RequestDispatcher rd = sc.getRequestDispatcher("/page/test-new.jsp");
-			rd.forward(request, response);
-			//request.getRequestDispatcher("/index.jsp").forward(request, response);
-		}
-		catch(Exception e) {
-			e.printStackTrace();
+		String[] st = {
+				"index.jsp",
+				"/index.jsp",
+				"./index.jsp",
+				"../index.jsp",
+				"WebContent/index.jsp",
+				"/WebContent/index.jsp",
+				"./WebContent/index.jsp",
+				"../WebContent/index.jsp"
+		};
+		for(String s : st) {
+			try {
+				ServletContext sc = this.getServletContext();
+				RequestDispatcher rd = sc.getRequestDispatcher(s);
+				rd.forward(request, response);
+				System.out.println("SUCCESS " + s + " ?");
+				//request.getRequestDispatcher("/index.jsp").forward(request, response);
+			}
+			catch(Exception e) {
+				System.err.println("ERROR " + s);
+			}
 		}
 		
 		out.close();
