@@ -3,3 +3,8 @@
 		display: table-cell;
 	}
 }
+
+body {
+	/* pour la navbar-fixed-top */
+	padding-top: 70px;
+}
