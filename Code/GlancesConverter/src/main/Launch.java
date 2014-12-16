@@ -85,7 +85,7 @@ public class Launch {
 								for(int i3 = 0; i3 < temp2.length; i3++) {
 									if(temp2[i3].equals(search[i2])) {
 										String[] temp3 = lines.get(i1 + 1).split(",");
-										line.append(temp3[i3] + ";");
+										line.append(temp3[i3].replaceAll("\\.", ",") + ";");
 									}
 								}
 							}
