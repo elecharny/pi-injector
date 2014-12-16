@@ -1,0 +1,1248 @@
+# load: cpucore|min1|min5|min15
+1,0.16,0.25,0.22
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1727569920,329846784,687210496,16.0,1727569920,457318400,551559168,2057416704,94281728
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.0,0.0,33.3,0.0,0.0,66.7,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.23,0.26,0.23
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1727324160,330092544,687210496,16.0,1727324160,457322496,551755776,2057416704,94289920
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.0,1.0,1.3,0.0,94.6,3.2,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.21,0.26,0.23
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1727160320,330256384,687214592,16.1,1727160320,457330688,551821312,2057416704,94289920
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.0,0.0,1.6,0.0,95.8,2.6,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.21,0.26,0.23
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1727176704,330240000,687214592,16.1,1727176704,457334784,551825408,2057416704,94298112
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.0,1.0,1.0,0.0,94.9,3.2,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.19,0.25,0.23
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1727176704,330240000,687214592,16.1,1727176704,457334784,551825408,2057416704,94298112
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.0,0.0,1.3,0.0,95.5,3.2,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.18,0.25,0.22
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1727193088,330223616,687214592,16.1,1727193088,457334784,551825408,2057416704,94306304
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.0,1.0,1.3,0.0,95.2,2.6,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.18,0.25,0.22
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1727209472,330207232,687214592,16.0,1727209472,457342976,551825408,2057416704,94306304
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.0,0.0,1.3,0.0,96.1,2.6,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.16,0.24,0.22
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1727234048,330182656,687214592,16.0,1727234048,457342976,551825408,2057416704,94314496
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.0,0.3,1.9,0.0,95.5,2.2,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.16,0.24,0.22
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1725575168,331841536,687214592,16.1,1725575168,457351168,553832448,2057416704,94314496
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.0,0.0,2.3,0.0,89.7,8.1,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.23,0.26,0.23
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1725194240,332222464,687206400,16.1,1725194240,457351168,554065920,2057416704,94322688
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.0,0.6,1.6,0.0,93.2,4.5,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.21,0.25,0.23
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1723797504,333619200,687214592,16.2,1723797504,457359360,555601920,2057416704,94322688
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.0,0.0,4.5,0.0,67.8,27.7,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.21,0.25,0.23
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1723408384,334008320,687214592,16.2,1723408384,457363456,555970560,2057416704,94330880
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.3,0.3,4.9,0.0,69.0,25.5,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.2,0.25,0.23
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1723031552,334385152,687218688,16.3,1723031552,457371648,555999232,2057416704,94330880
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.7,0.0,4.2,0.0,77.4,17.8,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.18,0.24,0.22
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721896960,335519744,687218688,16.3,1721896960,457375744,557436928,2057416704,94339072
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+1.3,1.3,3.9,0.0,74.8,18.8,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.18,0.24,0.22
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721643008,335773696,687218688,16.3,1721643008,457375744,557486080,2057416704,94339072
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.0,0.0,5.3,0.0,73.4,21.3,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.17,0.24,0.22
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721524224,335892480,687210496,16.3,1721524224,457375744,557543424,2057416704,94347264
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+1.0,0.6,5.4,0.0,70.2,22.8,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.15,0.24,0.22
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721532416,335884288,687218688,16.3,1721532416,457383936,557547520,2057416704,94347264
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.6,0.0,5.1,0.0,71.5,22.8,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.15,0.24,0.22
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721532416,335884288,687210496,16.3,1721532416,457383936,557555712,2057416704,94355456
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+1.0,0.6,6.5,0.0,71.3,20.6,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.14,0.23,0.22
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721540608,335876096,687218688,16.3,1721540608,457392128,557568000,2057416704,94355456
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.3,0.0,5.2,0.0,73.9,20.5,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.14,0.23,0.22
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721548800,335867904,687218688,16.3,1721548800,457392128,557568000,2057416704,94363648
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+1.0,0.3,4.8,0.0,71.2,22.8,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.21,0.24,0.23
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721548800,335867904,687218688,16.3,1721548800,457400320,557568000,2057416704,94363648
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.3,0.0,6.6,0.0,70.0,23.0,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.19,0.24,0.23
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721548800,335867904,687210496,16.3,1721548800,457400320,557568000,2057416704,94371840
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.0,0.3,3.9,0.0,72.9,22.9,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.19,0.24,0.23
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721552896,335863808,687222784,16.3,1721552896,457412608,557568000,2057416704,94371840
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.7,0.0,4.2,0.0,72.5,22.5,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.18,0.24,0.22
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721425920,335990784,687214592,16.3,1721425920,457408512,557572096,2057416704,94380032
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.6,1.0,6.4,0.0,70.2,21.8,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.16,0.23,0.22
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721434112,335982592,687222784,16.3,1721434112,457416704,557572096,2057416704,94380032
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.3,0.0,6.1,0.0,72.3,21.2,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.16,0.23,0.22
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721442304,335974400,687222784,16.3,1721442304,457420800,557576192,2057416704,94388224
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.7,0.7,4.9,0.0,73.0,20.7,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.15,0.23,0.22
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721450496,335966208,687222784,16.3,1721450496,457424896,557576192,2057416704,94388224
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.3,0.0,5.1,0.0,76.5,18.0,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.15,0.23,0.22
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721450496,335966208,687214592,16.3,1721450496,457424896,557580288,2057416704,94396416
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.7,0.7,5.6,0.0,72.7,20.4,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.14,0.22,0.22
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721458688,335958016,687222784,16.3,1721458688,457433088,557580288,2057416704,94396416
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.0,0.0,7.4,0.0,72.3,20.3,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.29,0.25,0.23
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721458688,335958016,687214592,16.3,1721458688,457433088,557580288,2057416704,94404608
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.3,0.0,6.0,0.0,74.1,19.6,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.29,0.25,0.23
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721466880,335949824,687222784,16.3,1721466880,457441280,557596672,2057416704,94404608
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+1.0,0.0,7.3,0.0,74.4,17.3,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.34,0.27,0.24
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721475072,335941632,687222784,16.3,1721475072,457445376,557596672,2057416704,94412800
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+1.0,0.7,6.6,0.0,72.4,19.4,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.32,0.26,0.23
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721479168,335937536,687226880,16.3,1721479168,457453568,557596672,2057416704,94412800
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.6,0.0,5.5,0.0,71.0,22.9,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.32,0.26,0.23
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721479168,335937536,687226880,16.3,1721479168,457453568,557600768,2057416704,94420992
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.0,0.0,5.3,0.0,72.4,22.4,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.29,0.26,0.23
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721479168,335937536,687226880,16.3,1721479168,457457664,557600768,2057416704,94420992
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.7,0.0,5.4,0.0,75.6,18.3,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.27,0.25,0.23
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721487360,335929344,687226880,16.3,1721487360,457461760,557600768,2057416704,94429184
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.6,1.0,5.4,0.0,70.2,22.9,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.27,0.25,0.23
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721487360,335929344,687226880,16.3,1721487360,457465856,557600768,2057416704,94429184
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.0,0.0,4.6,0.0,72.9,22.5,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.25,0.25,0.23
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721503744,335912960,687226880,16.3,1721503744,457469952,557600768,2057416704,94437376
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.3,0.3,3.2,0.0,71.6,24.6,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.25,0.25,0.23
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721503744,335912960,687226880,16.3,1721503744,457474048,557600768,2057416704,94437376
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.4,0.0,4.3,0.0,80.9,14.4,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.23,0.24,0.23
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721503744,335912960,687218688,16.3,1721503744,457474048,557600768,2057416704,94445568
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.7,0.7,5.7,0.0,74.6,18.4,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.21,0.24,0.23
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721511936,335904768,687226880,16.3,1721511936,457482240,557600768,2057416704,94445568
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.6,0.0,6.0,0.0,71.0,22.4,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.21,0.24,0.23
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721511936,335904768,687218688,16.3,1721511936,457482240,557600768,2057416704,94453760
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.0,0.0,4.4,0.0,74.2,21.5,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.19,0.24,0.23
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721524224,335892480,687230976,16.3,1721524224,457494528,557600768,2057416704,94453760
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.0,0.0,4.3,0.0,79.6,16.1,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.18,0.23,0.22
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721532416,335884288,687230976,16.3,1721532416,457494528,557604864,2057416704,94461952
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.3,0.7,6.3,0.0,73.6,19.1,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.18,0.23,0.22
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721524224,335892480,687230976,16.3,1721524224,457498624,557604864,2057416704,94461952
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.6,0.0,4.3,0.0,69.0,26.0,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.16,0.23,0.22
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721524224,335892480,687222784,16.3,1721524224,457498624,557604864,2057416704,94470144
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.3,0.7,5.1,0.0,75.5,18.4,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.15,0.22,0.22
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721532416,335884288,687230976,16.3,1721532416,457506816,557604864,2057416704,94470144
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.0,0.0,4.5,0.0,77.3,18.2,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.15,0.22,0.22
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721532416,335884288,687222784,16.3,1721532416,457506816,557604864,2057416704,94478336
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.0,0.7,4.7,0.0,75.3,19.3,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.22,0.24,0.23
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721548800,335867904,687230976,16.3,1721548800,457515008,557604864,2057416704,94478336
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.6,0.0,5.8,0.0,72.5,21.0,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.22,0.24,0.23
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721556992,335859712,687230976,16.3,1721556992,457519104,557604864,2057416704,94486528
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.6,0.6,4.5,0.0,71.3,22.9,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.2,0.23,0.23
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721556992,335859712,687230976,16.3,1721556992,457523200,557604864,2057416704,94486528
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.7,0.0,5.0,0.0,78.7,15.6,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.34,0.26,0.24
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721556992,335859712,687222784,16.3,1721556992,457523200,557604864,2057416704,94494720
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.6,0.3,7.0,0.0,70.4,21.7,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.34,0.26,0.24
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721569280,335847424,687235072,16.3,1721569280,457535488,557604864,2057416704,94494720
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.6,0.0,5.7,0.0,71.0,22.7,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.32,0.26,0.23
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721569280,335847424,687226880,16.3,1721569280,457531392,557608960,2057416704,94502912
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.3,0.3,4.7,0.0,74.7,20.0,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.29,0.25,0.23
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721577472,335839232,687235072,16.3,1721577472,457539584,557608960,2057416704,94502912
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.3,0.0,4.2,0.0,77.5,18.0,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.29,0.25,0.23
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721450496,335966208,687235072,16.3,1721450496,457547776,557608960,2057416704,94511104
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.3,0.7,4.3,0.0,73.3,21.5,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.27,0.25,0.23
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721450496,335966208,687235072,16.3,1721450496,457547776,557608960,2057416704,94511104
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.3,0.0,4.8,0.0,72.3,22.5,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.27,0.25,0.23
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721458688,335958016,687235072,16.3,1721458688,457551872,557608960,2057416704,94519296
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.6,0.6,3.8,0.0,71.5,23.4,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.33,0.26,0.24
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721458688,335958016,687235072,16.3,1721458688,457555968,557608960,2057416704,94519296
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.7,0.0,3.9,0.0,79.2,16.2,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.46,0.29,0.24
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721475072,335941632,687235072,16.3,1721475072,457560064,557608960,2057416704,94527488
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.3,0.0,6.6,0.0,76.2,16.9,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.46,0.29,0.24
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721475072,335941632,687235072,16.3,1721475072,457564160,557608960,2057416704,94527488
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.3,0.0,5.4,0.0,71.5,22.8,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.58,0.32,0.25
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721483264,335933440,687235072,16.3,1721483264,457568256,557608960,2057416704,94535680
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.3,1.0,5.8,0.0,71.6,21.3,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.62,0.33,0.26
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721487360,335929344,687239168,16.3,1721487360,457576448,557608960,2057416704,94535680
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.7,0.0,4.2,0.0,78.4,16.7,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.62,0.33,0.26
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721487360,335929344,687230976,16.3,1721487360,457572352,557613056,2057416704,94543872
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.7,0.3,5.3,0.0,73.6,20.1,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.57,0.33,0.26
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721368576,336048128,687239168,16.3,1721368576,457580544,557613056,2057416704,94543872
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.3,0.0,6.3,0.0,71.4,21.9,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.52,0.32,0.25
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721368576,336048128,687230976,16.3,1721368576,457580544,557613056,2057416704,94552064
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.0,0.3,4.3,0.0,74.0,21.3,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.52,0.32,0.25
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721376768,336039936,687239168,16.3,1721376768,457588736,557613056,2057416704,94552064
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.7,0.0,4.0,0.0,81.5,13.8,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.48,0.31,0.25
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721376768,336039936,687239168,16.3,1721376768,457592832,557613056,2057416704,94560256
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.3,1.0,3.1,0.0,76.3,19.2,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.48,0.31,0.25
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721376768,336039936,687239168,16.3,1721376768,457596928,557613056,2057416704,94560256
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.3,0.0,5.1,0.0,70.3,24.4,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.44,0.31,0.25
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721376768,336039936,687230976,16.3,1721376768,457596928,557613056,2057416704,94568448
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.0,0.6,6.4,0.0,71.1,21.9,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.41,0.3,0.25
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721393152,336023552,687239168,16.3,1721393152,457605120,557613056,2057416704,94568448
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.7,0.0,2.8,0.0,78.1,18.4,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.41,0.3,0.25
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721393152,336023552,687230976,16.3,1721393152,457605120,557613056,2057416704,94576640
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.3,0.7,5.1,0.0,75.3,18.6,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.53,0.33,0.26
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721405440,336011264,687243264,16.3,1721405440,457617408,557613056,2057416704,94576640
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.3,0.0,5.7,0.0,70.4,23.6,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.49,0.33,0.26
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721405440,336011264,687235072,16.3,1721405440,457613312,557617152,2057416704,94584832
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.3,0.3,4.9,0.0,72.5,22.0,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.49,0.33,0.26
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721413632,336003072,687243264,16.3,1721413632,457621504,557617152,2057416704,94584832
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.3,0.0,4.8,0.0,76.8,18.1,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.61,0.35,0.27
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721421824,335994880,687243264,16.3,1721421824,457621504,557617152,2057416704,94593024
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.0,0.3,7.1,0.0,71.2,21.5,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.61,0.35,0.27
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721421824,335994880,687243264,16.3,1721421824,457629696,557617152,2057416704,94593024
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.6,0.0,5.8,0.0,72.3,21.2,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.72,0.38,0.28
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721421824,335994880,687235072,16.3,1721421824,457629696,557617152,2057416704,94601216
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.3,0.7,5.3,0.0,73.2,20.5,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.66,0.38,0.28
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721421824,335994880,687243264,16.3,1721421824,457637888,557617152,2057416704,94601216
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+1.0,0.0,5.4,0.0,74.7,18.9,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.66,0.38,0.28
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721430016,335986688,687243264,16.3,1721430016,457641984,557617152,2057416704,94609408
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.3,0.7,5.4,0.0,74.5,19.1,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.61,0.37,0.27
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721430016,335986688,687243264,16.3,1721430016,457646080,557617152,2057416704,94609408
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.6,0.0,6.5,0.0,69.7,23.2,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.56,0.36,0.27
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721446400,335970304,687243264,16.3,1721446400,457650176,557617152,2057416704,94617600
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.7,0.3,6.2,0.0,73.0,19.9,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.56,0.36,0.27
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721450496,335966208,687247360,16.3,1721450496,457658368,557617152,2057416704,94617600
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.4,0.0,3.5,0.0,79.8,16.3,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.52,0.36,0.27
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721450496,335966208,687239168,16.3,1721450496,457654272,557621248,2057416704,94625792
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.7,0.7,4.4,0.0,75.8,18.4,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.48,0.35,0.27
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721458688,335958016,687247360,16.3,1721458688,457662464,557621248,2057416704,94625792
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.6,0.0,5.8,0.0,71.2,22.4,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.48,0.35,0.27
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721331712,336084992,687239168,16.3,1721331712,457662464,557621248,2057416704,94633984
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.3,0.7,4.4,0.0,75.8,18.8,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.44,0.35,0.27
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721339904,336076800,687247360,16.3,1721339904,457670656,557621248,2057416704,94633984
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+1.0,0.0,5.9,0.0,77.1,16.0,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.44,0.35,0.27
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721348096,336068608,687247360,16.3,1721348096,457670656,557621248,2057416704,94642176
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.7,0.3,5.1,0.0,75.3,18.6,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.4,0.34,0.27
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721348096,336068608,687247360,16.3,1721348096,457678848,557621248,2057416704,94642176
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.3,0.0,5.8,0.0,71.2,22.7,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.37,0.33,0.27
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721339904,336076800,687239168,16.3,1721339904,457678848,557621248,2057416704,94650368
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.7,0.7,4.6,0.0,73.5,20.5,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.37,0.33,0.27
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721348096,336068608,687247360,16.3,1721348096,457687040,557621248,2057416704,94650368
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+1.1,0.0,4.9,0.0,78.6,15.4,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.34,0.33,0.26
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721348096,336068608,687239168,16.3,1721348096,457687040,557621248,2057416704,94658560
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+1.0,0.7,5.2,0.0,72.6,20.5,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.31,0.32,0.26
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721364480,336052224,687247360,16.3,1721364480,457695232,557621248,2057416704,94658560
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.3,0.0,7.0,0.0,74.8,17.9,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.31,0.32,0.26
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721376768,336039936,687251456,16.3,1721376768,457707520,557621248,2057416704,94666752
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.3,0.3,5.6,0.0,74.2,19.5,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.29,0.32,0.26
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721376768,336039936,687251456,16.3,1721376768,457703424,557625344,2057416704,94666752
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.3,0.0,4.8,0.0,77.0,17.9,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.43,0.35,0.27
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721376768,336039936,687243264,16.3,1721376768,457703424,557625344,2057416704,94674944
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+1.0,0.3,5.3,0.0,73.5,19.9,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.43,0.35,0.27
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721384960,336031744,687251456,16.3,1721384960,457711616,557625344,2057416704,94674944
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.3,0.0,5.0,0.0,69.3,25.4,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.55,0.37,0.28
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721384960,336031744,687243264,16.3,1721384960,457711616,557625344,2057416704,94683136
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.0,0.3,4.4,0.0,75.0,20.3,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.55,0.37,0.28
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721393152,336023552,687251456,16.3,1721393152,457719808,557625344,2057416704,94683136
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.7,0.0,6.5,0.0,76.2,16.7,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.51,0.37,0.28
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721401344,336015360,687251456,16.3,1721401344,457719808,557625344,2057416704,94691328
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.3,0.3,5.9,0.0,73.5,19.9,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.47,0.36,0.28
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721393152,336023552,687251456,16.3,1721393152,457728000,557625344,2057416704,94691328
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.9,0.0,6.3,0.0,70.8,22.0,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.47,0.36,0.28
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721401344,336015360,687251456,16.3,1721401344,457732096,557625344,2057416704,94699520
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.3,0.7,4.0,0.0,74.2,20.7,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.43,0.35,0.27
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721401344,336015360,687251456,16.3,1721401344,457736192,557625344,2057416704,94699520
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.3,0.0,5.1,0.0,76.8,17.7,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.4,0.35,0.27
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721421824,335994880,687255552,16.3,1721421824,457744384,557625344,2057416704,94707712
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.6,0.3,5.8,0.0,71.7,21.5,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.4,0.35,0.27
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721421824,335994880,687255552,16.3,1721421824,457744384,557629440,2057416704,94707712
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.6,0.0,6.1,0.0,71.9,21.4,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.36,0.34,0.27
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721430016,335986688,687255552,16.3,1721430016,457744384,557629440,2057416704,94715904
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.0,0.7,5.0,0.0,73.6,20.7,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.36,0.34,0.27
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721430016,335986688,687255552,16.3,1721430016,457752576,557629440,2057416704,94715904
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.3,0.0,4.8,0.0,76.3,18.6,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.41,0.35,0.28
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721430016,335986688,687247360,16.3,1721430016,457752576,557629440,2057416704,94724096
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.3,0.7,4.3,0.0,72.9,21.8,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.38,0.35,0.27
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721438208,335978496,687255552,16.3,1721438208,457760768,557629440,2057416704,94724096
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.6,0.0,5.1,0.0,72.4,21.8,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.38,0.35,0.27
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721438208,335978496,687247360,16.3,1721438208,457760768,557629440,2057416704,94732288
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.3,0.3,4.7,0.0,75.7,18.9,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.51,0.38,0.28
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721446400,335970304,687255552,16.3,1721446400,457768960,557629440,2057416704,94732288
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+1.0,0.0,5.6,0.0,74.3,19.1,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.47,0.37,0.28
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721446400,335970304,687255552,16.3,1721446400,457768960,557629440,2057416704,94740480
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.3,0.7,5.5,0.0,76.6,16.9,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.47,0.37,0.28
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721446400,335970304,687255552,16.3,1721446400,457777152,557629440,2057416704,94740480
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+1.0,0.0,4.5,0.0,72.6,21.9,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.51,0.38,0.29
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721450496,335966208,687251456,16.3,1721450496,457781248,557629440,2057416704,94748672
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.3,0.7,5.6,0.0,73.8,19.6,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.47,0.37,0.28
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721458688,335958016,687259648,16.3,1721458688,457785344,557633536,2057416704,94748672
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.7,0.0,6.2,0.0,77.2,15.9,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.47,0.37,0.28
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721466880,335949824,687251456,16.3,1721466880,457785344,557633536,2057416704,94756864
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.7,0.7,5.9,0.0,72.5,20.3,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.43,0.37,0.28
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721475072,335941632,687259648,16.3,1721475072,457793536,557633536,2057416704,94756864
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.3,0.0,4.7,0.0,70.9,24.1,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.43,0.37,0.28
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721356288,336060416,687259648,16.3,1721356288,457793536,557633536,2057416704,94765056
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.7,0.3,4.1,0.0,76.5,18.4,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.4,0.36,0.28
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721356288,336060416,687259648,16.3,1721356288,457801728,557633536,2057416704,94765056
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.7,0.0,5.3,0.0,78.6,15.4,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.45,0.37,0.29
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721356288,336060416,687251456,16.3,1721356288,457801728,557633536,2057416704,94773248
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.3,0.3,6.1,0.0,71.6,21.7,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.45,0.37,0.29
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721364480,336052224,687259648,16.3,1721364480,457809920,557633536,2057416704,94773248
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.6,0.0,4.7,0.0,71.0,23.7,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.41,0.37,0.28
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721372672,336044032,687259648,16.3,1721372672,457809920,557633536,2057416704,94781440
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+1.0,0.3,5.0,0.0,74.9,18.7,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.38,0.36,0.28
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721364480,336052224,687259648,16.3,1721364480,457818112,557633536,2057416704,94781440
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.0,0.0,4.2,0.0,78.0,17.8,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.38,0.36,0.28
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721376768,336039936,687263744,16.3,1721376768,457826304,557633536,2057416704,94789632
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.3,1.0,4.3,0.0,73.4,20.9,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.35,0.35,0.28
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721376768,336039936,687263744,16.3,1721376768,457826304,557637632,2057416704,94789632
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.3,0.0,6.3,0.0,70.6,22.8,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.35,0.35,0.28
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721384960,336031744,687263744,16.3,1721384960,457826304,557637632,2057416704,94797824
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.7,0.7,4.3,0.0,73.4,20.9,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.32,0.35,0.28
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721393152,336023552,687263744,16.3,1721393152,457834496,557637632,2057416704,94797824
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.7,0.0,5.6,0.0,75.1,18.6,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.29,0.34,0.28
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721401344,336015360,687263744,16.3,1721401344,457834496,557637632,2057416704,94806016
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.6,0.0,6.4,0.0,71.3,21.7,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.29,0.34,0.28
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721401344,336015360,687263744,16.3,1721401344,457842688,557637632,2057416704,94806016
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.6,0.0,5.1,0.0,71.8,22.4,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.27,0.34,0.28
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721401344,336015360,687255552,16.3,1721401344,457842688,557637632,2057416704,94814208
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.3,1.0,4.7,0.0,74.1,19.9,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.41,0.36,0.29
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721409536,336007168,687263744,16.3,1721409536,457850880,557637632,2057416704,94814208
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.3,0.0,3.7,0.0,76.6,19.3,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.41,0.36,0.29
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721409536,336007168,687255552,16.3,1721409536,457850880,557637632,2057416704,94822400
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.3,0.3,4.8,0.0,71.2,23.3,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.38,0.36,0.28
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721417728,335998976,687263744,16.3,1721417728,457859072,557637632,2057416704,94822400
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.9,0.0,6.6,0.0,70.7,21.8,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.43,0.37,0.29
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721421824,335994880,687267840,16.3,1721421824,457863168,557637632,2057416704,94830592
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.0,0.7,6.4,0.0,74.2,18.8,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.43,0.37,0.29
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721421824,335994880,687267840,16.3,1721421824,457867264,557641728,2057416704,94830592
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.7,0.0,5.2,0.0,77.2,16.9,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.39,0.36,0.29
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721421824,335994880,687259648,16.3,1721421824,457867264,557641728,2057416704,94838784
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.7,0.7,5.9,0.0,73.2,19.6,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.39,0.36,0.29
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721438208,335978496,687267840,16.3,1721438208,457875456,557641728,2057416704,94838784
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.3,0.0,4.8,0.0,72.3,22.6,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.44,0.37,0.29
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721311232,336105472,687259648,16.3,1721311232,457875456,557641728,2057416704,94846976
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+1.0,0.3,5.1,0.0,75.1,18.4,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.41,0.37,0.29
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721319424,336097280,687267840,16.3,1721319424,457883648,557641728,2057416704,94846976
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.3,0.0,4.2,0.0,79.0,16.4,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.41,0.37,0.29
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721327616,336089088,687267840,16.3,1721327616,457887744,557641728,2057416704,94855168
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.3,0.6,5.8,0.0,71.8,21.4,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.37,0.36,0.29
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721327616,336089088,687267840,16.3,1721327616,457891840,557641728,2057416704,94855168
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.6,0.0,5.4,0.0,71.4,22.5,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.5,0.39,0.3
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721327616,336089088,687259648,16.3,1721327616,457891840,557641728,2057416704,94863360
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+1.0,0.3,4.7,0.0,74.8,19.1,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.5,0.39,0.3
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721335808,336080896,687267840,16.3,1721335808,457900032,557641728,2057416704,94863360
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+1.0,0.0,5.6,0.0,77.4,16.0,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.46,0.38,0.3
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721339904,336076800,687263744,16.3,1721339904,457904128,557641728,2057416704,94871552
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.6,0.3,4.7,0.0,69.7,24.6,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.43,0.38,0.29
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721339904,336076800,687271936,16.3,1721339904,457908224,557645824,2057416704,94871552
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.3,0.0,6.4,0.0,70.9,22.4,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.43,0.38,0.29
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721348096,336068608,687271936,16.3,1721348096,457912320,557645824,2057416704,94879744
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.3,1.0,4.8,0.0,75.9,18.0,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.39,0.37,0.29
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721356288,336060416,687271936,16.3,1721356288,457916416,557649920,2057416704,94879744
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.0,0.0,6.3,0.0,78.4,15.3,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.39,0.37,0.29
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721229312,336187392,687263744,16.3,1721229312,457916416,557649920,2057416704,94887936
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.6,0.0,5.5,0.0,72.7,21.1,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.52,0.4,0.3
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721237504,336179200,687271936,16.3,1721237504,457924608,557649920,2057416704,94887936
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.6,0.0,5.2,0.0,73.1,21.0,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.48,0.39,0.3
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721237504,336179200,687263744,16.3,1721237504,457924608,557649920,2057416704,94896128
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.7,0.7,5.3,0.0,73.4,20.1,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.48,0.39,0.3
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721245696,336171008,687271936,16.3,1721245696,457932800,557649920,2057416704,94896128
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.0,0.0,2.6,0.0,93.9,3.6,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.44,0.38,0.3
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721253888,336162816,687271936,16.3,1721253888,457936896,557649920,2057416704,94904320
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.0,1.0,1.0,0.0,94.9,3.2,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.41,0.38,0.3
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721253888,336162816,687271936,16.3,1721253888,457940992,557649920,2057416704,94904320
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.0,0.0,1.6,0.0,95.8,2.6,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.41,0.38,0.3
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721257984,336158720,687267840,16.3,1721257984,457945088,557649920,2057416704,94912512
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.0,0.3,1.9,0.0,95.2,2.6,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.37,0.37,0.3
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721266176,336150528,687276032,16.3,1721266176,457949184,557654016,2057416704,94912512
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.0,0.0,1.3,0.0,95.8,2.9,0.0,0.0,0.0,0.0
+# load: cpucore|min1|min5|min15
+1,0.37,0.37,0.3
+# memswap: used|percent|free|sout|total|sin
+0,0.0,4157599744,0,4157599744,0
+# mem: available|used|cached|percent|free|inactive|active|total|buffers
+1721257984,336158720,687267840,16.3,1721257984,457949184,557654016,2057416704,94920704
+# cpu: softirq|iowait|system|guest|idle|user|guest_nice|irq|steal|nice
+0.0,1.0,1.3,0.0,95.2,2.6,0.0,0.0,0.0,0.0
