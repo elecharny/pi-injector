@@ -62,12 +62,13 @@ public class Launch {
 				List<String> lines = readFile(file);
 				
 				List<String> result = new ArrayList<String>();
-				StringBuilder header = new StringBuilder();
+				StringBuilder header = new StringBuilder("t;");
 				for(int i = 0; i < search.length; i++) {
 					header.append(search[i] + ";");
 				}
 				result.add(header.toString());
 				
+				int t = 0;
 				// pour chaque ligne du CSV
 				for(int i1 = 0; i1 < lines.size(); i1++) {
 					// si la ligne est un commentaire
@@ -91,7 +92,7 @@ public class Launch {
 						}
 						
 						if(!line.toString().isEmpty())
-							result.add(line.toString());
+							result.add((t++) + ";" + line.toString());
 						
 						i1++;
 					}
@@ -105,6 +106,7 @@ public class Launch {
 					//System.out.println(s);
 				}
 				writer.close();
+				System.out.println(fn + " done.");
 			}
 		}
 		catch(Exception e) {
