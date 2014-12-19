@@ -6,7 +6,7 @@
 		<div class="form-group">
 			<label class="control-label col-sm-4" for="form_test_name">Test name</label>
 			<div class="col-sm-8">
-				<input class="form-control" id="form_test_name" type="text" placeholder="" required>
+				<input class="form-control" id="form_test_name" type="text" required>
 			</div>
 	 	</div>
 		<div class="form-group">
@@ -32,7 +32,7 @@
 		<div class="form-group">
 			<label class="control-label col-sm-4" for="form_test_duration">Test duration (in seconds)</label>
 			<div class="col-sm-8">
-				<input class="form-control" id="form_test_duration" type="text" placeholder="">
+				<input class="form-control" id="form_test_duration" type="text">
 			</div>
 	 	</div>
 		<div class="form-group">
@@ -57,7 +57,7 @@
 			<div class="form-group">
 				<label class="control-label col-sm-4" for="form_test_dn">DN</label>
 				<div class="col-sm-8">
-					<input class="form-control" id="form_test_dn" type="text" placeholder="DN">
+					<input class="form-control" id="form_test_dn" type="text">
 				</div>
 		 	</div>
 			<div class="form-group">
