@@ -11,3 +11,4 @@ main\java\launcher\Launcher.class
 main\java\injectionTasks\LDAPInjectionTask.class
 main\java\launcher\ApplicationRunner.class
 main\java\resultsData\RequestTimer.class
+main\java\servlet\TestNew.class

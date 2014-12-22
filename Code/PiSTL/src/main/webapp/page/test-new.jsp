@@ -2,7 +2,7 @@
 <div class="container">
 	<h3>Test configuration</h3>
 	
-	<form class="form-horizontal" role="form" id="form_test" method="post" action="">
+	<form class="form-horizontal" role="form" id="form_test" method="post" action="test-new-form">
 		<div class="form-group">
 			<label class="control-label col-sm-4" for="form_test_name">Test name</label>
 			<div class="col-sm-8">
