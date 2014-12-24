@@ -6,13 +6,13 @@
 		<div class="form-group">
 			<label class="control-label col-sm-4" for="form_test_name">Test name</label>
 			<div class="col-sm-8">
-				<input class="form-control" id="form_test_name" type="text" required>
+				<input class="form-control" id="form_test_name" name="form_test_name" type="text" required>
 			</div>
 	 	</div>
 		<div class="form-group">
 			<label class="control-label col-sm-4" for="form_test_nb_injectors">Number of injectors</label>
 			<div class="col-sm-8">
-				<select class="form-control" id="form_test_nb_injectors">
+				<select class="form-control" id="form_test_nb_injectors" name="form_test_nb_injectors">
 					<% for(int i = 1; i <= 5; i++) { %>
 						<option value="<%= i %>"><%= i %></option>
 					<% } %>
@@ -22,7 +22,7 @@
 		<div class="form-group">
 			<label class="control-label col-sm-4" for="form_test_nb_threads">Number of threads by injector</label>
 			<div class="col-sm-8">
-				<select class="form-control" id="form_test_nb_threads">
+				<select class="form-control" id="form_test_nb_threads" name="form_test_nb_threads">
 					<% for(int i = 1; i <= 2; i++) { %>
 						<option value="<%= i %>"><%= i %></option>
 					<% } %>
@@ -32,13 +32,13 @@
 		<div class="form-group">
 			<label class="control-label col-sm-4" for="form_test_duration">Test duration (in seconds)</label>
 			<div class="col-sm-8">
-				<input class="form-control" id="form_test_duration" type="text">
+				<input class="form-control" id="form_test_duration" name="form_test_duration" type="text" required>
 			</div>
 	 	</div>
 		<div class="form-group">
-			<label class="control-label col-sm-4" for="form_test_">Protocol</label>
+			<label class="control-label col-sm-4" for="form_test_protocol">Protocol</label>
 			<div class="col-sm-8">
-				<select class="form-control" id="form_test_protocol">
+				<select class="form-control" id="form_test_protocol" name="form_test_protocol">
 					<option value="LDAP">LDAP</option>
 				</select>
 			</div>
@@ -48,31 +48,31 @@
 			<div class="form-group">
 				<label class="control-label col-sm-4" for="form_test_servername">Servername / port</label>
 				<div class="col-sm-6">
-					<input class="form-control" id="form_test_servername" type="text" placeholder="Servername">
+					<input class="form-control" id="form_test_servername" name="form_test_servername" type="text" placeholder="Servername">
 				</div>
 				<div class="col-sm-2">
-					<input class="form-control" id="form_test_port" type="text" placeholder="Port">
+					<input class="form-control" id="form_test_port" name="form_test_port" type="text" placeholder="Port">
 				</div>
 		 	</div>
 			<div class="form-group">
 				<label class="control-label col-sm-4" for="form_test_dn">DN</label>
 				<div class="col-sm-8">
-					<input class="form-control" id="form_test_dn" type="text">
+					<input class="form-control" id="form_test_dn" name="form_test_dn" type="text">
 				</div>
 		 	</div>
 			<div class="form-group">
 				<label class="control-label col-sm-4" for="form_test_username">Username / password</label>
 				<div class="col-sm-4">
-					<input class="form-control" id="form_test_username" type="text" placeholder="Username">
+					<input class="form-control" id="form_test_username" name="form_test_username" type="text" placeholder="Username">
 				</div>
 				<div class="col-sm-4">
-					<input class="form-control" id="form_test_password" type="password" placeholder="Password">
+					<input class="form-control" id="form_test_password" name="form_test_password" type="password" placeholder="Password">
 				</div>
 		 	</div>
 			<div class="form-group">
 				<label class="control-label col-sm-4">Test plan</label>
 				<div class="col-sm-8">
-					<input id="form_test_nb-plan" type="hidden" value="0">
+					<input id="form_test_nb-plan" name="form_test_nb-plan" type="hidden" value="0">
 					<table class="table table-hover table-striped" id="form_test_table_plan">
 						<thead>
 							<tr>

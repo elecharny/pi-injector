@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="PiST">
+    <wb-module deploy-name="PiSTL">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="context-root" value="PiST"/>
-        <property name="java-output-path" value="/PiST/build/classes"/>
+        <property name="java-output-path" value="/PiSTL/build/classes"/>
+        <property name="context-root" value="PiSTL"/>
     </wb-module>
 </project-modules>
