@@ -61,7 +61,7 @@
 
 	<target name="compile" depends="clean, init">
 		<javac srcdir="" destdir="${classes.dir}"
-			debug="on" deprecation="off" optimize="on" includes="**/*.java">
+			debug="on" deprecation="off" optimize="on" includes="**/*.java" includeantruntime="false">
 	    <classpath refid="project.classpath"/>
 	    <compilerarg line="-Xlint:unchecked"/>
 			<src path="${src.dir}"/>
