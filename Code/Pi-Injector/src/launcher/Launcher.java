@@ -1,14 +1,19 @@
 package launcher;
 
+import javax.management.Notification;
+import javax.management.NotificationListener;
+
 import injectionTasks.LDAPInjectionTask;
 
+import org.jppf.client.AbstractJPPFClientConnection;
 import org.jppf.client.JPPFClient;
-import org.jppf.client.JPPFClientConnection;
 import org.jppf.client.JPPFJob;
 import org.jppf.management.JMXDriverConnectionWrapper;
 import org.jppf.management.JPPFDriverAdminMBean;
-import org.jppf.utils.JPPFConfiguration;
-import org.jppf.utils.TypedProperties;
+import org.jppf.management.JPPFNodeTaskMonitorMBean;
+import org.jppf.management.NodeSelector;
+import org.jppf.management.TaskExecutionNotification;
+import org.jppf.management.forwarding.JPPFNodeForwardingNotification;
 
 import scripts.LDAPScript;
 
@@ -21,20 +26,58 @@ public class Launcher {
 
 		try (JPPFClient jppfClient = new JPPFClient()) {
 			int nbNodes = 0;
+
+			AbstractJPPFClientConnection conn = null;
 			
-			JPPFClientConnection conn = jppfClient.getClientConnection();
-			System.out.println(conn);
-			JMXDriverConnectionWrapper driverJmx = conn.getConnectionPool().getJmxConnection();
-			nbNodes = (Integer)driverJmx.invoke(JPPFDriverAdminMBean.MBEAN_NAME, "nbNodes");
+			while (conn == null) {
+				Thread.sleep(100L);
+				conn = (AbstractJPPFClientConnection) jppfClient.getClientConnection();
+			}
 			
-			/*try (JMXDriverConnectionWrapper jmxConn = new JMXDriverConnectionWrapper("localhost", 11198)) {
-				jmxConn.connectAndWait(500L);
-				nbNodes = (Integer)jmxConn.invoke(JPPFDriverAdminMBean.MBEAN_NAME, "nbNodes");
-			}*/
+			JMXDriverConnectionWrapper driverJmx = 
+					conn.getConnectionPool().getJmxConnection();
 			
+			
+			nbNodes = (Integer)driverJmx.invoke(
+					JPPFDriverAdminMBean.MBEAN_NAME, "nbNodes");
 			System.out.println("NOMBRE DE NOEUDS : " + nbNodes);
 			
-			/*
+			
+			
+			// Create a JMX listener 
+			
+			// Select all nodes
+			NodeSelector selector = new NodeSelector.AllNodesSelector();
+			
+			NotificationListener listener = new NotificationListener() {
+				@Override
+				public void handleNotification(
+						Notification notification, Object handback) {
+					
+					JPPFNodeForwardingNotification wrapping = 
+							(JPPFNodeForwardingNotification) notification;
+					
+					System.out.println(
+							"Received notification from nodeUuid : " 
+									+ wrapping.getNodeUuid()
+									+ ", mBeanName : " + wrapping.getMBeanName());
+					
+					TaskExecutionNotification notif = 
+							(TaskExecutionNotification) wrapping.getNotification();
+					
+					System.out.println(
+							"Data de la notification : " 
+									+ (String)notif.getUserData());
+				}
+			};
+			
+			driverJmx.registerForwardingNotificationListener(
+							selector, JPPFNodeTaskMonitorMBean.MBEAN_NAME, 
+							listener, null, null);
+			
+			
+			
+			
 			ApplicationRunner runner = new ApplicationRunner();
 			
 			JPPFJob jppfJob = new JPPFJob();
@@ -51,7 +94,6 @@ public class Launcher {
 			
 			
 			runner.executeBlockingJob(jppfClient, jppfJob);
-			*/
 		}
 		catch (Exception e) {
 			e.printStackTrace();
