@@ -3,7 +3,6 @@ main\java\scripts\LDAPScript$LDAPRequestWithParams.class
 main\java\scripts\LDAPScript$LDAPRequestType.class
 main\java\scripts\LDAPScript.class
 main\java\launcher\Main.class
-main\java\servlet\HelloServlet.class
 main\java\resultsData\FileDataPrinter.class
 main\java\resultsData\DataContainer.class
 main\java\scripts\AbstractScript.class

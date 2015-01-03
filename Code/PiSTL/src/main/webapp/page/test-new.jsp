@@ -10,9 +10,9 @@
 			</div>
 	 	</div>
 		<div class="form-group">
-			<label class="control-label col-sm-4" for="form_test_nb_injectors">Number of injectors</label>
+			<label class="control-label col-sm-4" for="form_test_nb-injectors">Number of injectors</label>
 			<div class="col-sm-8">
-				<select class="form-control" id="form_test_nb_injectors" name="form_test_nb_injectors">
+				<select class="form-control" id="form_test_nb-injectors" name="form_test_nb-injectors">
 					<% for(int i = 1; i <= 5; i++) { %>
 						<option value="<%= i %>"><%= i %></option>
 					<% } %>
@@ -20,9 +20,9 @@
 			</div>
 	 	</div>
 		<div class="form-group">
-			<label class="control-label col-sm-4" for="form_test_nb_threads">Number of threads by injector</label>
+			<label class="control-label col-sm-4" for="form_test_nb-threads">Number of threads by injector</label>
 			<div class="col-sm-8">
-				<select class="form-control" id="form_test_nb_threads" name="form_test_nb_threads">
+				<select class="form-control" id="form_test_nb-threads" name="form_test_nb-threads">
 					<% for(int i = 1; i <= 2; i++) { %>
 						<option value="<%= i %>"><%= i %></option>
 					<% } %>
@@ -30,9 +30,19 @@
 			</div>
 	 	</div>
 		<div class="form-group">
-			<label class="control-label col-sm-4" for="form_test_duration">Test duration (in seconds)</label>
-			<div class="col-sm-8">
-				<input class="form-control" id="form_test_duration" name="form_test_duration" type="text" required>
+			<label class="control-label col-sm-4" for="form_test_duration-value">Test duration</label>
+			<div class="col-sm-4">
+				<input class="form-control" id="form_test_duration-value" name="form_test_duration-value" type="text" required>
+			</div>
+			<div class="col-sm-2">
+				<label class="radio-inline">
+					<input id="form_test_duration-unit-1" name="form_test_duration-unit" type="radio" value="seconds" required> seconds
+				</label>
+			</div>
+			<div class="col-sm-2">
+				<label class="radio-inline">
+					<input id="form_test_duration-unit-2" name="form_test_duration-unit" type="radio" value="iteration" required> iterations
+				</label>
 			</div>
 	 	</div>
 		<div class="form-group">
@@ -43,6 +53,7 @@
 				</select>
 			</div>
 	 	</div>
+	 	
 	 	<fieldset>
 	 		<legend>LDAP</legend>
 			<div class="form-group">
@@ -263,6 +274,7 @@
 				</div>
 		 	</div>
 		</fieldset>
+		
 	 	<div class="form-group">
 	 		<div class="col-sm-offset-4 col-sm-8">
 	 			<button class="btn btn-primary" type="submit">Run</button>

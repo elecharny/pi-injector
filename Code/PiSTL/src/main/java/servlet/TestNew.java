@@ -26,6 +26,7 @@ public class TestNew extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		
 		out.print("<html><head><title>Form</title></head><body><p>");
+		//out.print(System.getProperty("user.dir") + "<br/>");
 		
 		/*
 		Enumeration<String> parameterNames = request.getParameterNames();
@@ -55,39 +56,45 @@ public class TestNew extends HttpServlet {
 			//return;
 		}
 		
-		int nbInjectors = Integer.valueOf(request.getParameter("form_test_nb_injectors"));
+		int nbInjectors = request.getParameter("form_test_nb-injectors") != null && !request.getParameter("form_test_nb-injectors").equals("") ? Integer.valueOf(request.getParameter("form_test_nb-injectors")) : -1;
 		if(nbInjectors <= 0) {
 			response.setStatus(598);
 			//return;
 		}
 		
-		int nbThreads = Integer.valueOf(request.getParameter("form_test_nb_threads"));
+		int nbThreads = request.getParameter("form_test_nb-threads") != null && !request.getParameter("form_test_nb-threads").equals("") ? Integer.valueOf(request.getParameter("form_test_nb-threads")) : -1;
 		if(nbThreads <= 0) {
 			response.setStatus(597);
 			//return;
 		}
 		
-		int duration = Integer.valueOf(request.getParameter("form_test_duration"));
-		if(duration <= 0) {
+		int durationValue = request.getParameter("form_test_duration-value") != null && !request.getParameter("form_test_duration-value").equals("") ? Integer.valueOf(request.getParameter("form_test_duration-value")) : -1;
+		if(durationValue <= 0) {
 			response.setStatus(596);
+			//return;
+		}
+		
+		String durationUnit = request.getParameter("form_test_duration-unit");
+		if(durationUnit == null || durationUnit.equals("")) {
+			response.setStatus(595);
 			//return;
 		}
 		
 		String protocol = request.getParameter("form_test_protocol");
 		if(protocol == null || protocol.equals("")) {
-			response.setStatus(595);
+			response.setStatus(594);
 			//return;
 		}
 		
-		out.print(name + ", " + nbInjectors + ", " + nbThreads + ", " + duration + ", " + protocol + ", ");
+		out.print(name + ", " + nbInjectors + ", " + nbThreads + ", " + durationValue + ", " + durationUnit + ", " + protocol + ", ");
 		
 		if(protocol != null && protocol.equals("LDAP")) {
 			String servername = request.getParameter("form_test_servername");
-			int port = Integer.valueOf(request.getParameter("form_test_port"));
+			int port = request.getParameter("form_test_port") != null && !request.getParameter("form_test_port").equals("") ? Integer.valueOf(request.getParameter("form_test_port")) : -1;
 			String dn = request.getParameter("form_test_dn");
 			String username = request.getParameter("form_test_username");
 			String password = request.getParameter("form_test_password");
-			int nbPlan = Integer.valueOf(request.getParameter("form_test_nb-plan"));
+			int nbPlan = request.getParameter("form_test_nb-plan") != null && !request.getParameter("form_test_nb-plan").equals("") ? Integer.valueOf(request.getParameter("form_test_nb-plan")) : -1;
 			
 			out.print(servername + ", " + port + ", " + dn + ", " + username + ", " + password + ", " + nbPlan + ", ");
 			

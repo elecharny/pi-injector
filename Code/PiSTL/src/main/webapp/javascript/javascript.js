@@ -8,19 +8,24 @@ $(function() {
 			$(this).tab('show');
 		});
 		
-		
 		$('.form_test_add-to-plan').click(function(e) {
 			e.preventDefault();
 			var action = $(this).attr('id').split('_');
 			addToPlan(action[action.length - 1]);
 		});
 		
-		
 		removeToPlanBind();
+	}
+	if($('#table_test-display-all').length > 0) {
+		$('.form_display').click(function(e) {
+			e.preventDefault();
+			formDisplay(this);
+		});
 	}
 });
 
 
+/* ################################################################# TEST-NEW */
 function removeToPlanBind() {
 	$('.form_test_remove-from-plan').click(function(e) {
 		e.preventDefault();
@@ -111,3 +116,32 @@ function addToPlan(action) {
 	$('#form_test_nb-plan').val(index_plan);
 	removeToPlanBind();
 }
+
+
+/* ############################################################# TEST-DISPLAY */
+function formDisplay(a) {
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

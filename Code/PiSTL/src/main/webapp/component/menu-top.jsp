@@ -4,13 +4,12 @@
 		<div class="navbar-header">
 			<!-- button type="button" class="navbar-toggle collapsed" data-toggle="collapse"-->
 			<ul class="nav navbar-nav">
-				<li><a href="index.jsp" id="a_test-new"><span class="glyphicon glyphicon-home"></span> Nouveau test</a></li>
+				<li><a href="index.jsp" id="a_test-new"><span class="glyphicon glyphicon-home"></span> New test</a></li>
 			</ul>
 		</div>
 		<div class="navbar-collapse">
 			<ul class="nav navbar-nav">
-				<li><a href="index.jsp?page=test-display-all" id="a_test-display-all">Tous les tests</a></li>
-				<li><a href="index.jsp?page=test-display-one" id="a_test-display-one">Un seul test</a></li>
+				<li><a href="index.jsp?page=test-display-all" id="a_test-display-all">Display tests results</a></li>
 			</ul>
 		</div>
 	</div>
