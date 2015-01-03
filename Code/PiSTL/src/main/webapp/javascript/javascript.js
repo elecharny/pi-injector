@@ -16,10 +16,11 @@ $(function() {
 		
 		removeToPlanBind();
 	}
+	
 	if($('#table_test-display-all').length > 0) {
 		$('.form_display').click(function(e) {
 			e.preventDefault();
-			formDisplay(this);
+			formDisplay($(this));
 		});
 	}
 });
@@ -120,7 +121,49 @@ function addToPlan(action) {
 
 /* ############################################################# TEST-DISPLAY */
 function formDisplay(a) {
+	var file = a.parents('tr').attr('data-file');
 	
+	switch(a.attr('data-action')) {
+		case 'delete' :
+			break;
+		
+		case 'display' :
+			$.ajax({
+				url: 'test-display-form',
+				async: true,
+				data: {
+					file: file
+				},
+				dataType: "json",
+				type: "get",
+				error: function(xhr, ajaxOptions, thrownError) {
+					if(xhr.status == 599) {
+						// file not found
+						//$("#form_login_help").html("<strong class=\"text-danger\">Informations de connexion incorrectes.</strong>");
+					}
+					else if(xhr.status == 598) {
+						// file empty
+						//$("#form_login_help").html("<strong class=\"text-danger\">Informations de connexion incorrectes.</strong>");
+					}
+					else {
+						console.error("Erreur formDisplay\n" + xhr.status + "\n" + thrownError);
+					}
+				},
+				success: function(data) {
+					//console.log(data);
+					$('.modal-body').html('<canvas id="canvas_test-display-all" width="800" height="400"></canvas>');
+					
+					var ctx = $("#canvas_test-display-all").get(0).getContext("2d");
+					var myLineChart = new Chart(ctx).Line(data, { scaleShowGridLines: true, pointDot: false, animation: false, scaleShowLabels: true });
+					
+					$('#modal_test-display-all').modal();
+					$('#modal_test-display-all').on('hidden.bs.modal', function() {
+						$('.modal-body').html('');
+					});
+				}
+			});
+			break;
+	}
 }
 
 

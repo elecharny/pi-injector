@@ -1,5 +1,19 @@
 <%@page import="java.io.File"%>
 
+<div class="modal fade" id="modal_test-display-all" role="dialog" tabindex="-1" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title"></h4>
+			</div>
+			<div class="modal-body"></div>
+		</div>
+	</div>
+</div>
+
 <div class="container">
 	<h3>Test results</h3>
 	
