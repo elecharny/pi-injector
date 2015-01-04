@@ -1,5 +1,6 @@
 package launcher;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.management.Notification;
@@ -18,6 +19,7 @@ import org.jppf.management.NodeSelector;
 import org.jppf.management.TaskExecutionNotification;
 import org.jppf.management.forwarding.JPPFNodeForwardingNotification;
 
+import resultsData.GenericResult;
 import scripts.AbstractScript;
 import scripts.LDAPScript;
 
@@ -86,8 +88,8 @@ public class GridClient {
 							(TaskExecutionNotification) wrapping.getNotification();
 					
 					System.out.println(
-							"Data de la notification : " 
-									+ (String)notif.getUserData());
+							"Temps d'exécution du scenario (ms) : " 
+									+ ((GenericResult)notif.getUserData()).getTotalScriptExecutionTime());
 				}
 			};
 			
@@ -103,7 +105,7 @@ public class GridClient {
 	}
 	
 	
-	private void createJMXNodeListener(NotificationListener notifListener) {
+	public void createJMXNodeListener(NotificationListener notifListener) {
 		
 		if (jppfClientConn != null) {
 			JMXDriverConnectionWrapper driverJmx = 
@@ -164,6 +166,7 @@ public class GridClient {
 			jppfTask.setId(jppfJob.getName() + " - Task " + i);
 			try {
 				jppfJob.add(jppfTask, (Object[])null);
+				System.out.println("Task " + jppfTask.getId() + " added to the job...");
 			} catch (JPPFException e) {
 				e.printStackTrace();
 			}
@@ -171,6 +174,7 @@ public class GridClient {
 		
 		
 		try {
+			System.out.println("Job ready for exécution...");
 			runner.executeBlockingJob(jppfClient, jppfJob);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -187,12 +191,20 @@ public class GridClient {
 		InjectionTask jppfTask = new InjectionTask(script);
 		jppfTask.setId(jppfJob.getName() + " - Task broadcasted");
 		
+		try {
+			jppfJob.add(jppfTask, (Object[])null);
+		} catch (JPPFException e1) {
+			e1.printStackTrace();
+		}
+		
 		jppfJob.setBlocking(false);
 		jppfClient.submitJob(jppfJob);
 		
+		System.out.println("Job submitted to " + refreshNodesCount() + " nodes.");
+		
 		// Do something here...
 		try {
-			Thread.sleep(15000L);
+			Thread.sleep(30000L);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -214,7 +226,11 @@ public class GridClient {
 		ldapScript.addBindRequest("uid=admin,ou=system", "secret");
 		
 		GridClient client = new GridClient();
-		client.launchBroadcastScript(ldapScript);
+		//client.launchBroadcastScript(ldapScript);
+		
+		List<AbstractScript> scripts = new ArrayList<>();
+		scripts.add(ldapScript);
+		client.launchScriptList(scripts);
 		
 		System.out.println("Finishing...");
 	}

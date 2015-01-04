@@ -1,7 +1,6 @@
 package scripts;
 
 import java.io.IOException;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -58,19 +57,13 @@ public class LDAPScript extends AbstractScript {
 		params.add(userDN);
 		params.add(userPassword);
 		
-		try {
-			Method method = this.getClass().getMethod(
-								"executeBindRequest",
-								new Class[] {String.class, String.class});
-			
-			addNewMethod(method, params);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		addNewMethod(
+				"executeBindRequest",
+				new Class[] {String.class, String.class},
+				params);
 	}
 	
-	@SuppressWarnings("unused")
-	private void executeBindRequest(String userDN, String userPassword) {
+	public void executeBindRequest(String userDN, String userPassword) {
 		
 		try {
 			connection.bind(userDN, userPassword);

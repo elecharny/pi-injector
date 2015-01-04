@@ -49,7 +49,10 @@ public abstract class AbstractScript implements Serializable {
 		MethodWithParams mwp = scriptMethods.get(methodCounter);
 		
 		try {
-			mwp.getMethod().invoke(this, mwp.getParams().toArray());
+			Method method = 
+					this.getClass().getDeclaredMethod(
+							mwp.getMethodName(), mwp.getParamTypes());
+			method.invoke(this, mwp.getParams().toArray());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -69,10 +72,15 @@ public abstract class AbstractScript implements Serializable {
 	}
 	
 	
-	protected void addNewMethod(Method method, List<Object> params) {
+	protected void addNewMethod(
+						String methodName, 
+						Class<?>[] paramTypes, 
+						List<Object> params) {
 		if (!isStarted()) {
-			if (method != null && params != null) {
-				scriptMethods.add(new MethodWithParams(method, params));
+			if (methodName != null && paramTypes != null && params != null) {
+				scriptMethods.add(
+						new MethodWithParams(
+								methodName, paramTypes, params));
 			}
 		}
 	}
@@ -81,17 +89,29 @@ public abstract class AbstractScript implements Serializable {
 	
 	
 	
-	private class MethodWithParams {
-		private Method 			method;
+	private class MethodWithParams implements Serializable {
+		
+		private static final long serialVersionUID = 1L;
+		
+		private String 			methodName;
+		private Class<?>[]		paramTypes;
 		private List<Object> 	params;
 		
-		public MethodWithParams(Method method, List<Object> params) {
-			this.method = method;
+		public MethodWithParams(
+					String methodName, 
+					Class<?>[] paramTypes, 
+					List<Object> params) {
+			this.methodName = methodName;
+			this.paramTypes = paramTypes;
 			this.params = params;
 		}
 		
-		public Method getMethod() {
-			return method;
+		public String getMethodName() {
+			return methodName;
+		}
+		
+		public Class<?>[] getParamTypes() {
+			return paramTypes;
 		}
 		
 		public List<Object> getParams() {
