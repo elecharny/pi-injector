@@ -11,21 +11,21 @@ import org.jppf.node.protocol.AbstractTask;
 
 
 import resultsData.RequestTimer;
-import scripts.LDAPScript;
-import scripts.LDAPScript.LDAPRequestType;
-import scripts.LDAPScript.LDAPRequestWithParams;
+import scripts.LDAPScriptOld;
+import scripts.LDAPScriptOld.LDAPRequestType;
+import scripts.LDAPScriptOld.LDAPRequestWithParams;
 
 public class LDAPInjectionTask extends AbstractTask<ArrayList<RequestTimer<LDAPRequestType>>> {
 	
 	private static final long serialVersionUID = 1L;
 	
-	private LDAPScript									script;
+	private LDAPScriptOld									script;
 	private ArrayList<RequestTimer<LDAPRequestType>>	results;
 	
 	private LdapConnection								connection;
 
 	
-	public LDAPInjectionTask(LDAPScript script) {
+	public LDAPInjectionTask(LDAPScriptOld script) {
 		this.script = script;
 		results = new ArrayList<RequestTimer<LDAPRequestType>>();
 	}
@@ -38,8 +38,8 @@ public class LDAPInjectionTask extends AbstractTask<ArrayList<RequestTimer<LDAPR
 		
 		try {
 
-			connection = new LdapNetworkConnection(
-					script.getServername(), script.getServerport());
+			//connection = new LdapNetworkConnection(
+			//		script.getServername(), script.getServerport());
 			
 			RequestTimer<LDAPRequestType> first = new RequestTimer<LDAPRequestType>();
 			first.setStartTime(System.currentTimeMillis());

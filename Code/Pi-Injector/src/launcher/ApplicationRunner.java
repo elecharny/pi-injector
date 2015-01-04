@@ -16,7 +16,7 @@ import resultsData.DataByInjector;
 import resultsData.DataContainer;
 import resultsData.FileDataPrinter;
 import resultsData.RequestTimer;
-import scripts.LDAPScript.LDAPRequestType;
+import scripts.LDAPScriptOld.LDAPRequestType;
 
 public class ApplicationRunner {
 

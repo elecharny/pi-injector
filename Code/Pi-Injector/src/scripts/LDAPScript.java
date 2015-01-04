@@ -1,29 +1,56 @@
 package scripts;
 
-import java.io.Serializable;
+import java.io.IOException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.apache.directory.api.ldap.model.exception.LdapException;
+import org.apache.directory.ldap.client.api.LdapConnection;
+import org.apache.directory.ldap.client.api.LdapNetworkConnection;
 
 public class LDAPScript extends AbstractScript {
 
 	private static final long serialVersionUID = 1L;
-	
-	
-	private List<LDAPRequestWithParams> requestsList;
 
+	private String 				servername; 
+	private int 				serverport;
+	private LdapConnection 		connection;
+	
 	
 	public LDAPScript(String servername, int serverport) {
-		super(servername, serverport);
+		this.servername = servername;
+		this.serverport = serverport;
+	}
+	
+	
+	
+	
+	// -------------------------------------------------------- SCRIPT SETTINGS
+	
+	@Override
+	public void beforeRun() {
+		connection = new LdapNetworkConnection(servername, serverport);
+	}
+	
+	@Override
+	public void afterRun() {
 		
-		requestsList = new ArrayList<LDAPRequestWithParams>();
+		try {
+			connection.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		// Permet d'éviter une exception LdapNetworkConnection
+		connection = null;
 	}
 	
 	
 	
-	public List<LDAPRequestWithParams> getScriptRequestsList() {
-		return requestsList;
-	}
 	
+	
+	// --------------------------------------------------- REQUESTS DECLARATION
 	
 	public void addBindRequest(String userDN, String userPassword) {
 		
@@ -31,40 +58,27 @@ public class LDAPScript extends AbstractScript {
 		params.add(userDN);
 		params.add(userPassword);
 		
-		requestsList.add(new LDAPRequestWithParams(LDAPRequestType.BIND, params));
-	}
-	
-	// TODO: Ajouter tous les types de requêtes LDAP
-	
-	
-	
-	public enum LDAPRequestType {
-		BIND, UNBIND, ADD, SEARCH, MODIFY, DELETE
-	}
-	
-	
-	public class LDAPRequestWithParams implements Serializable {
-		
-		private static final long serialVersionUID = 1L;
-		
-		private LDAPRequestType	requestType;
-		private List<Object>	params;
-		
-		public LDAPRequestWithParams(
-			LDAPRequestType	requestType,
-			List<Object>	params
-		) {
-			this.requestType	= requestType;
-			this.params			= params;
-		}
-		
-		
-		public LDAPRequestType	getRequestType() {
-			return requestType;
-		}
-		
-		public List<Object>		getParams() {
-			return params;
+		try {
+			Method method = this.getClass().getMethod(
+								"executeBindRequest",
+								new Class[] {String.class, String.class});
+			
+			addNewMethod(method, params);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
+	
+	@SuppressWarnings("unused")
+	private void executeBindRequest(String userDN, String userPassword) {
+		
+		try {
+			connection.bind(userDN, userPassword);
+		} catch (LdapException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	// TODO: Ajouter ici les autre méthodes add et execute...
 }
