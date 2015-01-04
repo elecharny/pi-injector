@@ -102,6 +102,32 @@ public class GridClient {
 		}
 	}
 	
+	
+	private void createJMXNodeListener(NotificationListener notifListener) {
+		
+		if (jppfClientConn != null) {
+			JMXDriverConnectionWrapper driverJmx = 
+					jppfClientConn.getConnectionPool().getJmxConnection();
+			
+			
+			// Select all nodes
+			NodeSelector selector = new NodeSelector.AllNodesSelector();
+			
+			// Create a listener
+			NotificationListener listener = notifListener;
+			
+			// Register the listener
+			try {
+				driverJmx.registerForwardingNotificationListener(
+						selector, JPPFNodeTaskMonitorMBean.MBEAN_NAME, 
+						listener, null, null);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	
 	public int refreshNodesCount() {
 		
 		if (jppfClientConn != null) {
