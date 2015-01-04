@@ -12,9 +12,9 @@ public class InjectionTask extends AbstractTask<Void> {
 	
 	private static final long 				serialVersionUID = 1L;
 	
-	// Envoie toutes les 50 exécutions du scénario 
+	// Envoie toutes les 100 exécutions du scénario 
 	// une notification contenant les résultats récupérés
-	private final int						notificationInterval = 50; 
+	private final int						notificationInterval = 100; 
 	private final AbstractScript 			script;
 	private List<GenericResult>		 		resultsList;
 	
@@ -25,6 +25,7 @@ public class InjectionTask extends AbstractTask<Void> {
 	}
 
 	private void pushResults() {
+		System.out.println("Sending notification...");
 		fireNotification(resultsList, true);
 		resultsList = new ArrayList<>();
 	}
@@ -65,6 +66,7 @@ public class InjectionTask extends AbstractTask<Void> {
 			
 			// envoi régulier des résultats grâce au système de notification
 			if (scriptCounter % notificationInterval == 0) {
+				System.out.println("scriptCounter : " + scriptCounter);
 				pushResults();
 			}
 		}

@@ -1,6 +1,5 @@
 package launcher;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.management.Notification;
@@ -29,7 +28,6 @@ public class GridClient {
 	private int 								nodesCount = 0;
 	private JPPFClient 							jppfClient = null;
 	private AbstractJPPFClientConnection 		jppfClientConn = null;
-	
 	
 	
 	public GridClient() {
@@ -87,9 +85,9 @@ public class GridClient {
 					TaskExecutionNotification notif = 
 							(TaskExecutionNotification) wrapping.getNotification();
 					
-					System.out.println(
+					/*System.out.println(
 							"Temps d'exécution du scenario (ms) : " 
-									+ ((GenericResult)notif.getUserData()).getTotalScriptExecutionTime());
+									+ ((GenericResult)notif.getUserData()).getTotalScriptExecutionTime());*/
 				}
 			};
 			
@@ -226,11 +224,11 @@ public class GridClient {
 		ldapScript.addBindRequest("uid=admin,ou=system", "secret");
 		
 		GridClient client = new GridClient();
-		//client.launchBroadcastScript(ldapScript);
+		client.launchBroadcastScript(ldapScript);
 		
-		List<AbstractScript> scripts = new ArrayList<>();
-		scripts.add(ldapScript);
-		client.launchScriptList(scripts);
+		//List<AbstractScript> scripts = new ArrayList<>();
+		//scripts.add(ldapScript);
+		//client.launchScriptList(scripts);
 		
 		System.out.println("Finishing...");
 	}
