@@ -1,5 +1,6 @@
 package launcher;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.management.Notification;
@@ -28,6 +29,7 @@ public class GridClient {
 	private int 								nodesCount = 0;
 	private JPPFClient 							jppfClient = null;
 	private AbstractJPPFClientConnection 		jppfClientConn = null;
+	private JMXDriverConnectionWrapper			driverJmx = null;
 	
 	
 	public GridClient() {
@@ -55,21 +57,21 @@ public class GridClient {
 			jppfClientConn = 
 					(AbstractJPPFClientConnection) jppfClient.getClientConnection();
 		}
+		
+		driverJmx = jppfClientConn.getConnectionPool().getJmxConnection();
 	}
 	
 	
 	private void createJMXNodeListener() {
 		
-		if (jppfClientConn != null) {
-			JMXDriverConnectionWrapper driverJmx = 
-					jppfClientConn.getConnectionPool().getJmxConnection();
-			
+		if (driverJmx != null) {			
 			
 			// Select all nodes
 			NodeSelector selector = new NodeSelector.AllNodesSelector();
 			
 			// Create a listener
 			NotificationListener listener = new NotificationListener() {
+				@SuppressWarnings("unchecked")
 				@Override
 				public void handleNotification(
 						Notification notification, Object handback) {
@@ -82,12 +84,14 @@ public class GridClient {
 									+ wrapping.getNodeUuid()
 									+ ", mBeanName : " + wrapping.getMBeanName());
 					
+					System.out.println("Before notif'");
 					TaskExecutionNotification notif = 
 							(TaskExecutionNotification) wrapping.getNotification();
+					System.out.println("After notif'");
 					
-					/*System.out.println(
-							"Temps d'exécution du scenario (ms) : " 
-									+ ((GenericResult)notif.getUserData()).getTotalScriptExecutionTime());*/
+					
+					System.out.println(
+							"Notif content : " + ((List<GenericResult>)notif.getUserData()).get(0).getTotalScriptExecutionTime());
 				}
 			};
 			
@@ -105,10 +109,7 @@ public class GridClient {
 	
 	public void createJMXNodeListener(NotificationListener notifListener) {
 		
-		if (jppfClientConn != null) {
-			JMXDriverConnectionWrapper driverJmx = 
-					jppfClientConn.getConnectionPool().getJmxConnection();
-			
+		if (driverJmx != null) {		
 			
 			// Select all nodes
 			NodeSelector selector = new NodeSelector.AllNodesSelector();
@@ -130,10 +131,8 @@ public class GridClient {
 	
 	public int refreshNodesCount() {
 		
-		if (jppfClientConn != null) {
-			JMXDriverConnectionWrapper driverJmx = 
-					jppfClientConn.getConnectionPool().getJmxConnection();
-			
+		if (driverJmx != null) {
+
 			try {
 				nodesCount = (Integer)driverJmx.invoke(
 						JPPFDriverAdminMBean.MBEAN_NAME, "nbNodes");
@@ -170,9 +169,8 @@ public class GridClient {
 			}
 		}
 		
-		
 		try {
-			System.out.println("Job ready for exécution...");
+			System.out.println("Job ready for execution...");
 			runner.executeBlockingJob(jppfClient, jppfJob);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -224,11 +222,11 @@ public class GridClient {
 		ldapScript.addBindRequest("uid=admin,ou=system", "secret");
 		
 		GridClient client = new GridClient();
-		client.launchBroadcastScript(ldapScript);
+		//client.launchBroadcastScript(ldapScript);
 		
-		//List<AbstractScript> scripts = new ArrayList<>();
-		//scripts.add(ldapScript);
-		//client.launchScriptList(scripts);
+		List<AbstractScript> scripts = new ArrayList<>();
+		scripts.add(ldapScript);
+		client.launchScriptList(scripts);
 		
 		System.out.println("Finishing...");
 	}

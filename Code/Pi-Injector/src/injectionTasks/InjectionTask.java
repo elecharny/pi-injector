@@ -67,6 +67,7 @@ public class InjectionTask extends AbstractTask<Void> {
 			// envoi régulier des résultats grâce au système de notification
 			if (scriptCounter % notificationInterval == 0) {
 				System.out.println("scriptCounter : " + scriptCounter);
+				//fireNotification("Coucou", true);
 				pushResults();
 			}
 		}

@@ -6,9 +6,10 @@ import java.util.List;
 import java.util.UUID;
 
 public class GenericResult implements Serializable {
-
-	private static final long 	serialVersionUID = 1L;
 	
+
+	private static final long serialVersionUID = 1L;
+
 	// Script UUID associated to
 	private final UUID 			scriptUUID;
 	

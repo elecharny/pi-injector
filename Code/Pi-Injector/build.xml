@@ -75,6 +75,16 @@
 	<target name="build" description="build the application" depends="clean, init, compile">
  		<mkdir dir="${classes.dir}"/>
 	</target>
+	
+	<!-- ========================================================================= -->
+	<!--                                    Jar                                    -->
+	<!-- ========================================================================= -->
+
+	<target name="jar" description="make the jar" depends="clean, init">
+		<javac srcdir="${src.dir}" destdir="${classes.dir}"
+		        includes="resultsData/GenericResult.java" includeantruntime="false"/>
+		<jar destfile="${classes.dir}/genericResult.jar" basedir="${classes.dir}"/>
+	</target>
 
 	<!-- ========================================================================= -->
 	<!--                     Run the application                                   -->
