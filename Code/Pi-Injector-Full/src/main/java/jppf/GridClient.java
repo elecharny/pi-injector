@@ -146,8 +146,6 @@ public class GridClient {
 	
 	public void launchScriptList(List<AbstractScript> scripts) {
 		
-		//ApplicationRunner runner = new ApplicationRunner();
-		
 		JPPFJob jppfJob = new JPPFJob();
 		jppfJob.setName("LDAP Injection Job");
 		
@@ -167,8 +165,10 @@ public class GridClient {
 		}
 		
 		try {
-			System.out.println("Job ready for execution...");
-			//runner.executeBlockingJob(jppfClient, jppfJob);
+			System.out.println("Blocking job ready for execution...");
+			
+			jppfJob.setBlocking(true);
+			jppfClient.submitJob(jppfJob);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
