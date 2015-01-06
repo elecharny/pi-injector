@@ -1,0 +1,7 @@
+127.0.0.1 - - [06/Jan/2015:18:55:16 +0100] GET / HTTP/1.1 200 14457 http-bio-8080-exec-1 645
+127.0.0.1 - - [06/Jan/2015:18:55:31 +0100] POST /test-new-form HTTP/1.1 200 223 http-bio-8080-exec-2 11
+127.0.0.1 - - [06/Jan/2015:18:55:59 +0100] GET /index.jsp?page=test-display-all HTTP/1.1 200 3438 http-bio-8080-exec-3 3
+127.0.0.1 - - [06/Jan/2015:18:56:00 +0100] GET /test-display-form?file=test-1-agent.csv HTTP/1.1 200 4248 http-bio-8080-exec-4 4
+127.0.0.1 - - [06/Jan/2015:18:56:03 +0100] GET /test-display-form?file=test-2-agents.csv HTTP/1.1 200 11291 http-bio-8080-exec-5 3
+127.0.0.1 - - [06/Jan/2015:18:56:05 +0100] GET /test-display-form?file=test-3-agents.csv HTTP/1.1 200 16870 http-bio-8080-exec-6 2
+127.0.0.1 - - [06/Jan/2015:18:56:08 +0100] GET /test-display-form?file=test-4-agents.csv HTTP/1.1 200 19106 http-bio-8080-exec-7 3

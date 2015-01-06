@@ -196,7 +196,7 @@
 						</goals>
 						<phase>package</phase>
 						<configuration>
-							<path>/standalone</path>
+							<path>/</path>
 							<enableNaming>false</enableNaming>
 							<finalName>standalone.jar</finalName>
 							<charset>utf-8</charset>
