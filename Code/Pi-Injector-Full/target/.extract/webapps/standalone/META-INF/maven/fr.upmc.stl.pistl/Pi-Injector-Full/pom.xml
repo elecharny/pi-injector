@@ -52,6 +52,28 @@
 			<version>3.1.0</version>
 			<scope>provided</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>org.apache.directory.api</groupId>
+			<artifactId>api-all</artifactId>
+			<version>1.0.0-M27</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jppf</groupId>
+			<artifactId>jppf-common-node</artifactId>
+			<version>4.2.5</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jppf</groupId>
+			<artifactId>jppf-common</artifactId>
+			<version>4.2.5</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jppf</groupId>
+			<artifactId>jppf-client</artifactId>
+			<version>4.2.5</version>
+		</dependency>
 	</dependencies>
 
 
@@ -181,6 +203,14 @@
 						</configuration>
 					</execution>
 				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

@@ -1,4 +1,4 @@
-127.0.0.1 - - [06/Jan/2015:14:53:31 +0100] GET /standalone/ HTTP/1.1 200 87 http-bio-8080-exec-1 594
-127.0.0.1 - - [06/Jan/2015:14:53:31 +0100] GET /favicon.ico HTTP/1.1 404 - http-bio-8080-exec-2 0
-127.0.0.1 - - [06/Jan/2015:14:53:31 +0100] GET /favicon.ico HTTP/1.1 404 - http-bio-8080-exec-3 0
-127.0.0.1 - - [06/Jan/2015:14:53:32 +0100] GET /standalone/MyServlet HTTP/1.1 200 - http-bio-8080-exec-4 3
+127.0.0.1 - - [06/Jan/2015:15:15:20 +0100] GET /standalone/ HTTP/1.1 200 87 http-bio-8080-exec-1 604
+127.0.0.1 - - [06/Jan/2015:15:15:20 +0100] GET /favicon.ico HTTP/1.1 404 - http-bio-8080-exec-2 0
+127.0.0.1 - - [06/Jan/2015:15:15:20 +0100] GET /favicon.ico HTTP/1.1 404 - http-bio-8080-exec-3 0
+127.0.0.1 - - [06/Jan/2015:15:15:21 +0100] GET /standalone/MyServlet HTTP/1.1 200 - http-bio-8080-exec-4 3
