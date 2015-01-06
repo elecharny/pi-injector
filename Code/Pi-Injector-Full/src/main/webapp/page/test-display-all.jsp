@@ -25,7 +25,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<% File directory = new File("tests-results");
+			<% File directory = new File(".." + File.separator + "tests-results");
 			if(directory.exists() && directory.isDirectory()) {
 				File[] files = directory.listFiles();
 				if(files.length > 0) {

@@ -47,7 +47,7 @@ public class TestDisplay extends HttpServlet {
 		response.setContentType("json");
 		response.setCharacterEncoding("utf-8");
 		
-		File file = new File("tests-results" + File.separator + request.getParameter("file"));
+		File file = new File(".." + File.separator + "tests-results" + File.separator + request.getParameter("file"));
 		if(file.exists()) {
 			try {
 				List<String> lines = readFile(file);
