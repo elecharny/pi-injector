@@ -2,13 +2,21 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import jppf.GridClient;
+
 import org.apache.commons.lang.StringEscapeUtils;
+import org.apache.directory.api.ldap.model.message.SearchScope;
+
+import scripts.AbstractScript;
+import scripts.LDAPScript;
 
 
 @SuppressWarnings("serial")
@@ -23,6 +31,8 @@ public class TestNew extends HttpServlet {
 		response.setContentType("html");
 		response.setCharacterEncoding("utf-8");
 		PrintWriter out = response.getWriter();
+		
+		List<AbstractScript> scriptList = new ArrayList<AbstractScript>();
 		
 		out.print("<html><head><title>Form</title></head><body><p>");
 		out.print(System.getProperty("user.dir") + "<br/>");
@@ -69,9 +79,13 @@ public class TestNew extends HttpServlet {
 			String servername = request.getParameter("form_test_servername");
 			int port = request.getParameter("form_test_port") != null && !request.getParameter("form_test_port").equals("") ? Integer.valueOf(request.getParameter("form_test_port")) : -1;
 			String dn = request.getParameter("form_test_dn");
+			if(!dn.isEmpty() && !dn.endsWith(","))
+				dn += ",";
 			String username = request.getParameter("form_test_username");
 			String password = request.getParameter("form_test_password");
 			int nbPlan = request.getParameter("form_test_nb-plan") != null && !request.getParameter("form_test_nb-plan").equals("") ? Integer.valueOf(request.getParameter("form_test_nb-plan")) : -1;
+			
+			LDAPScript script = new LDAPScript(servername, port);
 			
 			out.print(servername + ", " + port + ", " + dn + ", " + username + ", " + password + ", " + nbPlan + ", ");
 			
@@ -83,24 +97,31 @@ public class TestNew extends HttpServlet {
 				switch(action) {
 					case "add" :
 						String entryDnAdd = request.getParameter("form_test_plan_entry-dn-" + i);
-						out.print(entryDnAdd);
+						script.addAddRequest(dn + entryDnAdd);
+						out.print(dn + entryDnAdd);
 						break;
 					
 					case "bind" :
+						script.addBindRequest(username, password);
 						break;
 					
 					case "bind-unbind" :
+						//TODO
+						script.addBindRequest(username, password);
+						script.addUnbindRequest();
 						break;
 					
 					case "compare" :
 						String entryDnCompare = request.getParameter("form_test_plan_entry-dn-" + i);
 						String filterCompare = request.getParameter("form_test_plan_filter-" + i);
-						out.print(entryDnCompare + ", " + filterCompare + ", ");
+						//TODO
+						out.print(dn + entryDnCompare + ", " + filterCompare + ", ");
 						break;
 					
 					case "delete" :
 						String entryDnDelete = request.getParameter("form_test_plan_entry-dn-" + i);
-						out.print(entryDnDelete + ", ");
+						script.addDeleteRequest(dn + entryDnDelete);
+						out.print(dn + entryDnDelete + ", ");
 						break;
 					
 					case "modify" :
@@ -108,23 +129,38 @@ public class TestNew extends HttpServlet {
 						String attributeModify = request.getParameter("form_test_plan_attribute-" + i);
 						String valueModify = request.getParameter("form_test_plan_value-" + i);
 						String opcodeModify = request.getParameter("form_test_plan_opcode-" + i);
-						out.print(entryDnModify + ", " + attributeModify + ", " + valueModify + ", " + opcodeModify + ", ");
+						//TODO
+						out.print(dn + entryDnModify + ", " + attributeModify + ", " + dn + valueModify + ", " + opcodeModify + ", ");
 						break;
 					
 					case "rename" :
 						String oldEntryDnRename = request.getParameter("form_test_plan_old-entry-dn-" + i);
 						String newEntryDnRename = request.getParameter("form_test_plan_new-entry-dn-" + i);
-						out.print(oldEntryDnRename + ", " + newEntryDnRename + ", ");
+						//TODO
+						out.print(dn + oldEntryDnRename + ", " + dn + newEntryDnRename + ", ");
 						break;
 					
 					case "search" :
 						String baseSearch = request.getParameter("form_test_plan_base-" + i);
 						String filterSearch = request.getParameter("form_test_plan_filter-" + i);
-						String scopeSearch = request.getParameter("form_test_plan_scope-" + i);
-						out.print(baseSearch + ", " + filterSearch + ", " + scopeSearch + ", ");
+						SearchScope scopeSearch = null;
+						switch(request.getParameter("form_test_plan_scope-" + i)) {
+							case "base-object" :
+								scopeSearch = SearchScope.OBJECT;
+								break;
+							case "one-level" :
+								scopeSearch = SearchScope.ONELEVEL;
+								break;
+							case "subtree" :
+								scopeSearch = SearchScope.SUBTREE;
+								break;
+						}
+						script.addSearchRequest(dn + baseSearch, filterSearch, scopeSearch);
+						out.print(dn + baseSearch + ", " + filterSearch + ", " + scopeSearch + ", ");
 						break;
 					
 					case "unbind" :
+						script.addUnbindRequest();
 						break;
 					
 					default :
@@ -132,7 +168,12 @@ public class TestNew extends HttpServlet {
 						break;
 				}
 			}
+			
+			scriptList.add(script);
 		} // LDAP
+		
+		GridClient client = new GridClient();
+		client.launchScriptList(scriptList);
 		
 		out.print("</p></body></html>");
 		out.close();

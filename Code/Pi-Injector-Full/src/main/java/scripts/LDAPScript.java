@@ -188,6 +188,8 @@ public class LDAPScript extends AbstractScript {
 		
 	}
 	
+	//TODO bind-unbind, compare
+	
 	
 	// TODO: Ajouter ici les autre méthodes add et execute...
 }
