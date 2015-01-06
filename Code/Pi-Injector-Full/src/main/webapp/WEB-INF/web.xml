@@ -3,6 +3,10 @@
 	<display-name>Pi-Injector</display-name>
 
 	<servlet>
+		<servlet-name>MyServlet</servlet-name>
+		<servlet-class>servlet.MyServlet</servlet-class>
+	</servlet>
+	<servlet>
 		<servlet-name>TestNew</servlet-name>
 		<servlet-class>servlet.TestNew</servlet-class>
 	</servlet>
@@ -11,6 +15,10 @@
 		<servlet-class>servlet.TestDisplay</servlet-class>
 	</servlet>
 	
+	<servlet-mapping>
+		<servlet-name>MyServlet</servlet-name>
+		<url-pattern>/MyServlet</url-pattern>
+	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>TestNew</servlet-name>
 		<url-pattern>/test-new-form</url-pattern>
