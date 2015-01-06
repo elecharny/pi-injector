@@ -5,14 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+
 public class GenericResult implements Serializable {
-	
-
 	private static final long serialVersionUID = 1L;
-
 	// Script UUID associated to
 	private final UUID 			scriptUUID;
-	
 	// Start time in milliseconds
 	private long 				startTime;
 	// Execution time in nanoseconds
@@ -30,7 +27,6 @@ public class GenericResult implements Serializable {
 		return scriptUUID;
 	}
 	
-	
 	public long getStartTime() {
 		return startTime;
 	}
@@ -39,7 +35,6 @@ public class GenericResult implements Serializable {
 		this.startTime = startTime;
 	}
 	
-	
 	public long getTotalScriptExecutionTime() {
 		return totalScriptExecutionTime;
 	}
@@ -47,7 +42,6 @@ public class GenericResult implements Serializable {
 	public void setTotalScriptExecutionTime(long totalScriptExecutionTime) {
 		this.totalScriptExecutionTime = totalScriptExecutionTime;
 	}
-	
 	
 	public List<Long> getRequestsExecutionTimes() {
 		return new ArrayList<>(requestsExecutionTimes);
