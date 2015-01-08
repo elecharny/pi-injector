@@ -72,15 +72,6 @@
 				</div>
 		 	</div>
 			<div class="form-group">
-				<label class="control-label col-sm-4" for="form_test_username">Username / password</label>
-				<div class="col-sm-4">
-					<input class="form-control" id="form_test_username" name="form_test_username" type="text" placeholder="Username">
-				</div>
-				<div class="col-sm-4">
-					<input class="form-control" id="form_test_password" name="form_test_password" type="password" placeholder="Password">
-				</div>
-		 	</div>
-			<div class="form-group">
 				<label class="control-label col-sm-4">Test plan</label>
 				<div class="col-sm-8">
 					<input id="form_test_nb-plan" name="form_test_nb-plan" type="hidden" value="0">
@@ -103,13 +94,13 @@
 				 		<ul class="nav nav-tabs" role="tablist">
 				 			<li role="presentation" class="active"><a href="#add" aria-controls="add" role="tab" data-toggle="tab">Add</a></li>
 				 			<li role="presentation"><a href="#bind" aria-controls="bind" role="tab" data-toggle="tab">Bind</a></li>
-				 			<li role="presentation"><a href="#bind-unbind" aria-controls="bind-unbind" role="tab" data-toggle="tab">Bind-unbind</a></li>
-				 			<li role="presentation"><a href="#compare" aria-controls="compare" role="tab" data-toggle="tab">Compare</a></li>
 				 			<li role="presentation"><a href="#delete" aria-controls="delete" role="tab" data-toggle="tab">Delete</a></li>
-				 			<li role="presentation"><a href="#modify" aria-controls="modify" role="tab" data-toggle="tab">Modify</a></li>
-				 			<li role="presentation"><a href="#rename" aria-controls="rename" role="tab" data-toggle="tab">Rename</a></li>
 				 			<li role="presentation"><a href="#search" aria-controls="search" role="tab" data-toggle="tab">Search</a></li>
 				 			<li role="presentation"><a href="#unbind" aria-controls="unbind" role="tab" data-toggle="tab">Unbind</a></li>
+				 			<!--li role="presentation"><a href="#bind-unbind" aria-controls="bind-unbind" role="tab" data-toggle="tab">Bind-unbind</a></li>
+				 			<li role="presentation"><a href="#compare" aria-controls="compare" role="tab" data-toggle="tab">Compare</a></li>
+				 			<li role="presentation"><a href="#modify" aria-controls="modify" role="tab" data-toggle="tab">Modify</a></li>
+				 			<li role="presentation"><a href="#rename" aria-controls="rename" role="tab" data-toggle="tab">Rename</a></li-->
 				 		</ul>
 				 		<div class="tab-content">
 						 	<div role="tabpanel" class="tab-pane active" id="add">
@@ -127,6 +118,18 @@
 							</div>
 							
 				 			<div role="tabpanel" class="tab-pane" id="bind">
+								<div class="form-group">
+									<label class="control-label col-sm-4" for="form_test_bind_username">Username</label>
+									<div class="col-sm-8">
+										<input class="form-control" id="form_test_bind_username" type="text" placeholder="">
+									</div>
+							 	</div>
+								<div class="form-group">
+									<label class="control-label col-sm-4" for="form_test_bind_password">Password</label>
+									<div class="col-sm-8">
+										<input class="form-control" id="form_test_bind_password" type="password" placeholder="">
+									</div>
+							 	</div>
 							 	<div class="form-group">
 							 		<div class="col-sm-offset-4 col-sm-8">
 							 			<button class="btn btn-primary form_test_add-to-plan" type="button" id="form_test_btn_bind">Add to test plan</button>
@@ -134,7 +137,59 @@
 							 	</div>
 				 			</div>
 							
-				 			<div role="tabpanel" class="tab-pane" id="bind-unbind">
+						 	<div role="tabpanel" class="tab-pane" id="delete">
+								<div class="form-group">
+									<label class="control-label col-sm-4" for="form_test_delete_entry-dn">Entry DN</label>
+									<div class="col-sm-8">
+										<input class="form-control" id="form_test_delete_entry-dn" type="text" placeholder="">
+									</div>
+							 	</div>
+							 	<div class="form-group">
+							 		<div class="col-sm-offset-4 col-sm-8">
+							 			<button class="btn btn-primary form_test_add-to-plan" type="button" id="form_test_btn_delete">Add to test plan</button>
+							 		</div>
+							 	</div>
+							</div>
+							
+							<div role="tabpanel" class="tab-pane" id="search">
+								<div class="form-group">
+									<label class="control-label col-sm-4" for="form_test_search_base">Search base</label>
+									<div class="col-sm-8">
+										<input class="form-control" id="form_test_search_base" type="text" placeholder="">
+									</div>
+							 	</div>
+								<div class="form-group">
+									<label class="control-label col-sm-4" for="form_test_search_filter">Search filter</label>
+									<div class="col-sm-8">
+										<input class="form-control" id="form_test_search_filter" type="text" placeholder="">
+									</div>
+							 	</div>
+								<div class="form-group">
+									<label class="control-label col-sm-4" for="form_test_search_scope">Search scope</label>
+									<div class="col-sm-8">
+										<select class="form-control" id="form_test_search_scope">
+											<option value="base-object">Base object</option>
+											<option value="one-level">One level</option>
+											<option value="subtree">Subtree</option>
+										</select>
+									</div>
+							 	</div>
+							 	<div class="form-group">
+							 		<div class="col-sm-offset-4 col-sm-8">
+							 			<button class="btn btn-primary form_test_add-to-plan" type="button" id="form_test_btn_search">Add to test plan</button>
+							 		</div>
+							 	</div>
+							</div>
+							
+						 	<div role="tabpanel" class="tab-pane" id="unbind">
+							 	<div class="form-group">
+							 		<div class="col-sm-offset-4 col-sm-8">
+							 			<button class="btn btn-primary form_test_add-to-plan" type="button" id="form_test_btn_unbind">Add to test plan</button>
+							 		</div>
+							 	</div>
+				 			</div>
+							
+				 			<!--div role="tabpanel" class="tab-pane" id="bind-unbind">
 							 	<div class="form-group">
 							 		<div class="col-sm-offset-4 col-sm-8">
 							 			<button class="btn btn-primary form_test_add-to-plan" type="button" id="form_test_btn_bind-unbind">Add to test plan</button>
@@ -158,20 +213,6 @@
 							 	<div class="form-group">
 							 		<div class="col-sm-offset-4 col-sm-8">
 							 			<button class="btn btn-primary form_test_add-to-plan" type="button" id="form_test_btn_compare">Add to test plan</button>
-							 		</div>
-							 	</div>
-							</div>
-							
-						 	<div role="tabpanel" class="tab-pane" id="delete">
-								<div class="form-group">
-									<label class="control-label col-sm-4" for="form_test_delete_entry-dn">Entry DN</label>
-									<div class="col-sm-8">
-										<input class="form-control" id="form_test_delete_entry-dn" type="text" placeholder="">
-									</div>
-							 	</div>
-							 	<div class="form-group">
-							 		<div class="col-sm-offset-4 col-sm-8">
-							 			<button class="btn btn-primary form_test_add-to-plan" type="button" id="form_test_btn_delete">Add to test plan</button>
 							 		</div>
 							 	</div>
 							</div>
@@ -230,45 +271,7 @@
 							 			<button class="btn btn-primary form_test_add-to-plan" type="button" id="form_test_btn_rename">Add to test plan</button>
 							 		</div>
 							 	</div>
-							</div>
-							
-							<div role="tabpanel" class="tab-pane" id="search">
-								<div class="form-group">
-									<label class="control-label col-sm-4" for="form_test_search_base">Search base</label>
-									<div class="col-sm-8">
-										<input class="form-control" id="form_test_search_base" type="text" placeholder="">
-									</div>
-							 	</div>
-								<div class="form-group">
-									<label class="control-label col-sm-4" for="form_test_search_filter">Search filter</label>
-									<div class="col-sm-8">
-										<input class="form-control" id="form_test_search_filter" type="text" placeholder="">
-									</div>
-							 	</div>
-								<div class="form-group">
-									<label class="control-label col-sm-4" for="form_test_search_scope">Search scope</label>
-									<div class="col-sm-8">
-										<select class="form-control" id="form_test_search_scope">
-											<option value="base-object">Base object</option>
-											<option value="one-level">One level</option>
-											<option value="subtree">Subtree</option>
-										</select>
-									</div>
-							 	</div>
-							 	<div class="form-group">
-							 		<div class="col-sm-offset-4 col-sm-8">
-							 			<button class="btn btn-primary form_test_add-to-plan" type="button" id="form_test_btn_search">Add to test plan</button>
-							 		</div>
-							 	</div>
-							</div>
-							
-						 	<div role="tabpanel" class="tab-pane" id="unbind">
-							 	<div class="form-group">
-							 		<div class="col-sm-offset-4 col-sm-8">
-							 			<button class="btn btn-primary form_test_add-to-plan" type="button" id="form_test_btn_unbind">Add to test plan</button>
-							 		</div>
-							 	</div>
-				 			</div>
+							</div-->
 						</div>
 				 	</div>
 				</div>

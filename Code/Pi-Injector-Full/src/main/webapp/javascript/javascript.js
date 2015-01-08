@@ -6,6 +6,7 @@ $(function() {
 		$('#form_test_tab_request a').click(function(e) {
 			e.preventDefault();
 			$(this).tab('show');
+			window.scrollTo(0, document.body.scrollHeight);
 		});
 		
 		$('.form_test_add-to-plan').click(function(e) {
@@ -48,10 +49,37 @@ function addToPlan(action) {
 			break;
 		
 		case 'bind':
-			tr += 'Bind'
+			var username = $('#form_test_bind_username').val();
+			var password = $('#form_test_bind_password').val();
+			tr += 'Bind : ' + username
 				+ '<input type="hidden" id="form_test_plan_action-' + index_plan + '" name="form_test_plan_action-' + index_plan + '" value="' + action + '">';
+				+ '<input type="hidden" id="form_test_plan_username-' + index_plan + '" name="form_test_username-' + index_plan + '" value="' + username + '">';
+				+ '<input type="hidden" id="form_test_plan_password-' + index_plan + '" name="form_test_password-' + index_plan + '" value="' + password + '">';
 			break;
 		
+		case 'delete':
+			var entry_dn = $('#form_test_delete_entry-dn').val();
+			tr += 'Delete : ' + entry_dn
+				+ '<input type="hidden" id="form_test_plan_action-' + index_plan + '" name="form_test_plan_action-' + index_plan + '" value="' + action + '">'
+				+ '<input type="hidden" id="form_test_plan_entry-dn-' + index_plan + '" name="form_test_plan_entry-dn-' + index_plan + '" value="' + entry_dn + '">';
+			break;
+		
+		case 'search':
+			var base = $('#form_test_search_base').val();
+			var filter = $('#form_test_search_filter').val();
+			var scope = $('#form_test_search_scope').val();
+			tr += 'Search : ' + base + ' | ' + filter + '|' + scope
+				+ '<input type="hidden" id="form_test_plan_action-' + index_plan + '" name="form_test_plan_action-' + index_plan + '" value="' + action + '">'
+				+ '<input type="hidden" id="form_test_plan_base-' + index_plan + '" name="form_test_plan_base-' + index_plan + '" value="' + base + '">'
+				+ '<input type="hidden" id="form_test_plan_filter-' + index_plan + '" name="form_test_plan_filter-' + index_plan + '" value="' + filter + '">'
+				+ '<input type="hidden" id="form_test_plan_scope-' + index_plan + '" name="form_test_plan_scope-' + index_plan + '" value="' + scope + '">';
+			break;
+		
+		case 'unbind':
+			tr += 'Unbind'
+				+ '<input type="hidden" id="form_test_plan_action-' + index_plan + '" name="form_test_plan_action-' + index_plan + '" value="' + action + '">';
+			break;
+		/*
 		case 'bind-unbind':
 			tr += 'Bind-Unbind'
 				+ '<input type="hidden" id="form_test_plan_action-' + index_plan + '" name="form_test_plan_action-' + index_plan + '" value="' + action + '">';
@@ -64,13 +92,6 @@ function addToPlan(action) {
 				+ '<input type="hidden" id="form_test_plan_action-' + index_plan + '" name="form_test_plan_action-' + index_plan + '" value="' + action + '">'
 				+ '<input type="hidden" id="form_test_plan_entry-dn-' + index_plan + '" name="form_test_plan_entry-dn-' + index_plan + '" value="' + entry_dn + '">'
 				+ '<input type="hidden" id="form_test_plan_filter-' + index_plan + '" name="form_test_plan_filter-' + index_plan + '" value="' + filter + '">';
-			break;
-		
-		case 'delete':
-			var entry_dn = $('#form_test_delete_entry-dn').val();
-			tr += 'Delete : ' + entry_dn
-				+ '<input type="hidden" id="form_test_plan_action-' + index_plan + '" name="form_test_plan_action-' + index_plan + '" value="' + action + '">'
-				+ '<input type="hidden" id="form_test_plan_entry-dn-' + index_plan + '" name="form_test_plan_entry-dn-' + index_plan + '" value="' + entry_dn + '">';
 			break;
 		
 		case 'modify':
@@ -93,29 +114,14 @@ function addToPlan(action) {
 				+ '<input type="hidden" id="form_test_plan_action-' + index_plan + '" name="form_test_plan_action-' + index_plan + '" value="' + action + '">'
 				+ '<input type="hidden" id="form_test_plan_old-entry-dn-' + index_plan + '" name="form_test_plan_old-entry-dn-' + index_plan + '" value="' + old_entry_dn + '">'
 				+ '<input type="hidden" id="form_test_plan_new-entry-dn-' + index_plan + '" name="form_test_plan_new-entry-dn-' + index_plan + '" value="' + new_entry_dn + '">';
-			break;
-		
-		case 'search':
-			var base = $('#form_test_search_base').val();
-			var filter = $('#form_test_search_filter').val();
-			var scope = $('#form_test_search_scope').val();
-			tr += 'Search : ' + base + ' | ' + filter + '|' + scope
-				+ '<input type="hidden" id="form_test_plan_action-' + index_plan + '" name="form_test_plan_action-' + index_plan + '" value="' + action + '">'
-				+ '<input type="hidden" id="form_test_plan_base-' + index_plan + '" name="form_test_plan_base-' + index_plan + '" value="' + base + '">'
-				+ '<input type="hidden" id="form_test_plan_filter' + index_plan + '" name="form_test_plan_filter' + index_plan + '" value="' + filter + '">'
-				+ '<input type="hidden" id="form_test_plan_scope' + index_plan + '" name="form_test_plan_scope' + index_plan + '" value="' + scope + '">';
-			break;
-		
-		case 'unbind':
-			tr += 'Unbind'
-				+ '<input type="hidden" id="form_test_plan_action-' + index_plan + '" name="form_test_plan_action-' + index_plan + '" value="' + action + '">';
-			break;
+			break;*/
 	}
 	
 	tr += '</td></tr>';
 	$('#form_test_table_plan > tbody').append(tr);
 	$('#form_test_nb-plan').val(index_plan);
 	removeToPlanBind();
+	window.scrollTo(0, document.body.scrollHeight);
 }
 
 
@@ -151,6 +157,7 @@ function formDisplay(a) {
 				},
 				success: function(data) {
 					//console.log(data);
+					$('.modal-title').html(file);
 					$('.modal-body').html('<canvas id="canvas_test-display-all" width="800" height="400"></canvas>');
 					
 					var ctx = $("#canvas_test-display-all").get(0).getContext("2d");

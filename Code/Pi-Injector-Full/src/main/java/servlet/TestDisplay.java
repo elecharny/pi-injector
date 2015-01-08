@@ -63,14 +63,22 @@ public class TestDisplay extends HttpServlet {
 				
 				for(int i = 1, max = lines.size(); i < max; i++) {
 					String[] line = lines.get(i).split(";");
-					//data[0].append("\"" + line[0] + "\",");
-					data[0].append("\"\",");
+					if(i % 60 == 0)
+						data[0].append("\"" + (i / 60) + "\",");
+					else
+						data[0].append("\"\",");
 					
 					for(int j = 1; j < nbColumns; j++)
 						data[j].append("\"" + line[j] + "\",");
 				}
 				
 				PrintWriter out = response.getWriter();
+				/*out.print("{\"title\":{\"text\":\"Requests / seconds\"},");
+				out.print("\"legend\":{"
+						+ "\"verticalAlign\":\"top\","
+						+ "\"horizontalAlign\":\"center\""
+						+ "},"
+				);*/
 				out.print("{\"labels\":[" + data[0].substring(0, data[0].length() - 1) + "],");
 				out.print("\"datasets\":[");
 				if(nbColumns == 3) {
@@ -89,9 +97,10 @@ public class TestDisplay extends HttpServlet {
 				}
 				else {
 					for(int i = 1; i < nbColumns; i++) {
-						String color = i != (nbColumns - 1) ? colors[i % colors.length] : "0,0,0";
+						String color = (i != (nbColumns - 1)) ? colors[i % colors.length] : "0,0,0";
+						String label = (i + 1 < nbColumns) ? "Injector " + i : "All injectors";
 						out.print("{"
-								+ "\"label\":\"Injector " + i + "\","
+								+ "\"label\":\"" + label + "\","
 								+ "\"fillColor\":\"rgba(" + color + ",0.2)\","
 								+ "\"strokeColor\":\"rgb(" + color + ")\","
 								+ "\"pointColor\":\"rgb(" + color + ")\","

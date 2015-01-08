@@ -81,13 +81,11 @@ public class TestNew extends HttpServlet {
 			String dn = request.getParameter("form_test_dn");
 			if(!dn.isEmpty() && !dn.endsWith(","))
 				dn += ",";
-			String username = request.getParameter("form_test_username");
-			String password = request.getParameter("form_test_password");
 			int nbPlan = request.getParameter("form_test_nb-plan") != null && !request.getParameter("form_test_nb-plan").equals("") ? Integer.valueOf(request.getParameter("form_test_nb-plan")) : -1;
 			
 			LDAPScript script = new LDAPScript(servername, port);
 			
-			out.print(servername + ", " + port + ", " + dn + ", " + username + ", " + password + ", " + nbPlan + ", ");
+			out.print(servername + ", " + port + ", " + dn + ", " + nbPlan + ", ");
 			
 			for(int i = 1; i <= nbPlan; i++) {
 				String action = request.getParameter("form_test_plan_action-" + i);
@@ -98,48 +96,22 @@ public class TestNew extends HttpServlet {
 					case "add" :
 						String entryDnAdd = request.getParameter("form_test_plan_entry-dn-" + i);
 						script.addAddRequest(dn + entryDnAdd);
-						out.print(dn + entryDnAdd);
+						out.print(dn + entryDnAdd + ", ");
 						break;
 					
 					case "bind" :
-						script.addBindRequest(username, password);
+						String usernameBind = request.getParameter("form_test_plan_username-" + i);
+						String passwordBind = request.getParameter("form_test_plan_password-" + i);
+						script.addBindRequest(usernameBind, passwordBind);
+						out.print(usernameBind + ", " + passwordBind + ", ");
 						break;
-					
-					case "bind-unbind" :
-						//TODO
-						script.addBindRequest(username, password);
-						script.addUnbindRequest();
-						break;
-					
-					case "compare" :
-						String entryDnCompare = request.getParameter("form_test_plan_entry-dn-" + i);
-						String filterCompare = request.getParameter("form_test_plan_filter-" + i);
-						//TODO
-						out.print(dn + entryDnCompare + ", " + filterCompare + ", ");
-						break;
-					
+						
 					case "delete" :
 						String entryDnDelete = request.getParameter("form_test_plan_entry-dn-" + i);
 						script.addDeleteRequest(dn + entryDnDelete);
 						out.print(dn + entryDnDelete + ", ");
 						break;
-					
-					case "modify" :
-						String entryDnModify = request.getParameter("form_test_plan_entry-dn-" + i);
-						String attributeModify = request.getParameter("form_test_plan_attribute-" + i);
-						String valueModify = request.getParameter("form_test_plan_value-" + i);
-						String opcodeModify = request.getParameter("form_test_plan_opcode-" + i);
-						//TODO
-						out.print(dn + entryDnModify + ", " + attributeModify + ", " + dn + valueModify + ", " + opcodeModify + ", ");
-						break;
-					
-					case "rename" :
-						String oldEntryDnRename = request.getParameter("form_test_plan_old-entry-dn-" + i);
-						String newEntryDnRename = request.getParameter("form_test_plan_new-entry-dn-" + i);
-						//TODO
-						out.print(dn + oldEntryDnRename + ", " + dn + newEntryDnRename + ", ");
-						break;
-					
+						
 					case "search" :
 						String baseSearch = request.getParameter("form_test_plan_base-" + i);
 						String filterSearch = request.getParameter("form_test_plan_filter-" + i);
@@ -162,7 +134,36 @@ public class TestNew extends HttpServlet {
 					case "unbind" :
 						script.addUnbindRequest();
 						break;
+					/*
+					case "bind-unbind" :
+						//TODO
+						script.addBindRequest(username, password);
+						script.addUnbindRequest();
+						break;
 					
+					case "compare" :
+						String entryDnCompare = request.getParameter("form_test_plan_entry-dn-" + i);
+						String filterCompare = request.getParameter("form_test_plan_filter-" + i);
+						//TODO
+						out.print(dn + entryDnCompare + ", " + filterCompare + ", ");
+						break;
+					
+					case "modify" :
+						String entryDnModify = request.getParameter("form_test_plan_entry-dn-" + i);
+						String attributeModify = request.getParameter("form_test_plan_attribute-" + i);
+						String valueModify = request.getParameter("form_test_plan_value-" + i);
+						String opcodeModify = request.getParameter("form_test_plan_opcode-" + i);
+						//TODO
+						out.print(dn + entryDnModify + ", " + attributeModify + ", " + dn + valueModify + ", " + opcodeModify + ", ");
+						break;
+					
+					case "rename" :
+						String oldEntryDnRename = request.getParameter("form_test_plan_old-entry-dn-" + i);
+						String newEntryDnRename = request.getParameter("form_test_plan_new-entry-dn-" + i);
+						//TODO
+						out.print(dn + oldEntryDnRename + ", " + dn + newEntryDnRename + ", ");
+						break;
+					*/
 					default :
 						out.print("unknown");
 						break;
@@ -172,10 +173,11 @@ public class TestNew extends HttpServlet {
 			scriptList.add(script);
 		} // LDAP
 		
+		out.print("</p></body></html>");
+		
 		GridClient client = new GridClient();
 		client.launchScriptList(scriptList);
 		
-		out.print("</p></body></html>");
 		out.close();
 	}
 }
