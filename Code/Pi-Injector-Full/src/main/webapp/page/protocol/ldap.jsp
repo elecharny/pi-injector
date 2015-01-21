@@ -38,10 +38,20 @@
 		 		</ul>
 		 		<div class="tab-content">
 				 	<div role="tabpanel" class="tab-pane active" id="add">
+						<input id="form_test_nb-add" name="form_test_nb-add" type="hidden" value="1">
 						<div class="form-group">
 							<label class="control-label col-sm-4" for="form_test_add_entry-dn">Entry DN</label>
 							<div class="col-sm-8">
 								<input class="form-control" id="form_test_add_entry-dn" type="text" placeholder="">
+							</div>
+					 	</div>
+						<div class="form-group">
+							<label class="control-label col-sm-4" for="form_test_add_attribute">Attribute / Values</label>
+							<div class="col-sm-4">
+								<input class="form-control" id="form_test_add_attribute-1" type="text" placeholder="Attribute">
+							</div>
+							<div class="col-sm-4">
+								<input class="form-control" id="form_test_add_values-1" type="text" placeholder="Values (separated with ',')">
 							</div>
 					 	</div>
 					 	<div class="form-group">

@@ -26,7 +26,8 @@ public class LDAPScriptBuilder {
 			switch(action) {
 				case "add" :
 					String entryDnAdd = request.getParameter("form_test_plan_entry-dn-" + i);
-					script.addAddRequest(entryDnAdd);
+					//TODO récupérer les couples attributs -> values
+					script.addAddRequest(entryDnAdd, null);
 					System.out.println(entryDnAdd);
 					break;
 				
