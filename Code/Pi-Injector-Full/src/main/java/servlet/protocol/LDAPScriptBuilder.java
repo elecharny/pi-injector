@@ -1,11 +1,16 @@
 package servlet.protocol;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.directory.api.ldap.model.message.SearchScope;
 
 import scripts.AbstractScript;
+import scripts.LDAPElement;
 import scripts.LDAPScript;
+import scripts.LDAPScript.LdapElement;
 
 
 public class LDAPScriptBuilder {
@@ -26,9 +31,18 @@ public class LDAPScriptBuilder {
 			switch(action) {
 				case "add" :
 					String entryDnAdd = request.getParameter("form_test_plan_entry-dn-" + i);
-					//TODO récupérer les couples attributs -> values
-					script.addAddRequest(entryDnAdd, null);
-					System.out.println(entryDnAdd);
+					int nbAdd = request.getParameter("form_test_nb-add-" + i) != null && !request.getParameter("form_test_nb-add-" + i).equals("") ? Integer.valueOf(request.getParameter("form_test_nb-add-" + i)) : -1;
+					System.out.print(entryDnAdd + ", " + nbAdd + ", ");;
+					List<LDAPElement> add = new ArrayList<LDAPElement>();
+					for(int j = 1; j <= nbAdd; j++) {
+						String attributeAdd = request.getParameter("form_test_plan_attribute-" + i + "-" + j);
+						String valuesAdd = request.getParameter("form_test_plan_valuese-" + i + "-" + j);
+						if(attributeAdd != null)
+							add.add(new LDAPElement(attributeAdd, valuesAdd));
+						
+						System.out.println(attributeAdd + ", " + valuesAdd + ", ");
+					}
+					script.addAddRequest(entryDnAdd, add);
 					break;
 				
 				case "bind" :

@@ -43,9 +43,17 @@ function addToPlan(action) {
 	switch(action) {
 		case 'add':
 			var entry_dn = $('#form_test_add_entry-dn').val();
+			var nb_add = $('#form_test_nb-add').val();
 			tr += 'Add : ' + entry_dn
 				+ '<input type="hidden" id="form_test_plan_action-' + index_plan + '"  name="form_test_plan_action-' + index_plan + '" value="' + action + '">'
-				+ '<input type="hidden" id="form_test_plan_entry-dn-' + index_plan + '" name="form_test_plan_entry-dn-' + index_plan + '" value="' + entry_dn + '">';
+				+ '<input type="hidden" id="form_test_plan_entry-dn-' + index_plan + '" name="form_test_plan_entry-dn-' + index_plan + '" value="' + entry_dn + '">'
+				+ '<input type="hidden" id="form_test_plan_add-nb-' + index_plan + '"  name="form_test_plan_add-nb-' + index_plan + '" value="' + nb_add + '">';
+			for(var i = 1; i <= nb_add; i++) {
+				var attribute = $('#form_test_add_attribute-' + i).val();
+				var values = $('#form_test_add_values-' + i).val();
+				tr += '<input type="hidden" id="form_test_plan_attribute-' + index_plan + '-' + i + '" name="form_test_plan_attribute-' + index_plan + '-' + i + '" value="' + attribute + '">'
+					+ '<input type="hidden" id="form_test_plan_values-' + index_plan + '-' + i + '" name="form_test_plan_values-' + index_plan + '-' + i + '" value="' + values + '">';
+			}
 			break;
 		
 		case 'bind':
@@ -79,42 +87,6 @@ function addToPlan(action) {
 			tr += 'Unbind'
 				+ '<input type="hidden" id="form_test_plan_action-' + index_plan + '" name="form_test_plan_action-' + index_plan + '" value="' + action + '">';
 			break;
-		/*
-		case 'bind-unbind':
-			tr += 'Bind-Unbind'
-				+ '<input type="hidden" id="form_test_plan_action-' + index_plan + '" name="form_test_plan_action-' + index_plan + '" value="' + action + '">';
-			break;
-		
-		case 'compare':
-			var entry_dn = $('#form_test_compare_entry-dn').val();
-			var filter = $('#form_test_compare_filter').val();
-			tr += 'Compare : ' + entry_dn + ' | ' + filter
-				+ '<input type="hidden" id="form_test_plan_action-' + index_plan + '" name="form_test_plan_action-' + index_plan + '" value="' + action + '">'
-				+ '<input type="hidden" id="form_test_plan_entry-dn-' + index_plan + '" name="form_test_plan_entry-dn-' + index_plan + '" value="' + entry_dn + '">'
-				+ '<input type="hidden" id="form_test_plan_filter-' + index_plan + '" name="form_test_plan_filter-' + index_plan + '" value="' + filter + '">';
-			break;
-		
-		case 'modify':
-			var entry_dn = $('#form_test_modify_entry-dn').val();
-			var attribute = $('#form_test_modify_attribute').val();
-			var value = $('#form_test_modify_value').val();
-			var opcode = $('#form_test_modify_opcode').val();
-			tr += 'Modify : ' + entry_dn + ' | ' + attribute + ' | ' + value + ' | ' + opcode
-				+ '<input type="hidden" id="form_test_plan_action-' + index_plan + '" name="form_test_plan_action-' + index_plan + '" value="' + action + '">'
-				+ '<input type="hidden" id="form_test_plan_entry-dn-' + index_plan + '" name="form_test_plan_entry-dn-' + index_plan + '" value="' + entry_dn + '">'
-				+ '<input type="hidden" id="form_test_plan_attribute-' + index_plan + '" name="form_test_plan_attribute-' + index_plan + '" value="' + attribute + '">'
-				+ '<input type="hidden" id="form_test_plan_value-' + index_plan + '" name="form_test_plan_value-' + index_plan + '" value="' + value + '">'
-				+ '<input type="hidden" id="form_test_plan_opcode-' + index_plan + '" name="form_test_plan_opcode-' + index_plan + '" value="' + opcode + '">';
-			break;
-		
-		case 'rename':
-			var old_entry_dn = $('#form_test_rename_old-entry-dn').val();
-			var new_entry_dn = $('#form_test_rename_new-entry-dn').val();
-			tr += 'Rename : ' + old_entry_dn + ' | ' + new_entry_dn
-				+ '<input type="hidden" id="form_test_plan_action-' + index_plan + '" name="form_test_plan_action-' + index_plan + '" value="' + action + '">'
-				+ '<input type="hidden" id="form_test_plan_old-entry-dn-' + index_plan + '" name="form_test_plan_old-entry-dn-' + index_plan + '" value="' + old_entry_dn + '">'
-				+ '<input type="hidden" id="form_test_plan_new-entry-dn-' + index_plan + '" name="form_test_plan_new-entry-dn-' + index_plan + '" value="' + new_entry_dn + '">';
-			break;*/
 	}
 	
 	tr += '</td></tr>';
