@@ -97,21 +97,33 @@ public class LDAPScript extends AbstractScript {
 	}
 	
 	
-	public void addAddRequest(String entryDN) {
+	public void addAddRequest(String dn, List<LdapElement> elements) {
 		
 		List<Object> params = new ArrayList<>();
-		params.add(entryDN);
+		params.add(dn);
+		params.add(elements);
 		
 		addNewMethod(
 				"executeAddRequest",
-				new Class[] {String.class},
+				new Class[] {String.class, List.class},
 				params);
 	}
 	
-	public void executeAddRequest(String entryDN) {
+	public void executeAddRequest(String dn, List<LdapElement> elements) {
 		
 		try {
-			Entry entry = new DefaultEntry(entryDN);
+			
+			List<String> strings = new ArrayList<String>();
+			
+			for (LdapElement element : elements) {
+				strings.add(element.attribute + ": " + element.value);
+			}
+			
+			Entry entry = new DefaultEntry(dn, strings.toArray());
+			
+			//Entry entry = new DefaultEntry(Dn dn, Object...dn elements);
+			//Entry entry = new DefaultEntry(String dn, Object...dn elements);
+			
 			connection.add(entry);
 		} catch (LdapException e) {
 			e.printStackTrace();
@@ -168,28 +180,41 @@ public class LDAPScript extends AbstractScript {
 		}
 	}
 	
-
-	public void addModifyRequest() {
+	
+	/**
+	 * Classe interne permettant de lier un attribut et une valeur pour les
+	 * paramètres des différentes requêtes
+	 */
+	public class LdapElement {
 		
-		//addNewMethod("executeModifyRequest");
-	}
-	
-	public void executeModifyRequest() {
+		private String attribute;
+		private String value;
 		
-	}
-	
-	
-	public void addRenameRequest() {
 		
-		//addNewMethod("executeRenameRequest");
-	}
-	
-	public void executeRenameRequest() {
+		public LdapElement() {
+			this(null, null);
+		}
 		
+		public LdapElement (String _attribute, String _value) {
+			attribute = _attribute;
+			value = _value;
+		}
+		
+		
+		public void setAttribute(String _attribute) {
+			attribute = _attribute;
+		}
+		
+		public String getAttribute() {
+			return attribute;
+		}
+		
+		public void setValue(String _value) {
+			value = _value;
+		}
+		
+		public String getValue() {
+			return value;
+		}
 	}
-	
-	//TODO bind-unbind, compare
-	
-	
-	// TODO: Ajouter ici les autre méthodes add et execute...
 }
