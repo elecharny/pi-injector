@@ -97,11 +97,11 @@ public class LDAPScript extends AbstractScript {
 	}
 	
 	
-	public void addAddRequest(String dn, List<LdapElement> elements) {
+	public void addAddRequest(String dn, List<LDAPAttribute> attributes) {
 		
 		List<Object> params = new ArrayList<>();
 		params.add(dn);
-		params.add(elements);
+		params.add(attributes);
 		
 		addNewMethod(
 				"executeAddRequest",
@@ -109,14 +109,14 @@ public class LDAPScript extends AbstractScript {
 				params);
 	}
 	
-	public void executeAddRequest(String dn, List<LdapElement> elements) {
+	public void executeAddRequest(String dn, List<LDAPAttribute> attributes) {
 		
 		try {
 			
 			List<String> strings = new ArrayList<String>();
 			
-			for (LdapElement element : elements) {
-				strings.add(element.attribute + ": " + element.value);
+			for (LDAPAttribute attribute : attributes) {
+				strings.add(attribute.getAttribute() + ": " + attribute.getValue());
 			}
 			
 			Entry entry = new DefaultEntry(dn, strings.toArray());
@@ -152,69 +152,42 @@ public class LDAPScript extends AbstractScript {
 	}
 	
 	
-	public void addSearchRequest(String dn, String filter, SearchScope scope) {
+	public void addSearchRequest(String dn, String filter,
+			SearchScope scope, List<LDAPAttribute> attributes) {
 		
 		List<Object> params = new ArrayList<>();
 		params.add(dn);
 		params.add(filter);
 		params.add(scope);
+		params.add(attributes);
 		
 		addNewMethod(
 				"executeSearchRequest",
-				new Class[] {String.class, String.class, SearchScope.class},
+				new Class[] {String.class, String.class, SearchScope.class, List.class},
 				params);
 	}
 	
-	public void executeSearchRequest(String dn, String filter, SearchScope scope) {
+	public void executeSearchRequest(String dn, String filter,
+			SearchScope scope, List<LDAPAttribute> attributes) {
 		
 		SearchRequest req = new SearchRequestImpl();
 
 		try {
 			req.setBase(new Dn(dn));
-			req.setFilter(filter);
+			req.setFilter(filter); // mettre les parenthèses autour du filter ?
 			req.setScope(scope);
+			
+			List<String> strings = new ArrayList<String>();
+			
+			for (LDAPAttribute attribute : attributes) {
+				strings.add(attribute.getAttribute() + ": " + attribute.getValue());
+			}
+			
+			req.addAttributes(strings.toArray(new String[strings.size()]));
 			
 			connection.search(req);
 		} catch (LdapException e) {
 			e.printStackTrace();
-		}
-	}
-	
-	
-	/**
-	 * Classe interne permettant de lier un attribut et une valeur pour les
-	 * paramètres des différentes requêtes
-	 */
-	public class LdapElement {
-		
-		private String attribute;
-		private String value;
-		
-		
-		public LdapElement() {
-			this(null, null);
-		}
-		
-		public LdapElement (String _attribute, String _value) {
-			attribute = _attribute;
-			value = _value;
-		}
-		
-		
-		public void setAttribute(String _attribute) {
-			attribute = _attribute;
-		}
-		
-		public String getAttribute() {
-			return attribute;
-		}
-		
-		public void setValue(String _value) {
-			value = _value;
-		}
-		
-		public String getValue() {
-			return value;
 		}
 	}
 }

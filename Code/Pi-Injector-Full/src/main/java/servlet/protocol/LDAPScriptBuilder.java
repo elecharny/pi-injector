@@ -8,9 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.directory.api.ldap.model.message.SearchScope;
 
 import scripts.AbstractScript;
-import scripts.LDAPElement;
+import scripts.LDAPAttribute;
 import scripts.LDAPScript;
-import scripts.LDAPScript.LdapElement;
 
 
 public class LDAPScriptBuilder {
@@ -33,12 +32,12 @@ public class LDAPScriptBuilder {
 					String entryDnAdd = request.getParameter("form_test_plan_entry-dn-" + i);
 					int nbAdd = request.getParameter("form_test_nb-add-" + i) != null && !request.getParameter("form_test_nb-add-" + i).equals("") ? Integer.valueOf(request.getParameter("form_test_nb-add-" + i)) : -1;
 					System.out.print(entryDnAdd + ", " + nbAdd + ", ");;
-					List<LDAPElement> add = new ArrayList<LDAPElement>();
+					List<LDAPAttribute> add = new ArrayList<LDAPAttribute>();
 					for(int j = 1; j <= nbAdd; j++) {
 						String attributeAdd = request.getParameter("form_test_plan_attribute-" + i + "-" + j);
 						String valuesAdd = request.getParameter("form_test_plan_valuese-" + i + "-" + j);
 						if(attributeAdd != null)
-							add.add(new LDAPElement(attributeAdd, valuesAdd));
+							add.add(new LDAPAttribute(attributeAdd, valuesAdd));
 						
 						System.out.println(attributeAdd + ", " + valuesAdd + ", ");
 					}

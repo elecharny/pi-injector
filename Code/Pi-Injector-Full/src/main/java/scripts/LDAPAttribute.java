@@ -1,16 +1,16 @@
 package scripts;
 
 
-public class LDAPElement {
+public class LDAPAttribute {
 	private String attribute;
 	private String value;
 	
 	
-	public LDAPElement() {
+	public LDAPAttribute() {
 		this(null, null);
 	}
 	
-	public LDAPElement(String _attribute, String _value) {
+	public LDAPAttribute(String _attribute, String _value) {
 		attribute = _attribute;
 		value = _value;
 	}
