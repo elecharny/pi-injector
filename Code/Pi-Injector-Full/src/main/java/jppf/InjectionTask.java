@@ -13,13 +13,16 @@ public class InjectionTask extends AbstractTask<Void> {
 	
 	// Envoie toutes les 100 exécutions du scénario 
 	// une notification contenant les résultats récupérés
-	private final int						notificationInterval = 100; 
+	private int								notificationInterval; 
 	private final AbstractScript 			script;
 	private List<GenericResult>		 		resultsList;
+	private int 							nbIteration;
 	
 	
-	public InjectionTask(AbstractScript script) {
+	public InjectionTask(AbstractScript script, int nbIteration, int notificationInterval) {
 		this.script = script;
+		this.nbIteration = nbIteration;
+		this.notificationInterval = notificationInterval;
 		resultsList = new ArrayList<>();
 	}
 
@@ -40,7 +43,7 @@ public class InjectionTask extends AbstractTask<Void> {
 		
 		script.beforeRun();
 		int j = 0;
-		while (j<15000) {
+		while (j<nbIteration) {
 			j++;
 			long startScriptTimeNano = 0L;
 			

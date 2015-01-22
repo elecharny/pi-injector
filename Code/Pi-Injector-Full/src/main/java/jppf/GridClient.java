@@ -1,5 +1,6 @@
 package jppf;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
@@ -61,6 +62,7 @@ public class GridClient {
 	private JMXDriverConnectionWrapper				driverJmx = null;
 	
 	private HashMap<String, List<GenericResult>>	mapGenericResult = null;
+	private static int								notificationInterval = 100;
 	
 	
 	public GridClient() {
@@ -126,11 +128,9 @@ public class GridClient {
 					synchronized(mapGenericResult){
 						if(mapGenericResult.containsKey(wrapping.getNodeUuid())){
 							mapGenericResult.get(wrapping.getNodeUuid()).addAll((List<GenericResult>)notif.getUserData());
-							System.out.println("OK");
 						}
 						else{
 							mapGenericResult.put(wrapping.getNodeUuid(), (List<GenericResult>)notif.getUserData());
-							System.out.println("KO");
 						}
 					}
 					
@@ -202,8 +202,19 @@ public class GridClient {
 		// et faire des vérifs pour savoir s'il n'y a pas plus de scripts fournis
 		// que d'injecteurs disponibles
 		
-		for (int i = 0; i < nodesCount; i++) {
-			InjectionTask jppfTask = new InjectionTask(scripts);
+		if(context.getAttribute("TestProgress") !=null){
+			@SuppressWarnings("unchecked")
+			HashMap<String, Double> map = (HashMap<String, Double>) context.getAttribute("TestProgress");
+			synchronized(map){
+				map.put(name, new Double(0));
+			}
+		}else{
+			HashMap<String, Double> map =new HashMap<String, Double>();
+			map.put(name, new Double(0));
+			context.setAttribute("TestProgress", map);
+		}
+		for (int i = 0; i < nbInjector; i++) {
+			InjectionTask jppfTask = new InjectionTask(scripts,nbIteration,notificationInterval);
 			jppfTask.setId(jppfJob.getName() + " - Task " + i);
 			try {
 				jppfJob.add(jppfTask, (Object[])null);
@@ -228,7 +239,7 @@ public class GridClient {
 	}
 	
 	
-	public void launchBroadcastScript(AbstractScript script) {
+	/*public void launchBroadcastScript(AbstractScript script) {
 		
 		JPPFJob jppfJob = new JPPFJob();
 		jppfJob.setName("LDAP Injection Job");
@@ -258,7 +269,7 @@ public class GridClient {
 		// Test du job cancel pour arrêter les noeuds
 		jppfJob.cancel();
 		jppfJob.awaitResults();
-	}
+	}*/
 	
 	
 	public long shortAndFindMinCurrentTime() {
@@ -349,7 +360,7 @@ public class GridClient {
 		PrintWriter writer;
 		
 		try{
-			writer = new PrintWriter("test1-" + nodesCount + ".csv", "UTF-8");
+			writer = new PrintWriter(".." + File.separator + "tests-results" + File.separator + "test-" + nodesCount + ".csv", "UTF-8");
 			int agreg;
 			for(Entry<Integer, List<DataByInjector>> entry : agregation.entrySet()) {
 				System.out.println(entry.getKey());
