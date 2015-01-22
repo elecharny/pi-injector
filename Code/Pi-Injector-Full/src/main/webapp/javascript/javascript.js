@@ -3,23 +3,27 @@ var index_plan = 0;
 
 $(function() {
 	if($('#form_test').length > 0) {
-		$('#form_test_tab_request a').click(function(e) {
+		$('#form_test_tab_request a').on('click', function(e) {
 			e.preventDefault();
 			$(this).tab('show');
 			window.scrollTo(0, document.body.scrollHeight);
 		});
 		
-		$('.form_test_add-to-plan').click(function(e) {
-			e.preventDefault();
-			var action = $(this).attr('id').split('_');
-			addToPlan(action[action.length - 1]);
-		});
+		addToPlanBind();
 		
 		removeToPlanBind();
+		
+		addAttributeValueBind();
+		
+		$('#form_test').on('submit', function(e) {
+			if($('#form_test').attr('data-nb-injectors') == 0) {
+				e.preventDefault();
+			}
+		});
 	}
 	
 	if($('#table_test-display-all').length > 0) {
-		$('.form_display').click(function(e) {
+		$('.form_display').on('click', function(e) {
 			e.preventDefault();
 			formDisplay($(this));
 		});
@@ -28,8 +32,28 @@ $(function() {
 
 
 /* ################################################################# TEST-NEW */
+function addAttributeValueBind() {
+	$('.form_test_add-attribute-value').unbind('click');
+	$('.form_test_add-attribute-value').on('click', function(e) {
+		e.preventDefault();
+		addAttributeValue();
+	});
+}
+
+
+function addToPlanBind() {
+	$('.form_test_add-to-plan').unbind('click');
+	$('.form_test_add-to-plan').on('click', function(e) {
+		e.preventDefault();
+		var action = $(this).attr('id').split('_');
+		addToPlan(action[action.length - 1]);
+	});
+}
+
+
 function removeToPlanBind() {
-	$('.form_test_remove-from-plan').click(function(e) {
+	$('.form_test_remove-from-plan').unbind('click');
+	$('.form_test_remove-from-plan').on('click', function(e) {
 		e.preventDefault();
 		$(this).parents('tr').remove();
 	});
@@ -50,10 +74,16 @@ function addToPlan(action) {
 				+ '<input type="hidden" id="form_test_plan_add-nb-' + index_plan + '"  name="form_test_plan_add-nb-' + index_plan + '" value="' + nb_add + '">';
 			for(var i = 1; i <= nb_add; i++) {
 				var attribute = $('#form_test_add_attribute-' + i).val();
-				var values = $('#form_test_add_values-' + i).val();
+				var value = $('#form_test_add_value-' + i).val();
+				console.log(i + ', ' + attribute + ', ' + value);
 				tr += '<input type="hidden" id="form_test_plan_attribute-' + index_plan + '-' + i + '" name="form_test_plan_attribute-' + index_plan + '-' + i + '" value="' + attribute + '">'
-					+ '<input type="hidden" id="form_test_plan_values-' + index_plan + '-' + i + '" name="form_test_plan_values-' + index_plan + '-' + i + '" value="' + values + '">';
+					+ '<input type="hidden" id="form_test_plan_value-' + index_plan + '-' + i + '" name="form_test_plan_value-' + index_plan + '-' + i + '" value="' + value + '">';
 			}
+			for(var i = 2; i <= nb_add; i++) {
+				console.log('remove ' + i);
+				$('#form_test_add_attribute-' + i).parents('.form-group').remove();
+			}
+			$('#form_test_nb-add').val(1);
 			break;
 		
 		case 'bind':
@@ -93,6 +123,24 @@ function addToPlan(action) {
 	$('#form_test_table_plan > tbody').append(tr);
 	$('#form_test_nb-plan').val(index_plan);
 	removeToPlanBind();
+	window.scrollTo(0, document.body.scrollHeight);
+}
+
+
+function addAttributeValue() {
+	var index_add = 1 + (+$('#form_test_nb-add').val());
+	var html = '<div class="form-group">'
+		+ '<label class="control-label col-sm-4" for="form_test_add_attribute-' + index_add + '">Attribute / Value</label>'
+		+ '<div class="col-sm-4">'
+		+ '<input class="form-control" id="form_test_add_attribute-' + index_add + '" type="text" placeholder="Attribute">'
+		+ '</div>'
+		+ '<div class="col-sm-4">'
+		+ '<input class="form-control" id="form_test_add_value-' + index_add + '" type="text" placeholder="Value">'
+		+ '</div>'
+		+ '</div>';
+	$('.form_test_add-attribute-value').parents('.form-group').before(html);
+	$('#form_test_nb-add').val(index_add);
+	addToPlanBind();
 	window.scrollTo(0, document.body.scrollHeight);
 }
 

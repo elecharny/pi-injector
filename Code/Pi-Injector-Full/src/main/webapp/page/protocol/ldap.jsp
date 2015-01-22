@@ -1,3 +1,4 @@
+
 <fieldset id="fieldset_ldap">
 	<legend>LDAP</legend>
 	<div class="form-group">
@@ -46,13 +47,18 @@
 							</div>
 					 	</div>
 						<div class="form-group">
-							<label class="control-label col-sm-4" for="form_test_add_attribute">Attribute / Values</label>
+							<label class="control-label col-sm-4" for="form_test_add_attribute-1">Attribute / Value</label>
 							<div class="col-sm-4">
 								<input class="form-control" id="form_test_add_attribute-1" type="text" placeholder="Attribute">
 							</div>
 							<div class="col-sm-4">
-								<input class="form-control" id="form_test_add_values-1" type="text" placeholder="Values (separated with ',')">
+								<input class="form-control" id="form_test_add_value-1" type="text" placeholder="Value">
 							</div>
+					 	</div>
+					 	<div class="form-group">
+					 		<div class="col-sm-offset-4 col-sm-8">
+					 			<span class="glyphicon glyphicon-plus form_test_add-attribute-value" aria-hidden="true"></span>
+					 		</div>
 					 	</div>
 					 	<div class="form-group">
 					 		<div class="col-sm-offset-4 col-sm-8">
