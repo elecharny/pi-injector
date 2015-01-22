@@ -22,9 +22,13 @@ $(function() {
 		removeSearchAttributeValueBind();
 		
 		$('#form_test').on('submit', function(e) {
-			if($('#form_test').attr('data-nb-injectors') == 0) {
-				e.preventDefault();
-			}
+			e.preventDefault();
+			if($('#form_test').attr('data-nb-injectors') == 0 || $(':submit').is(':disabled'))
+				alert('There are no more injector available, the test can\'t be runned.');
+			else if($('#form_test_nb-plan').val() <= 0)
+				alert('You can\'t run a test without any request on the test plan.');
+			else
+				$('#form_test').submit();
 		});
 	}
 	
@@ -33,6 +37,10 @@ $(function() {
 			e.preventDefault();
 			formDisplay($(this));
 		});
+	}
+	
+	if($('#table_test_running').length > 0) {
+		displayTestProgress();
 	}
 });
 
@@ -101,7 +109,7 @@ function removeToPlanBind() {
 
 function addToPlan(action) {
 	index_plan++;
-	var tr = '<tr><td><span class="glyphicon glyphicon-remove form_test_remove-from-plan" aria-hidden="true"></span></td><td>';
+	var tr = '<tr><td><button type="button" class="btn btn-default btn-sm form_test_remove-from-plan"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button></td><td>';
 	
 	switch(action) {
 		case 'add':
@@ -255,4 +263,10 @@ function formDisplay(a) {
 			});
 			break;
 	}
+}
+
+
+/* ############################################################# TEST-RUNNING */
+function displayTestProgress() {
+	
 }

@@ -1,6 +1,16 @@
 
 <div class="container">
-	<h3>Test send</h3>
+	<h3>Running test</h3>
 	
-	<p>Your test is running. Please come back later to see the results.</p>
+	<table id="table_test_running">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Progress</th>
+			</tr>
+		</thead>
+		<tbody>
+			
+		</tbody>
+	</table>
 </div>

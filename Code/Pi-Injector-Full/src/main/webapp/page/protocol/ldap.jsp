@@ -5,7 +5,7 @@
 	<div class="form-group">
 		<label class="control-label col-sm-4" for="form_test_servername">Servername / port</label>
 		<div class="col-sm-6">
-			<input class="form-control" id="form_test_servername" name="form_test_servername" type="text" placeholder="Servername">
+			<input class="form-control" id="form_test_servername" name="form_test_servername" type="text" placeholder="Servername" required>
 		</div>
 		<div class="col-sm-2">
 			<input class="form-control" id="form_test_port" name="form_test_port" type="text" placeholder="Port">
@@ -39,7 +39,7 @@
 		 			<li role="presentation"><a href="#unbind" aria-controls="unbind" role="tab" data-toggle="tab">Unbind</a></li>
 		 		</ul>
 		 		<div class="tab-content">
-				 	<div role="tabpanel" class="tab-pane active" id="add">
+				 	<div role="tabpanel" class="tab-pane" id="add">
 						<input id="form_test_nb-add" name="form_test_nb-add" type="hidden" value="<%= nbAdd %>">
 						<div class="form-group">
 							<label class="control-label col-sm-4" for="form_test_add_entry-dn">Entry DN</label>
@@ -51,7 +51,9 @@
 						<div class="form-group" <%= i != 1 ? "style=\"display : none\"" : "" %>>
 							<label class="control-label col-sm-4" for="form_test_add_attribute-<%= i %>">
 								<% if(i != 1) { %>
-								<span class="glyphicon glyphicon-minus form_test_remove_add-attribute-value" aria-hidden="true" data-index="<%= i %>"></span>
+								<button type="button" class="btn btn-default btn-sm form_test_remove_add-attribute-value" data-index="<%= i %>">
+									<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+								</button>
 								<% } %>
 								Attribute / value
 							</label>
@@ -65,7 +67,9 @@
 					 	<% } %>
 					 	<div class="form-group">
 					 		<div class="col-sm-offset-4 col-sm-8">
-					 			<span class="glyphicon glyphicon-plus form_test_add_add-attribute-value" aria-hidden="true"></span>
+					 			<button type="button" class="btn btn-default btn-sm form_test_add_add-attribute-value">
+					 				<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+					 			</button>
 					 		</div>
 					 	</div>
 					 	<div class="form-group">
@@ -137,7 +141,9 @@
 						<div class="form-group" <%= i != 1 ? "style=\"display : none\"" : "" %>>
 							<label class="control-label col-sm-4" for="form_test_search_attribute-<%= i %>">
 								<% if(i != 1) { %>
-								<span class="glyphicon glyphicon-minus form_test_remove_search-attribute-value" aria-hidden="true" data-index="<%= i %>"></span>
+								<button type="button" class="btn btn-default btn-sm form_test_remove_search-attribute-value" data-index="<%= i %>">
+									<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+								</button>
 								<% } %>
 								Attribute / value
 							</label>
@@ -151,7 +157,9 @@
 					 	<% } %>
 					 	<div class="form-group">
 					 		<div class="col-sm-offset-4 col-sm-8">
-					 			<span class="glyphicon glyphicon-plus form_test_add_search-attribute-value" aria-hidden="true"></span>
+					 			<button type="button" class="btn btn-default btn-sm form_test_add_search-attribute-value">
+					 				<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+					 			</button>
 					 		</div>
 					 	</div>
 					 	<div class="form-group">
