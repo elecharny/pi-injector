@@ -12,6 +12,7 @@ import java.util.Map.Entry;
 
 import javax.management.Notification;
 import javax.management.NotificationListener;
+import javax.servlet.ServletContext;
 
 import org.jppf.JPPFException;
 import org.jppf.client.AbstractJPPFClientConnection;
@@ -191,7 +192,8 @@ public class GridClient {
 	
 	
 	
-	public void launchScriptList(List<AbstractScript> scripts) {
+	public void launchScriptList(List<AbstractScript> scripts,String name,
+			int nbInjector,int nbIteration,ServletContext context) {
 		
 		JPPFJob jppfJob = new JPPFJob();
 		jppfJob.setName("LDAP Injection Job");
@@ -217,7 +219,6 @@ public class GridClient {
 			jppfJob.setBlocking(true);
 			jppfClient.submitJob(jppfJob);
 			
-			System.out.println("WAZAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa");
 			// Une fois que le job est terminé, on va traiter et agréger les données
 			aggregationData(shortAndFindMinCurrentTime());
 			
@@ -393,14 +394,14 @@ public class GridClient {
 		LDAPScript ldapScript = new LDAPScript("192.168.1.28", 10389);
 		ldapScript.addBindRequest("uid=admin,ou=system", "secret");
 		
-		GridClient client = new GridClient();
+		/*GridClient client = new GridClient();
 		//client.launchBroadcastScript(ldapScript);
 		
 		List<AbstractScript> scripts = new ArrayList<>();
 		scripts.add(ldapScript);
 		client.launchScriptList(scripts);
 		
-		System.out.println("Finishing...");
+		System.out.println("Finishing...");*/
 	}
 
 }
