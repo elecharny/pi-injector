@@ -30,5 +30,14 @@ public class DataByInjector {
 		this.nbRequest = nbRequest;
 	}
 	
-	
+	@Override
+	public boolean equals(Object other){
+		if (other == null) return false;
+		if (other == this) return true;
+		if (!(other instanceof DataByInjector))return false;
+		DataByInjector otherObject = (DataByInjector)other;
+		if(otherObject.getTaskID().equals(getTaskID()))
+			return true;
+		return false;
+	}
 }

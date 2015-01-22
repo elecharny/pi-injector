@@ -122,13 +122,15 @@ public class GridClient {
 							(TaskExecutionNotification) wrapping.getNotification();
 					System.out.println("After notif'");
 					
-					if(mapGenericResult.containsKey(wrapping.getNodeUuid())){
-						mapGenericResult.get(wrapping.getNodeUuid()).addAll((List<GenericResult>)notif.getUserData());
-						System.out.println("OK");
-					}
-					else{
-						mapGenericResult.put(wrapping.getNodeUuid(), (List<GenericResult>)notif.getUserData());
-						System.out.println("KO");
+					synchronized(mapGenericResult){
+						if(mapGenericResult.containsKey(wrapping.getNodeUuid())){
+							mapGenericResult.get(wrapping.getNodeUuid()).addAll((List<GenericResult>)notif.getUserData());
+							System.out.println("OK");
+						}
+						else{
+							mapGenericResult.put(wrapping.getNodeUuid(), (List<GenericResult>)notif.getUserData());
+							System.out.println("KO");
+						}
 					}
 					
 					
@@ -281,7 +283,7 @@ public class GridClient {
 	}
 	
 	public void aggregationData(Long minCurrentTime){
-		System.out.println("WAZAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA2");
+
 		TreeMap<Integer, List<DataByInjector>> agregation = new TreeMap<Integer, List<dataExtraction.DataByInjector>>();
 		
 		//on va stocker la liste de nom des tache
@@ -291,9 +293,9 @@ public class GridClient {
 		for(Entry<String, List<GenericResult>> entry : mapGenericResult.entrySet()){
 			listNameTask.add(entry.getKey());
 			
-			long min = 0;
+
 			int nbRequestSec = 0;
-			int nbSec = 0;
+			long nbSec = 0;
 			
 			// premierPassage va nous servir a savoir la différence entre le premier noeud lancer et les autres
 			// on pourra donc calculer une différence de temps enter les deux
@@ -304,43 +306,49 @@ public class GridClient {
 				
 				if(premierPassage){
 					
-					premierPassage = false;
 					if(minCurrentTime < result.getStartTime()){
-						nbSec = (int) ((result.getStartTime() - minCurrentTime)/1000L);
+						nbSec = result.getStartTime() - minCurrentTime;
 						System.out.println("NB DE SEC " + nbSec);
 					}
-					min = result.getStartTime()/1000000000L;
 				}
 					
 				for(Long duration : result.getRequestsExecutionTimes()){
-						
-					if(duration/1000000000L <= min){
+					
+					if(premierPassage){
+						premierPassage = false;
+					}
+					if((nbSec + duration)%1000000000L  <= nbSec%1000000000L){
 						nbRequestSec++;
+						nbSec+=duration;
+						System.out.println(nbSec);
 					}else{
-						if(agregation.containsKey(nbSec)){
-							System.out.println("on ajoute LAAAAAAAAAAAAAAAA ici");
-							agregation.get(nbSec).add(new DataByInjector(entry.getKey(), nbRequestSec));
+						Integer secSearch = new Integer((int) (nbSec/1000000000L));
+						if(agregation.containsKey(secSearch)){
+							//on vérifie que l'objet n'existe qu'en un seul exemplaire par seconde pour chaque noeud
+							// si c'est le cas, on ajoute dans l'bjet existant
+							int position = agregation.get(secSearch).indexOf(new DataByInjector(entry.getKey(), 0));
+							if(position != -1){
+								agregation.get(secSearch).get(position).setNbRequest(agregation.get(secSearch).get(position).getNbRequest() + nbRequestSec);
+							}else{
+								agregation.get(secSearch).add(new DataByInjector(entry.getKey(), nbRequestSec));
+							}
 						}else{
-							System.out.println("on ajoute ici");
 							ArrayList<DataByInjector> list = new ArrayList<DataByInjector>();
 							list.add(new DataByInjector(entry.getKey(), nbRequestSec));
-							agregation.put(nbSec, list);
+							agregation.put(secSearch, list);
 						}
+						nbSec+=duration;
 						nbRequestSec = 1;
-						nbSec += duration/1000000000L - min;
-						min = duration/1000000000L;
 					}
 				}
 			}
 		}
-		System.out.println("WAZAAAAAAAAAAAAAAAAAAAA3");
+		
 		// maintenant on crée le fichier total
 		PrintWriter writer;
 		
 		try{
 			writer = new PrintWriter("test1-" + nodesCount + ".csv", "UTF-8");
-			System.out.println("WAZAAAAAAAAAAAAAA4");
-			System.out.println(agregation.size());
 			int agreg;
 			for(Entry<Integer, List<DataByInjector>> entry : agregation.entrySet()) {
 				System.out.println(entry.getKey());
