@@ -72,7 +72,10 @@ public class LDAPScriptBuilder {
 							scopeSearch = SearchScope.SUBTREE;
 							break;
 					}
-					script.addSearchRequest(baseSearch, filterSearch, scopeSearch);
+					
+					// TODO: By THIB : Ajouter un paramètre pour des attributs (comme pour la requête ADD)
+					//script.addSearchRequest(baseSearch, filterSearch, scopeSearch);
+					
 					System.out.println(baseSearch + ", " + filterSearch + ", " + scopeSearch);
 					break;
 				

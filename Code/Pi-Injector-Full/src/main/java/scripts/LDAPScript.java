@@ -121,9 +121,6 @@ public class LDAPScript extends AbstractScript {
 			
 			Entry entry = new DefaultEntry(dn, strings.toArray());
 			
-			//Entry entry = new DefaultEntry(Dn dn, Object...dn elements);
-			//Entry entry = new DefaultEntry(String dn, Object...dn elements);
-			
 			connection.add(entry);
 		} catch (LdapException e) {
 			e.printStackTrace();
