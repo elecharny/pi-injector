@@ -211,6 +211,7 @@ public class GridClient {
 			jppfJob.setBlocking(true);
 			jppfClient.submitJob(jppfJob);
 			
+			System.out.println("WAZAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa");
 			// Une fois que le job est terminé, on va traiter et agréger les données
 			aggregationData(shortAndFindMinCurrentTime());
 			
@@ -276,7 +277,7 @@ public class GridClient {
 	}
 	
 	public void aggregationData(Long minCurrentTime){
-		
+		System.out.println("WAZAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA2");
 		TreeMap<Integer, List<DataByInjector>> agregation = new TreeMap<Integer, List<dataExtraction.DataByInjector>>();
 		
 		//on va stocker la liste de nom des tache
@@ -302,6 +303,7 @@ public class GridClient {
 					premierPassage = false;
 					if(minCurrentTime < result.getStartTime()){
 						nbSec = (int) ((result.getStartTime() - minCurrentTime)/1000L);
+						System.out.println("NB DE SEC " + nbSec);
 					}
 					min = result.getStartTime()/1000000000L;
 				}
@@ -314,6 +316,7 @@ public class GridClient {
 						if(agregation.containsKey(nbSec)){
 							agregation.get(nbSec).add(new DataByInjector(entry.getKey(), nbRequestSec));
 						}else{
+							System.out.println("on ajoute ici");
 							ArrayList<DataByInjector> list = new ArrayList<DataByInjector>();
 							list.add(new DataByInjector(entry.getKey(), nbRequestSec));
 							agregation.put(nbSec, list);
@@ -325,14 +328,17 @@ public class GridClient {
 				}
 			}
 		}
-		
+		System.out.println("WAZAAAAAAAAAAAAAAAAAAAA3");
 		// maintenant on crée le fichier total
 		PrintWriter writer;
 		
 		try{
-			writer = new PrintWriter("test-" + nodesCount + ".csv", "UTF-8");
+			writer = new PrintWriter("test1-" + nodesCount + ".csv", "UTF-8");
+			System.out.println("WAZAAAAAAAAAAAAAA4");
+			System.out.println(agregation.size());
 			int agreg;
 			for(Entry<Integer, List<DataByInjector>> entry : agregation.entrySet()) {
+				System.out.println(entry.getKey());
 				StringBuilder str = new StringBuilder();
 				str.append(entry.getKey()+ ";");
 				agreg = 0;

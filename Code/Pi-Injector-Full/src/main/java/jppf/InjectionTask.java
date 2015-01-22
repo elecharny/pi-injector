@@ -39,9 +39,9 @@ public class InjectionTask extends AbstractTask<Void> {
 		GenericResult result = null;
 		
 		script.beforeRun();
-		
-		while (true) {
-			
+		int j = 0;
+		while (j<15000) {
+			j++;
 			long startScriptTimeNano = 0L;
 			
 			// si début du scénario
