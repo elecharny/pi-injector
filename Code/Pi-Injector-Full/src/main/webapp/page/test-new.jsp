@@ -18,7 +18,7 @@
 			<div class="col-sm-8">
 				<select class="form-control" id="form_test_nb-injectors" name="form_test_nb-injectors">
 					<% for(int i = 1; i <= nbInjectors; i++) { %>
-						<option value="<%= i %>"><%= i %></option>
+					<option value="<%= i %>"><%= i %></option>
 					<% } %>
 				</select>
 			</div>
@@ -28,7 +28,7 @@
 			<div class="col-sm-8">
 				<select class="form-control" id="form_test_nb-threads" name="form_test_nb-threads">
 					<% for(int i = 1; i <= 2; i++) { %>
-						<option value="<%= i %>"><%= i %></option>
+					<option value="<%= i %>"><%= i %></option>
 					<% } %>
 				</select>
 			</div>
