@@ -1,3 +1,4 @@
+<% int nbAdd = 20, nbSearch = 20; %>
 
 <fieldset id="fieldset_ldap">
 	<legend>LDAP</legend>
@@ -31,7 +32,7 @@
 		<div class="col-sm-8">
 			<div role="tabpanel" id="form_test_tab_request">
 		 		<ul class="nav nav-tabs" role="tablist">
-		 			<li role="presentation" class="active"><a href="#add" aria-controls="add" role="tab" data-toggle="tab">Add</a></li>
+		 			<li role="presentation"><a href="#add" aria-controls="add" role="tab" data-toggle="tab">Add</a></li>
 		 			<li role="presentation"><a href="#bind" aria-controls="bind" role="tab" data-toggle="tab">Bind</a></li>
 		 			<li role="presentation"><a href="#delete" aria-controls="delete" role="tab" data-toggle="tab">Delete</a></li>
 		 			<li role="presentation"><a href="#search" aria-controls="search" role="tab" data-toggle="tab">Search</a></li>
@@ -39,25 +40,32 @@
 		 		</ul>
 		 		<div class="tab-content">
 				 	<div role="tabpanel" class="tab-pane active" id="add">
-						<input id="form_test_nb-add" name="form_test_nb-add" type="hidden" value="1">
+						<input id="form_test_nb-add" name="form_test_nb-add" type="hidden" value="<%= nbAdd %>">
 						<div class="form-group">
 							<label class="control-label col-sm-4" for="form_test_add_entry-dn">Entry DN</label>
 							<div class="col-sm-8">
 								<input class="form-control" id="form_test_add_entry-dn" type="text" placeholder="">
 							</div>
 					 	</div>
-						<div class="form-group">
-							<label class="control-label col-sm-4" for="form_test_add_attribute-1">Attribute / Value</label>
+					 	<% for(int i = 1; i <= nbAdd; i++) { %>
+						<div class="form-group" <%= i != 1 ? "style=\"display : none\"" : "" %>>
+							<label class="control-label col-sm-4" for="form_test_add_attribute-<%= i %>">
+								<% if(i != 1) { %>
+								<span class="glyphicon glyphicon-minus form_test_remove_add-attribute-value" aria-hidden="true" data-index="<%= i %>"></span>
+								<% } %>
+								Attribute / value
+							</label>
 							<div class="col-sm-4">
-								<input class="form-control" id="form_test_add_attribute-1" type="text" placeholder="Attribute">
+								<input class="form-control" id="form_test_add_attribute-<%= i %>" type="text" placeholder="">
 							</div>
 							<div class="col-sm-4">
-								<input class="form-control" id="form_test_add_value-1" type="text" placeholder="Value">
+								<input class="form-control" id="form_test_add_value-<%= i %>" type="text" placeholder="">
 							</div>
 					 	</div>
+					 	<% } %>
 					 	<div class="form-group">
 					 		<div class="col-sm-offset-4 col-sm-8">
-					 			<span class="glyphicon glyphicon-plus form_test_add-attribute-value" aria-hidden="true"></span>
+					 			<span class="glyphicon glyphicon-plus form_test_add_add-attribute-value" aria-hidden="true"></span>
 					 		</div>
 					 	</div>
 					 	<div class="form-group">
@@ -102,6 +110,7 @@
 					</div>
 					
 					<div role="tabpanel" class="tab-pane" id="search">
+						<input id="form_test_nb-search" name="form_test_nb-search" type="hidden" value="<%= nbSearch %>">
 						<div class="form-group">
 							<label class="control-label col-sm-4" for="form_test_search_base">Search base</label>
 							<div class="col-sm-8">
@@ -123,6 +132,27 @@
 									<option value="subtree">Subtree</option>
 								</select>
 							</div>
+					 	</div>
+					 	<% for(int i = 1; i <= nbSearch; i++) { %>
+						<div class="form-group" <%= i != 1 ? "style=\"display : none\"" : "" %>>
+							<label class="control-label col-sm-4" for="form_test_search_attribute-<%= i %>">
+								<% if(i != 1) { %>
+								<span class="glyphicon glyphicon-minus form_test_remove_search-attribute-value" aria-hidden="true" data-index="<%= i %>"></span>
+								<% } %>
+								Attribute / value
+							</label>
+							<div class="col-sm-4">
+								<input class="form-control" id="form_test_search_attribute-<%= i %>" type="text" placeholder="">
+							</div>
+							<div class="col-sm-4">
+								<input class="form-control" id="form_test_search_value-<%= i %>" type="text" placeholder="">
+							</div>
+					 	</div>
+					 	<% } %>
+					 	<div class="form-group">
+					 		<div class="col-sm-offset-4 col-sm-8">
+					 			<span class="glyphicon glyphicon-plus form_test_add_search-attribute-value" aria-hidden="true"></span>
+					 		</div>
 					 	</div>
 					 	<div class="form-group">
 					 		<div class="col-sm-offset-4 col-sm-8">
