@@ -192,18 +192,18 @@ public class GridClient {
 	
 	
 	
-	public void launchScriptList(List<AbstractScript> scripts,String name,
+	public void launchScriptList(AbstractScript scripts,String name,
 			int nbInjector,int nbIteration,ServletContext context) {
 		
 		JPPFJob jppfJob = new JPPFJob();
-		jppfJob.setName("LDAP Injection Job");
+		jppfJob.setName(name);
 		
 		// TODO: Modifier ici pour utiliser TOUS les scripts fournis
 		// et faire des vérifs pour savoir s'il n'y a pas plus de scripts fournis
 		// que d'injecteurs disponibles
 		
 		for (int i = 0; i < nodesCount; i++) {
-			InjectionTask jppfTask = new InjectionTask(scripts.get(0));
+			InjectionTask jppfTask = new InjectionTask(scripts);
 			jppfTask.setId(jppfJob.getName() + " - Task " + i);
 			try {
 				jppfJob.add(jppfTask, (Object[])null);
