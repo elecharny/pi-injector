@@ -1,8 +1,8 @@
 package servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -27,14 +27,23 @@ public class TestNew extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Enumeration<String> parameterNames = request.getParameterNames();
+		while (parameterNames.hasMoreElements()) {
+			String paramName = parameterNames.nextElement();
+			System.out.print(paramName + " : ");
+
+			String[] paramValues = request.getParameterValues(paramName);
+			for (int i = 0; i < paramValues.length; i++) {
+				String paramValue = paramValues[i];
+				System.out.println(paramValue + "\t");
+			}
+
+		}
+		
 		response.setContentType("html");
 		response.setCharacterEncoding("utf-8");
-		PrintWriter out = response.getWriter();
 		
 		List<AbstractScript> scriptList = new ArrayList<AbstractScript>();
-		
-		out.print("<html><head><title>Form</title></head><body><p>");
-		System.out.println(System.getProperty("user.dir"));
 		
 		String name = StringEscapeUtils.escapeHtml(request.getParameter("form_test_name"));
 		if(name == null || name.equals("")) {
@@ -72,15 +81,11 @@ public class TestNew extends HttpServlet {
 			//return;
 		}
 		
-		System.out.println(name + ", " + nbInjectors + ", " + nbThreads + ", " + durationValue + ", " + durationUnit + ", " + protocol);
-		
 		if(protocol != null && protocol.equals("LDAP")) {
 			scriptList.add(LDAPScriptBuilder.getScript(request));
 		}
+		// ----------------------------------------- ADD NEW PROTOCOL USAGE HERE
 		
-		out.close();
-		
-		// MODIFIED BY THIB
 		GridClient.getInstance().launchScriptList(scriptList);
 	}
 }
