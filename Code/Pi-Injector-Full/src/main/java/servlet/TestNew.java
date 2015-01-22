@@ -1,7 +1,10 @@
 package servlet;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Enumeration;
 import java.util.List;
 
@@ -15,6 +18,7 @@ import jppf.GridClient;
 import org.apache.commons.lang.StringEscapeUtils;
 
 import scripts.AbstractScript;
+import scripts.LDAPScript;
 import servlet.protocol.LDAPScriptBuilder;
 
 
@@ -50,6 +54,8 @@ public class TestNew extends HttpServlet {
 			response.setStatus(599);
 			//return;
 		}
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+		name = df.format(new Date()) + "_" + name;
 		
 		int nbInjectors = request.getParameter("form_test_nb-injectors") != null && !request.getParameter("form_test_nb-injectors").equals("") ? Integer.valueOf(request.getParameter("form_test_nb-injectors")) : -1;
 		if(nbInjectors <= 0) {
@@ -57,21 +63,14 @@ public class TestNew extends HttpServlet {
 			//return;
 		}
 		
-		int nbThreads = request.getParameter("form_test_nb-threads") != null && !request.getParameter("form_test_nb-threads").equals("") ? Integer.valueOf(request.getParameter("form_test_nb-threads")) : -1;
-		if(nbThreads <= 0) {
+		/*if(GridClient.getInstance().refreshNodesCount() <= 0) {
 			response.setStatus(597);
 			//return;
-		}
+		}*/
 		
-		int durationValue = request.getParameter("form_test_duration-value") != null && !request.getParameter("form_test_duration-value").equals("") ? Integer.valueOf(request.getParameter("form_test_duration-value")) : -1;
-		if(durationValue <= 0) {
+		int iterations = request.getParameter("form_test_iterations") != null && !request.getParameter("form_test_iterations").equals("") ? Integer.valueOf(request.getParameter("form_test_iterations")) : -1;
+		if(iterations <= 0) {
 			response.setStatus(596);
-			//return;
-		}
-		
-		String durationUnit = request.getParameter("form_test_duration-unit");
-		if(durationUnit == null || durationUnit.equals("")) {
-			response.setStatus(595);
 			//return;
 		}
 		
@@ -82,10 +81,11 @@ public class TestNew extends HttpServlet {
 		}
 		
 		if(protocol != null && protocol.equals("LDAP")) {
-			scriptList.add(LDAPScriptBuilder.getScript(request));
+			AbstractScript script = LDAPScriptBuilder.getScript(request);
+			GridClient.getInstance().launchScriptList(script, name, nbInjectors, iterations, request.getServletContext());
 		}
 		// ----------------------------------------- ADD NEW PROTOCOL USAGE HERE
 		
-		GridClient.getInstance().launchScriptList(scriptList);
+		request.getRequestDispatcher("page/test-running.jsp").include(request, response);
 	}
 }
