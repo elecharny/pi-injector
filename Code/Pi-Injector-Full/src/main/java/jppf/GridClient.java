@@ -173,7 +173,7 @@ public class GridClient {
 
 			try {
 				nodesCount = (Integer)driverJmx.invoke(
-						JPPFDriverAdminMBean.MBEAN_NAME, "nbIdlesNodes");
+						JPPFDriverAdminMBean.MBEAN_NAME, "nbIdleNodes");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
