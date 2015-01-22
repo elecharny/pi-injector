@@ -35,7 +35,7 @@ public class LDAPScriptBuilder {
 					List<LDAPAttribute> add = new ArrayList<LDAPAttribute>();
 					for(int j = 1; j <= nbAdd; j++) {
 						String attributeAdd = request.getParameter("form_test_plan_attribute-" + i + "-" + j);
-						String valuesAdd = request.getParameter("form_test_plan_valuese-" + i + "-" + j);
+						String valuesAdd = request.getParameter("form_test_plan_value-" + i + "-" + j);
 						if(attributeAdd != null)
 							add.add(new LDAPAttribute(attributeAdd, valuesAdd));
 						

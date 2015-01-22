@@ -1,8 +1,9 @@
+<%@ page import="jppf.GridClient" %>
 
 <div class="container">
 	<h3>Test configuration</h3>
 	
-	<form class="form-horizontal" role="form" id="form_test" method="post" action="test-new-form">
+	<form class="form-horizontal" role="form" id="form_test" method="post" action="test-new-form" data-nb-injectors="<%= GridClient.getInstance().refreshNodesCount() %>">
 		<div class="form-group">
 			<label class="control-label col-sm-4" for="form_test_name">Test name</label>
 			<div class="col-sm-8">
@@ -13,7 +14,7 @@
 			<label class="control-label col-sm-4" for="form_test_nb-injectors">Number of injectors</label>
 			<div class="col-sm-8">
 				<select class="form-control" id="form_test_nb-injectors" name="form_test_nb-injectors">
-					<% for(int i = 1; i <= 5; i++) { %>
+					<% for(int i = 1, i_max = GridClient.getInstance().refreshNodesCount(); i <= i_max; i++) { %>
 						<option value="<%= i %>"><%= i %></option>
 					<% } %>
 				</select>
