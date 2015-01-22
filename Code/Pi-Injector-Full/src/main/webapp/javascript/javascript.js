@@ -127,7 +127,7 @@ function addToPlan(action) {
 }
 
 
-function addAttributeValue() {
+/*function addAttributeValue() {
 	var index_add = 1 + (+$('#form_test_nb-add').val());
 	var html = '<div class="form-group">'
 		+ '<label class="control-label col-sm-4" for="form_test_add_attribute-' + index_add + '">Attribute / Value</label>'
@@ -139,6 +139,49 @@ function addAttributeValue() {
 		+ '</div>'
 		+ '</div>';
 	$('.form_test_add-attribute-value').parents('.form-group').before(html);
+	$('#form_test_nb-add').val(index_add);
+	addToPlanBind();
+	window.scrollTo(0, document.body.scrollHeight);
+}*/
+
+
+function addAttributeValue() {
+	var index_add = 1 + (+$('#form_test_nb-add').val());
+	
+	var div = document.createElement('div');
+	$(div).attr('class', 'form-group');
+	
+	var label_1 = document.createElement('label');
+	$(label_1).attr('class', 'control-label col-sm-4');
+	$(label_1).attr('for', 'form_test_add_attribute-' + index_add);
+	$(label_1).html('Attribute / Value');
+	
+	var div_2 = document.createElement('div');
+	$(div_2).attr('class', 'col-sm-4');
+	
+	var input_2_1 = document.createElement('input');
+	$(input_2_1).attr('class', 'form-control');
+	$(input_2_1).attr('id', 'form_test_add_attribute-' + index_add);
+	$(input_2_1).attr('type', 'text');
+	$(input_2_1).attr('placeholder', 'Attribute');
+	
+	var div_3 = document.createElement('div');
+	$(div_3).attr('class', 'col-sm-4');
+	
+	var input_3_1 = document.createElement('input');
+	$(input_3_1).attr('class', 'form-control');
+	$(input_3_1).attr('id', 'form_test_add_value-' + index_add);
+	$(input_3_1).attr('type', 'text');
+	$(input_3_1).attr('placeholder', 'Value');
+
+	$(div_2).append(input_2_1);
+	$(div_3).append(input_3_1);
+
+	$(div).append(label_1);
+	$(div).append(div_2);
+	$(div).append(div_3);
+	
+	$('.form_test_add-attribute-value').parents('.form-group').before(div);
 	$('#form_test_nb-add').val(index_add);
 	addToPlanBind();
 	window.scrollTo(0, document.body.scrollHeight);
