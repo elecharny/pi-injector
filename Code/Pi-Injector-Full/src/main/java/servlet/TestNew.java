@@ -80,7 +80,7 @@ public class TestNew extends HttpServlet {
 		
 		out.close();
 		
-		GridClient client = new GridClient();
-		client.launchScriptList(scriptList);
+		// MODIFIED BY THIB
+		((GridClient)request.getSession().getServletContext().getAttribute("gridClient")).launchScriptList(scriptList);
 	}
 }
