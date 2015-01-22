@@ -228,6 +228,7 @@ public class GridClient {
 		jppfJob.awaitResults();
 	}
 	
+	
 	public long shortAndFindMinCurrentTime() {
 		
 		// On commence par trier toutes les listes pour chaque noeud
@@ -264,7 +265,6 @@ public class GridClient {
 			long min = 0;
 			int nbRequestSec = 0;
 			int nbSec = 0;
-			int nbReqParSec = 0;
 			
 			// premierPassage va nous servir a savoir la différence entre le premier noeud lancer et les autres
 			// on pourra donc calculer une différence de temps enter les deux
@@ -283,7 +283,6 @@ public class GridClient {
 				}
 					
 				for(Long duration : result.getRequestsExecutionTimes()){
-					nbReqParSec++;
 						
 					if(duration/1000000000L <= min){
 						nbRequestSec++;

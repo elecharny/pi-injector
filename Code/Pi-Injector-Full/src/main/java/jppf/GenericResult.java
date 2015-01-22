@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.UUID;
 
 
-public class GenericResult implements Serializable, Comparable {
+public class GenericResult implements Serializable, Comparable<GenericResult> {
 	private static final long serialVersionUID = 1L;
 	// Script UUID associated to
 	private final UUID 			scriptUUID;
@@ -53,7 +53,7 @@ public class GenericResult implements Serializable, Comparable {
 
 
 	@Override
-	public int compareTo(Object other) {
+	public int compareTo(GenericResult other) {
 		long otherCurrentTime = ((GenericResult) other).getStartTime();
 		if(otherCurrentTime > this.getStartTime())
 			return -1;
@@ -62,4 +62,5 @@ public class GenericResult implements Serializable, Comparable {
 		else
 			return 1;
 	}
+
 }
