@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.UUID;
 
 
-public class GenericResult implements Serializable {
+public class GenericResult implements Serializable, Comparable {
 	private static final long serialVersionUID = 1L;
 	// Script UUID associated to
 	private final UUID 			scriptUUID;
@@ -49,5 +49,17 @@ public class GenericResult implements Serializable {
 	
 	public void addRequestExecutionTime(long requestExecutionTime) {
 		this.requestsExecutionTimes.add(requestExecutionTime);
+	}
+
+
+	@Override
+	public int compareTo(Object other) {
+		long otherCurrentTime = ((GenericResult) other).getStartTime();
+		if(otherCurrentTime > this.getStartTime())
+			return -1;
+		else if(otherCurrentTime == this.getStartTime())
+			return 0;
+		else
+			return 1;
 	}
 }
