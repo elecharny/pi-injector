@@ -70,6 +70,7 @@ public class InjectionTask extends AbstractTask<Void> {
 				pushResults();
 			}
 		}
+		close("End of execution... Stopping the node...");
 	}
 	
 	@Override

@@ -122,10 +122,14 @@ public class GridClient {
 							(TaskExecutionNotification) wrapping.getNotification();
 					System.out.println("After notif'");
 					
-					if(mapGenericResult.containsKey(wrapping.getNodeUuid()))
+					if(mapGenericResult.containsKey(wrapping.getNodeUuid())){
 						mapGenericResult.get(wrapping.getNodeUuid()).addAll((List<GenericResult>)notif.getUserData());
-					else
+						System.out.println("OK");
+					}
+					else{
 						mapGenericResult.put(wrapping.getNodeUuid(), (List<GenericResult>)notif.getUserData());
+						System.out.println("KO");
+					}
 					
 					
 					System.out.println(
@@ -314,6 +318,7 @@ public class GridClient {
 						nbRequestSec++;
 					}else{
 						if(agregation.containsKey(nbSec)){
+							System.out.println("on ajoute LAAAAAAAAAAAAAAAA ici");
 							agregation.get(nbSec).add(new DataByInjector(entry.getKey(), nbRequestSec));
 						}else{
 							System.out.println("on ajoute ici");
