@@ -31,6 +31,29 @@ import scripts.LDAPScript;
 
 public class GridClient {
 	
+	/*********************************************** SINGLETON */
+	
+	private static GridClient						instance;
+	private static Object							synchronizer = new Object();
+	
+	public static GridClient getInstance() {
+		
+		if (instance == null) {
+			synchronized (synchronizer) {
+				if (instance == null) {
+					instance = new GridClient();
+				}
+			}
+		}
+
+		return instance;
+	}
+	
+	/*********************************************** SINGLETON */
+	
+	
+	
+	
 	private int 									nodesCount = 0;
 	private JPPFClient 								jppfClient = null;
 	private AbstractJPPFClientConnection 			jppfClientConn = null;
@@ -49,6 +72,7 @@ public class GridClient {
 		
 		mapGenericResult = new HashMap<String, List<GenericResult>>();
 	}
+
 	
 	
 	private void establishGridConnection() {
