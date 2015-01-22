@@ -4,7 +4,6 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -236,9 +235,6 @@ public class GridClient {
 			Collections.sort(list);
 		}
 		
-		//on va stocker la liste de nom des tache
-		List<String> listNameTask = new ArrayList<String>();
-		
 		//une fois les listes triées, on va chercher la plus petite valeur 
 		// pour le current time, ce qui va nous servir de référentiel pour agréger les données
 		// (cette valeur sera donc notre temps 0) 
@@ -258,6 +254,7 @@ public class GridClient {
 		
 		TreeMap<Integer, List<DataByInjector>> agregation = new TreeMap<Integer, List<dataExtraction.DataByInjector>>();
 		
+		//on va stocker la liste de nom des tache
 		List<String> listNameTask = new ArrayList<String>();
 		
 		//maintenant, pour chaque noeuds, on va calculer le nombre de requête par seconde
@@ -268,7 +265,6 @@ public class GridClient {
 			int nbRequestSec = 0;
 			int nbSec = 0;
 			int nbReqParSec = 0;
-			Boolean flag = true;
 			
 			// premierPassage va nous servir a savoir la différence entre le premier noeud lancer et les autres
 			// on pourra donc calculer une différence de temps enter les deux
