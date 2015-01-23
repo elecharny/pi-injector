@@ -63,7 +63,10 @@ public class GridClient {
 	
 	private HashMap<String, List<GenericResult>>	mapGenericResult = null;
 	private static int								notificationInterval = 100;
-	
+	private int										nbIteration = 0;
+	private int										iterationEffectuees = 0;
+	private String									name = null;
+	HashMap<String, Double>							mapPourcentage = null;
 	
 	public GridClient() {
 		// Connect to the JPPF Grid
@@ -134,6 +137,12 @@ public class GridClient {
 						}
 					}
 					
+					//on met à jour le pourcentage
+					iterationEffectuees+=notificationInterval;
+					if(mapPourcentage != null){
+						mapPourcentage.put(name,iterationEffectuees/new Double(nbIteration));
+					}
+					
 					
 					System.out.println(
 							"Notif content : " + ((List<GenericResult>)notif.getUserData()).get(0).getTotalScriptExecutionTime());
@@ -192,27 +201,30 @@ public class GridClient {
 	
 	
 	
+	@SuppressWarnings("unchecked")
 	public void launchScriptList(AbstractScript scripts,String name,
 			int nbInjector,int nbIteration,ServletContext context) {
 		
 		JPPFJob jppfJob = new JPPFJob();
 		jppfJob.setName(name);
+		this.nbIteration = nbIteration;
+		this.name = name;
 		
-		// TODO: Modifier ici pour utiliser TOUS les scripts fournis
-		// et faire des vérifs pour savoir s'il n'y a pas plus de scripts fournis
-		// que d'injecteurs disponibles
 		
 		if(context.getAttribute("TestProgress") !=null){
-			@SuppressWarnings("unchecked")
-			HashMap<String, Double> map = (HashMap<String, Double>) context.getAttribute("TestProgress");
-			synchronized(map){
-				map.put(name, new Double(0));
+			this.mapPourcentage = (HashMap<String, Double>) context.getAttribute("TestProgress");
+			synchronized(mapPourcentage){
+				mapPourcentage.put(name, new Double(0));
 			}
 		}else{
-			HashMap<String, Double> map =new HashMap<String, Double>();
-			map.put(name, new Double(0));
-			context.setAttribute("TestProgress", map);
+			mapPourcentage =new HashMap<String, Double>();
+			mapPourcentage.put(name, new Double(0));
+			context.setAttribute("TestProgress", mapPourcentage);
 		}
+		
+		if(nbIteration > nodesCount)
+			nbIteration = nodesCount;
+		
 		for (int i = 0; i < nbInjector; i++) {
 			InjectionTask jppfTask = new InjectionTask(scripts,nbIteration,notificationInterval);
 			jppfTask.setId(jppfJob.getName() + " - Task " + i);
