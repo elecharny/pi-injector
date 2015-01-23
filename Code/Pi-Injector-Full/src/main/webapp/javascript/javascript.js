@@ -220,6 +220,8 @@ function addSearchAttributeValue() {
 /* ############################################################# TEST-DISPLAY */
 function formDisplay(a) {
 	var file = a.closest('tr').attr('data-file');
+	var form_display_seconds_1 = $('#form_display_seconds-1').length > 0 ? $('#form_display_seconds-1').val() : '';
+	var form_display_seconds_2 = $('#form_display_seconds-2').length > 0 ? $('#form_display_seconds-2').val() : '';
 	
 	switch(a.attr('data-action')) {
 		case 'delete' :
@@ -230,7 +232,9 @@ function formDisplay(a) {
 				url: 'test-display-form',
 				async: true,
 				data: {
-					file: file
+					file: file,
+					'form_display_seconds-1': form_display_seconds_1,
+					'form_display_seconds-2': form_display_seconds_2
 				},
 				dataType: "json",
 				type: "get",
@@ -248,17 +252,45 @@ function formDisplay(a) {
 					}
 				},
 				success: function(data) {
-					//console.log(data);
 					$('.modal-title').html(file);
-					$('.modal-body').html('<canvas id="canvas_test-display-all" width="800" height="400"></canvas>');
+					$('.modal-body').html('<p>Requests / second</p><canvas id="canvas_test-display-all" width="800" height="400"></canvas>');
 					
 					var ctx = $("#canvas_test-display-all").get(0).getContext("2d");
 					var myLineChart = new Chart(ctx).Line(data, { scaleShowGridLines: true, pointDot: false, animation: false, scaleShowLabels: true });
 					
-					$('#modal_test-display-all').modal();
+					var html = '<form class="form-horizontal" role="form" id="form_display_filter" method="post" action="test-new-form">'
+						+ '<div class="form-group">'
+						+ '<label class="control-label col-sm-6" for="form_test_name">'
+						+ 'Average requests / second : ' + (Math.round(data['form_display_average'] * 100) / 100)
+						+ '</label>'
+						+ '<div class="col-sm-2">'
+						+ '<button class="btn btn-primary" type="submit">Filter</button>'
+						+ '</div>'
+						+ '<div class="col-sm-2">'
+						+ '<input class="form-control" id="form_display_seconds-1" name="form_display_seconds-1" type="number" value="' + form_display_seconds_1 + '">'
+						+ '</div>'
+						+ '<div class="col-sm-2">'
+						+ '<input class="form-control" id="form_display_seconds-2" name="form_display_seconds-2" type="number" value="' + form_display_seconds_2 + '">'
+						+ '</div>'
+						+ '</div>'
+						+ '</form>';
+					
+					$('.modal-body').append(html);
+					
+					$('#modal_test-display-all').modal('show');
+					$('#form_display_filter').unbind('hidden.bs.modal');
 					$('#modal_test-display-all').on('hidden.bs.modal', function() {
 						$('.modal-body').html('');
 					});
+					
+					$('#form_display_filter').unbind('submit');
+					$('#form_display_filter').on('submit', function(e) {
+						e.preventDefault();
+						$('tr[data-file="' + file + '"] > td > a[data-action="display"]').click();
+					});
+					
+					if(form_display_seconds_1 == '' && form_display_seconds_2 == '')
+						$('tr[data-file="' + file + '"] > td.form_display_average').html((Math.round(data['form_display_average'] * 100) / 100) + ' r/s');
 				}
 			});
 			break;

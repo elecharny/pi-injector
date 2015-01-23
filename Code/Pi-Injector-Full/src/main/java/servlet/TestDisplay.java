@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @SuppressWarnings("serial")
 public class TestDisplay extends HttpServlet {
+	// Colors used for the chart
 	String[] colors = {
 			"220,20,60", //crimson
 			"50,205,50", //lime green
@@ -61,6 +62,15 @@ public class TestDisplay extends HttpServlet {
 				for(int i = 0; i < data.length; i++)
 					data[i] = new StringBuilder();
 				
+				double form_display_average = 0.0;
+				int form_display_seconds_1 = request.getParameter("form_display_seconds-1") != null && !request.getParameter("form_display_seconds-1").equals("") ? Math.max(Integer.valueOf(request.getParameter("form_display_seconds-1")), 0) : 0;
+				int form_display_seconds_2 = request.getParameter("form_display_seconds-2") != null && !request.getParameter("form_display_seconds-2").equals("") ? Math.min(Integer.valueOf(request.getParameter("form_display_seconds-2")), lines.size() - 1) : lines.size() - 1;
+				if(form_display_seconds_1 > form_display_seconds_2) {
+					int tmp = form_display_seconds_1;
+					form_display_seconds_1 = form_display_seconds_2;
+					form_display_seconds_2 = tmp;
+				}
+				
 				for(int i = 1, max = lines.size(); i < max; i++) {
 					String[] line = lines.get(i).split(";");
 					if(i % 60 == 0)
@@ -68,17 +78,15 @@ public class TestDisplay extends HttpServlet {
 					else
 						data[0].append("\"\",");
 					
-					for(int j = 1; j < nbColumns; j++)
+					for(int j = 1; j < nbColumns; j++) {
 						data[j].append("\"" + line[j] + "\",");
+						if(j + 1 == nbColumns && form_display_seconds_1 <= i && i <= form_display_seconds_2)
+							form_display_average += Double.valueOf(line[j]);
+					}
 				}
+				form_display_average /= (form_display_seconds_2 - form_display_seconds_1);
 				
 				PrintWriter out = response.getWriter();
-				/*out.print("{\"title\":{\"text\":\"Requests / seconds\"},");
-				out.print("\"legend\":{"
-						+ "\"verticalAlign\":\"top\","
-						+ "\"horizontalAlign\":\"center\""
-						+ "},"
-				);*/
 				out.print("{\"labels\":[" + data[0].substring(0, data[0].length() - 1) + "],");
 				out.print("\"datasets\":[");
 				if(nbColumns == 3) {
@@ -114,7 +122,11 @@ public class TestDisplay extends HttpServlet {
 							out.print(",");
 					}
 				}
-				out.print("]}");
+				out.print("],");
+				out.print("\"form_display_average\":\"" + form_display_average + "\",");
+				out.print("\"form_display_seconds-1\":\"" + form_display_average + "\",");
+				out.print("\"form_display_seconds-2\":\"" + form_display_average + "\"");
+				out.print("}");
 				out.close();
 			}
 			catch(Exception e) {
