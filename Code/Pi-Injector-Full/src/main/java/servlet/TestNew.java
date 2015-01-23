@@ -3,10 +3,8 @@ package servlet;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.Enumeration;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -18,7 +16,6 @@ import jppf.GridClient;
 import org.apache.commons.lang.StringEscapeUtils;
 
 import scripts.AbstractScript;
-import scripts.ldap.LDAPScript;
 import servlet.protocol.LDAPScriptBuilder;
 
 
@@ -46,8 +43,6 @@ public class TestNew extends HttpServlet {
 		
 		response.setContentType("html");
 		response.setCharacterEncoding("utf-8");
-		
-		List<AbstractScript> scriptList = new ArrayList<AbstractScript>();
 		
 		String name = StringEscapeUtils.escapeHtml(request.getParameter("form_test_name"));
 		if(name == null || name.equals("")) {

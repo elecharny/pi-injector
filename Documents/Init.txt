@@ -1,0 +1,14 @@
+	# JPPF-Driver
+Dans jppf-driver.properties,
+	remplacer jppf.load.balancing.algorithm = proportional
+		par jppf.load.balancing.algorithm = manual
+	et remplacer jppf.load.balancing.profile = proportional_profile
+		par jppf.load.balancing.profile = manual_profile
+
+Lancer startDriver.sh/bat (pas forcément sur la même machine que l'application "interface graphique").
+
+
+	# JPPF-Node
+Présent sur chaque noeud (Raspberry-Pi).
+Lancer startNode.sh/bat.
+Si les noeuds et le driver sont sur le même LAN, ils doivent se trouver tout seul.

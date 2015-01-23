@@ -36,6 +36,9 @@
 					<% if("test-display-all".equals(request.getParameter("page"))) { %>
 						<%@ include file="page/test-display-all.jsp" %>
 					<% }
+					else if("test-running".equals(request.getParameter("page"))) { %>
+						<%@ include file="page/test-running.jsp" %>
+					<% }
 					else { %>
 						<%@ include file="page/test-new.jsp" %>
 					<% } %>

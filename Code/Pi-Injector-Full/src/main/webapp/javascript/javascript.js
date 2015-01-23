@@ -244,7 +244,7 @@ function formDisplay(a) {
 						//$("#form_login_help").html("<strong class=\"text-danger\">Informations de connexion incorrectes.</strong>");
 					}
 					else {
-						console.error("Erreur formDisplay\n" + xhr.status + "\n" + thrownError);
+						console.error('Erreur formDisplay\n' + xhr.status + '\n' + thrownError);
 					}
 				},
 				success: function(data) {
@@ -268,5 +268,31 @@ function formDisplay(a) {
 
 /* ############################################################# TEST-RUNNING */
 function displayTestProgress() {
-	
+	$.ajax({
+		url: 'test-running-form',
+		async: true,
+		dataType: "json",
+		type: "get",
+		success: function(data) {
+			var json = eval(data);
+			var html = '';
+			for(var name in json['tests']) {
+				html += '<tr>'
+					+ '<td>' + name + '</td>'
+					+ '<td>'
+					+ '<div class="progress">'
+					+ '<div class="progress-bar" role="progressbar" aria-valuenow="' + json['tests'][name] + '" aria-valuemin="0" aria-valuemax="100" style="width:' + json['tests'][name] + '%">'
+					+ json['tests'][name] + '%'
+					+ '</div>'
+					+ '</div>'
+					+ '</tr>';
+			}
+			
+			$('#table_test_running > tbody').html(html);
+			setTimeout(displayTestProgress, 3000);
+		},
+		error: function(xhr, ajaxOptions, thrownError) {
+			console.error('Erreur displayTestProgress\n' + xhr.status + '\n' + thrownError);
+		}
+	});
 }
