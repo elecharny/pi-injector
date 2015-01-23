@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.directory.api.ldap.model.message.SearchScope;
 
 import scripts.AbstractScript;
-import scripts.LDAPAttribute;
-import scripts.LDAPScript;
+import scripts.ldap.LDAPAttribute;
+import scripts.ldap.LDAPScript;
 
 
 public class LDAPScriptBuilder {

@@ -1,4 +1,4 @@
-package scripts;
+package scripts.ldap;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -13,6 +13,8 @@ import org.apache.directory.api.ldap.model.message.SearchScope;
 import org.apache.directory.api.ldap.model.name.Dn;
 import org.apache.directory.ldap.client.api.LdapConnection;
 import org.apache.directory.ldap.client.api.LdapNetworkConnection;
+
+import scripts.AbstractScript;
 
 public class LDAPScript extends AbstractScript {
 

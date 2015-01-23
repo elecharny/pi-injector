@@ -18,7 +18,7 @@ import jppf.GridClient;
 import org.apache.commons.lang.StringEscapeUtils;
 
 import scripts.AbstractScript;
-import scripts.LDAPScript;
+import scripts.ldap.LDAPScript;
 import servlet.protocol.LDAPScriptBuilder;
 
 
