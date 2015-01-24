@@ -322,7 +322,7 @@ function displayTestProgress() {
 					+ '<td>'
 					+ '<div class="progress">'
 					+ '<div class="progress-bar" role="progressbar" aria-valuenow="' + (Math.round(json['tests'][name] * 100) / 100) + '" aria-valuemin="0" aria-valuemax="100" style="width:' + (Math.round(json['tests'][name] * 100) / 100) + '%">'
-					+ json['tests'][name] + '%'
+					+ (Math.round(json['tests'][name] * 100) / 100) + '%'
 					+ '</div>'
 					+ '</div>'
 					+ '</tr>';
