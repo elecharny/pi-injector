@@ -38,38 +38,40 @@ public class InjectionTask extends AbstractTask<Void> {
 	public void run() {
 		
 		System.out.println("Requests injection started...");
-		int scriptCounter = 0;
 		GenericResult result = null;
 		
 		script.beforeRun();
-		int j = 0;
-		while (j<nbIteration) {
-			j++;
-			long startScriptTimeNano = 0L;
+		
+		// Nombre d'itérations du scénario
+		for (int scriptCounter = 1; scriptCounter <= nbIteration; scriptCounter++) {
 			
-			// si début du scénario
-			if (!script.isStarted()) {
-				scriptCounter++;
-				result = new GenericResult(script.getUUID());
-				result.setStartTime(System.currentTimeMillis());
-				startScriptTimeNano = System.nanoTime();
+			result = new GenericResult(script.getUUID());
+			result.setStartTime(System.currentTimeMillis());
+			
+			long startScriptTimeNano = System.nanoTime();
+			
+			// Nombre de requêtes dans le scénario
+			for (int requestCounter = 0; 
+					requestCounter < script.getRequestCount(); 
+					requestCounter++) {
+				
+				long startRequestTimeNano = System.nanoTime();
+				script.run();
+				result.addRequestExecutionTime(System.nanoTime() - startRequestTimeNano);
 			}
 			
-			long startRequestTimeNano = System.nanoTime();
-			script.run();
-			result.addRequestExecutionTime(System.nanoTime() - startRequestTimeNano);
+			result.setTotalScriptExecutionTime(
+					System.nanoTime() - startScriptTimeNano);
 			
-			// si fin du scénario
-			if (!script.isStarted()) {
-				result.setTotalScriptExecutionTime(
-						System.nanoTime() - startScriptTimeNano);
-				resultsList.add(result);
-			}
+			resultsList.add(result);
+			
+			// On s'assure que le prochain appel à script.run()
+			// recommence bien le scénario tout entier
+			script.restartScriptExecution();
 			
 			// envoi régulier des résultats grâce au système de notification
 			if (scriptCounter % notificationInterval == 0) {
 				System.out.println("scriptCounter : " + scriptCounter);
-				//fireNotification("Coucou", true);
 				pushResults();
 			}
 		}
