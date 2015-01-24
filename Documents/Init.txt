@@ -1,4 +1,6 @@
 	# JPPF-Driver
+Copier GenericResults.jar dans lib.
+
 Dans jppf-driver.properties,
 	remplacer jppf.load.balancing.algorithm = proportional
 		par jppf.load.balancing.algorithm = manual

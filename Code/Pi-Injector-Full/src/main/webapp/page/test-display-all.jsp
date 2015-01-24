@@ -30,13 +30,15 @@
 			if(directory.exists() && directory.isDirectory()) {
 				File[] files = directory.listFiles();
 				if(files.length > 0) {
-					for(int i = 0; i < files.length; i++) { %>
+					for(int i = 0; i < files.length; i++) {
+						if(files[i].getName().endsWith(".csv")) { %>
 			<tr data-file="<%= files[i].getName() %>">
 				<td><a class="form_display" data-action="delete" href=""><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
 				<td class="form_display_average"></td>
 				<td><a class="form_display" data-action="display" href=""><%= files[i].getName() %></a></td>
 			</tr>
-					<% }
+						<% }
+					}
 				}
 				else { %>
 			<tr>
