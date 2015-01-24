@@ -333,7 +333,7 @@ public class GridClient {
 			listNameTask.add(entry.getKey());
 			
 
-			int nbRequestSec = 0;
+			int nbRequestSec = 1;
 			long nbSec = 0;
 			
 			// premierPassage va nous servir a savoir la différence entre le premier noeud lancer et les autres
@@ -343,19 +343,18 @@ public class GridClient {
 			
 			for(GenericResult result : entry.getValue()){
 				
-				/*if(premierPassage){
+				if(premierPassage){
 					
-					if(minCurrentTime < result.getStartTime()){*/
+					if(minCurrentTime < result.getStartTime()){
 						nbSec = result.getStartTime() - minCurrentTime;
-						/*System.out.println("NB DE SEC " + nbSec);
 					}
-				}*/
+				}
 					
 				for(Long duration : result.getRequestsExecutionTimes()){
 					
-					/*if(premierPassage){
+					if(premierPassage){
 						premierPassage = false;
-					}*/
+					}
 					if((nbSec + duration)%1000000000L  <= nbSec%1000000000L){
 						nbRequestSec++;
 						nbSec+=duration;
