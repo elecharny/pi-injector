@@ -223,8 +223,8 @@ public class GridClient {
 			context.setAttribute("TestProgress", mapPourcentage);
 		}
 		
-		if(nbIteration > nodesCount)
-			nbIteration = nodesCount;
+		if(nbInjector > nodesCount)
+			nbInjector = nodesCount;
 		
 		for (int i = 0; i < nbInjector; i++) {
 			InjectionTask jppfTask = new InjectionTask(scripts,nbIteration,notificationInterval);
