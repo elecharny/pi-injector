@@ -321,7 +321,7 @@ function displayTestProgress() {
 					+ '<td>' + name + '</td>'
 					+ '<td>'
 					+ '<div class="progress">'
-					+ '<div class="progress-bar" role="progressbar" aria-valuenow="' + json['tests'][name] + '" aria-valuemin="0" aria-valuemax="100" style="width:' + json['tests'][name] + '%">'
+					+ '<div class="progress-bar" role="progressbar" aria-valuenow="' + (Math.round(json['tests'][name] * 100) / 100) + '" aria-valuemin="0" aria-valuemax="100" style="width:' + (Math.round(json['tests'][name] * 100) / 100) + '%">'
 					+ json['tests'][name] + '%'
 					+ '</div>'
 					+ '</div>'

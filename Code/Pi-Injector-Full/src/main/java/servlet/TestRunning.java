@@ -33,9 +33,7 @@ public class TestRunning extends HttpServlet {
 				sb.append("\"" + test.getKey() + "\":\"" + test.getValue() * 100.0 + "\",");
 		
 		//TODO à supprimmer, pour les tests
-		sb.append("\"2015-01-24-16-49-25_My-test\":\"15.76\",");
-		//for(int i = 0; i < 10; i++)
-			//sb.append("\"Test-" + i + "\":\"" + (99-i) + ".5\",");
+		sb.append("\"2015-01-24-16-49-25_My-new-test\":\"15.76\",");
 		
 		out.print(sb.toString().substring(0, sb.length() - 1));
 		out.print("}}");
