@@ -28,7 +28,6 @@ import org.jppf.management.forwarding.JPPFNodeForwardingNotification;
 
 import dataExtraction.DataByInjector;
 import scripts.AbstractScript;
-import scripts.ldap.LDAPScript;
 
 
 public class GridClient {
@@ -223,9 +222,9 @@ public class GridClient {
 			mapPourcentage.put(name, new Double(0));
 			context.setAttribute("TestProgress", mapPourcentage);
 		}
-
-		if(nbIteration > nodesCount)
-			nbIteration = nodesCount;
+		
+		if(nbInjector > nodesCount)
+			nbInjector = nodesCount;
 		
 		for (int i = 0; i < nbInjector; i++) {
 			InjectionTask jppfTask = new InjectionTask(script, nbIteration, notificationInterval);
