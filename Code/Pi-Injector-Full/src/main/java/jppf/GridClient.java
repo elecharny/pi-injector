@@ -28,7 +28,6 @@ import org.jppf.management.forwarding.JPPFNodeForwardingNotification;
 
 import dataExtraction.DataByInjector;
 import scripts.AbstractScript;
-import scripts.ldap.LDAPScript;
 
 
 public class GridClient {
@@ -201,10 +200,10 @@ public class GridClient {
 	
 	
 	
-	
+
 	@SuppressWarnings("unchecked")
-	public void launchScriptList(AbstractScript scripts,String name,
-			int nbInjector,int nbIteration,ServletContext context) {
+	public void launchScript(AbstractScript script, String name,
+			int nbInjector, int nbIteration, ServletContext context) {
 		
 		JPPFJob jppfJob = new JPPFJob();
 		jppfJob.setName(name);
@@ -212,12 +211,13 @@ public class GridClient {
 		this.name = name;
 		
 		
-		if(context.getAttribute("TestProgress") !=null){
+		if(context.getAttribute("TestProgress") != null) {
 			this.mapPourcentage = (HashMap<String, Double>) context.getAttribute("TestProgress");
-			synchronized(mapPourcentage){
+			synchronized(mapPourcentage) {
 				mapPourcentage.put(name, new Double(0));
 			}
-		}else{
+		}
+		else {
 			mapPourcentage =new HashMap<String, Double>();
 			mapPourcentage.put(name, new Double(0));
 			context.setAttribute("TestProgress", mapPourcentage);
@@ -227,7 +227,7 @@ public class GridClient {
 			nbInjector = nodesCount;
 		
 		for (int i = 0; i < nbInjector; i++) {
-			InjectionTask jppfTask = new InjectionTask(scripts,nbIteration,notificationInterval);
+			InjectionTask jppfTask = new InjectionTask(script, nbIteration, notificationInterval);
 			jppfTask.setId(jppfJob.getName() + " - Task " + i);
 			try {
 				jppfJob.add(jppfTask, (Object[])null);
@@ -411,21 +411,21 @@ public class GridClient {
 		jppfClient.close();
 	}
 	
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		
 		System.out.println("Starting...");
 		
 		LDAPScript ldapScript = new LDAPScript("192.168.1.28", 10389);
 		ldapScript.addBindRequest("uid=admin,ou=system", "secret");
 		
-		/*GridClient client = new GridClient();
+		GridClient client = new GridClient();
 		//client.launchBroadcastScript(ldapScript);
 		
 		List<AbstractScript> scripts = new ArrayList<>();
 		scripts.add(ldapScript);
 		client.launchScriptList(scripts);
 		
-		System.out.println("Finishing...");*/
-	}
+		System.out.println("Finishing...");
+	}*/
 
 }

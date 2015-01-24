@@ -77,7 +77,7 @@ public class TestNew extends HttpServlet {
 		
 		if(protocol != null && protocol.equals("LDAP")) {
 			AbstractScript script = LDAPScriptBuilder.getScript(request);
-			GridClient.getInstance().launchScriptList(script, name, nbInjectors, iterations, request.getServletContext());
+			GridClient.getInstance().launchScript(script, name, nbInjectors, iterations, request.getServletContext());
 		}
 		// ----------------------------------------- ADD NEW PROTOCOL USAGE HERE
 		
