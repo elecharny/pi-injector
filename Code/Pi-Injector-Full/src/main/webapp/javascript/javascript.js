@@ -272,7 +272,7 @@ function formDisplay(a) {
 						+ 'Average requests / second : ' + (Math.round(data['form_display_average'] * 100) / 100)
 						+ '</label>'
 						+ '<div class="col-sm-2">'
-						+ '<button class="btn btn-primary" type="submit">Filter</button>'
+						+ '<button class="btn btn-primary" type="submit">Filter</button> seconds'
 						+ '</div>'
 						+ '<div class="col-sm-2">'
 						+ '<input class="form-control" id="form_display_seconds-1" name="form_display_seconds-1" type="number" value="' + form_display_seconds_1 + '">'
