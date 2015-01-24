@@ -140,6 +140,7 @@ public class GridClient {
 					//on met à jour le pourcentage
 					iterationEffectuees+=notificationInterval;
 					if(mapPourcentage != null){
+						System.out.println();
 						mapPourcentage.put(name,iterationEffectuees/new Double(nbIteration));
 					}
 					
@@ -328,19 +329,19 @@ public class GridClient {
 			
 			for(GenericResult result : entry.getValue()){
 				
-				if(premierPassage){
+				/*if(premierPassage){
 					
-					if(minCurrentTime < result.getStartTime()){
+					if(minCurrentTime < result.getStartTime()){*/
 						nbSec = result.getStartTime() - minCurrentTime;
-						System.out.println("NB DE SEC " + nbSec);
+						/*System.out.println("NB DE SEC " + nbSec);
 					}
-				}
+				}*/
 					
 				for(Long duration : result.getRequestsExecutionTimes()){
 					
-					if(premierPassage){
+					/*if(premierPassage){
 						premierPassage = false;
-					}
+					}*/
 					if((nbSec + duration)%1000000000L  <= nbSec%1000000000L){
 						nbRequestSec++;
 						nbSec+=duration;
