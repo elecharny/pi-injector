@@ -23,12 +23,19 @@ $(function() {
 		
 		$('#form_test').on('submit', function(e) {
 			e.preventDefault();
+			
+			// si validation par la touche "Enter"
+			if($(e.originalEvent.explicitOriginalTarget).attr('id') != 'form_test_submit')
+				return false;
+			
 			if($('#form_test').attr('data-nb-injectors') == 0 || $(':submit').is(':disabled'))
 				alert('There are no more injector available, the test can\'t be runned.');
 			else if($('#form_test_nb-plan').val() <= 0)
 				alert('You can\'t run a test without any request on the test plan.');
-			else
+			else {
+				$('#form_test').unbind('submit');
 				$('#form_test').submit();
+			}
 		});
 	}
 	
@@ -109,7 +116,7 @@ function removeToPlanBind() {
 
 function addToPlan(action) {
 	index_plan++;
-	var tr = '<tr><td><button type="button" class="btn btn-default btn-sm form_test_remove-from-plan"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button></td><td>';
+	var tr = '<tr><td><button type="button" class="btn btn-default btn-xs form_test_remove-from-plan"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button></td><td>';
 	
 	switch(action) {
 		case 'add':
@@ -159,7 +166,7 @@ function addToPlan(action) {
 			var filter = $('#form_test_search_filter').val();
 			$('#form_test_search_filter').val('');
 			var scope = $('#form_test_search_scope').val();
-			tr += 'Search : ' + base + ' | ' + filter + ' |' + scope
+			tr += 'Search : ' + base + ' | ' + filter + ' | ' + scope
 				+ '<input type="hidden" id="form_test_plan_action-' + index_plan + '" name="form_test_plan_action-' + index_plan + '" value="' + action + '">'
 				+ '<input type="hidden" id="form_test_plan_base-' + index_plan + '" name="form_test_plan_base-' + index_plan + '" value="' + base + '">'
 				+ '<input type="hidden" id="form_test_plan_filter-' + index_plan + '" name="form_test_plan_filter-' + index_plan + '" value="' + filter + '">'

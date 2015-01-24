@@ -51,7 +51,7 @@
 						<div class="form-group" <%= i != 1 ? "style=\"display : none\"" : "" %>>
 							<label class="control-label col-sm-4" for="form_test_add_attribute-<%= i %>">
 								<% if(i != 1) { %>
-								<button type="button" class="btn btn-default btn-sm form_test_remove_add-attribute-value" data-index="<%= i %>">
+								<button type="button" class="btn btn-default btn-xs form_test_remove_add-attribute-value" data-index="<%= i %>">
 									<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
 								</button>
 								<% } %>
@@ -67,7 +67,7 @@
 					 	<% } %>
 					 	<div class="form-group">
 					 		<div class="col-sm-offset-4 col-sm-8">
-					 			<button type="button" class="btn btn-default btn-sm form_test_add_add-attribute-value">
+					 			<button type="button" class="btn btn-default btn-xs form_test_add_add-attribute-value">
 					 				<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 					 			</button>
 					 		</div>
@@ -141,7 +141,7 @@
 						<div class="form-group" <%= i != 1 ? "style=\"display : none\"" : "" %>>
 							<label class="control-label col-sm-4" for="form_test_search_attribute-<%= i %>">
 								<% if(i != 1) { %>
-								<button type="button" class="btn btn-default btn-sm form_test_remove_search-attribute-value" data-index="<%= i %>">
+								<button type="button" class="btn btn-default btn-xs form_test_remove_search-attribute-value" data-index="<%= i %>">
 									<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
 								</button>
 								<% } %>
@@ -157,7 +157,7 @@
 					 	<% } %>
 					 	<div class="form-group">
 					 		<div class="col-sm-offset-4 col-sm-8">
-					 			<button type="button" class="btn btn-default btn-sm form_test_add_search-attribute-value">
+					 			<button type="button" class="btn btn-default btn-xs form_test_add_search-attribute-value">
 					 				<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 					 			</button>
 					 		</div>
