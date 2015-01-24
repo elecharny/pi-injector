@@ -218,6 +218,8 @@ public class GridClient {
 	public void launchScript(AbstractScript script, String name,
 			int nbInjector, int nbIteration, ServletContext context) {
 		
+		iterationEffectuees = 0;
+		
 		JPPFJob jppfJob = new JPPFJob();
 		jppfJob.setName(name);
 		this.name = name;

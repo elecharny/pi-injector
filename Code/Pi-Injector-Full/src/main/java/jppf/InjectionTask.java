@@ -90,7 +90,9 @@ public class InjectionTask extends AbstractTask<Void> {
 	
 	private void close(String message) {
 		System.out.println(message);
-		pushResults();
+		
+		if (resultsList != null && resultsList.size() > 0)
+			pushResults();
 		
 		script.afterRun();
 	}
