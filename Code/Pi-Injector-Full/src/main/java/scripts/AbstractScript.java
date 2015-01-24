@@ -27,8 +27,12 @@ public abstract class AbstractScript implements Serializable {
 		return scriptUUID;
 	}
 	
-	public boolean isStarted() {
-		return methodCounter > 0;
+	public int getRequestCount() {
+		return scriptMethods.size();
+	}
+	
+	public void restartScriptExecution() {
+		methodCounter = 0;
 	}
 	
 	
@@ -76,7 +80,7 @@ public abstract class AbstractScript implements Serializable {
 						String methodName, 
 						Class<?>[] paramTypes, 
 						List<Object> params) {
-		if (!isStarted()) {
+		if (methodCounter == 0) {
 			if (methodName != null && paramTypes != null && params != null) {
 				scriptMethods.add(
 						new MethodWithParams(

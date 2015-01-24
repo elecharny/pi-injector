@@ -62,8 +62,9 @@ public class GridClient {
 	
 	private HashMap<String, List<GenericResult>>	mapGenericResult = null;
 	private static int								notificationInterval = 100;
-	private int										nbIteration = 0;
+	private int										nbIterationTotal = 0;
 	private int										iterationEffectuees = 0;
+	private Object									lockIterationEffectuees = new Object();
 	private String									name = null;
 	HashMap<String, Double>							mapPourcentage = null;
 	
@@ -122,10 +123,8 @@ public class GridClient {
 									+ wrapping.getNodeUuid()
 									+ ", mBeanName : " + wrapping.getMBeanName());
 					
-					System.out.println("Before notif'");
 					TaskExecutionNotification notif = 
 							(TaskExecutionNotification) wrapping.getNotification();
-					System.out.println("After notif'");
 					
 					synchronized(mapGenericResult){
 						if(mapGenericResult.containsKey(wrapping.getNodeUuid())){
@@ -137,15 +136,29 @@ public class GridClient {
 					}
 					
 					//on met à jour le pourcentage
-					iterationEffectuees+=notificationInterval;
-					if(mapPourcentage != null){
-						System.out.println();
-						mapPourcentage.put(name,iterationEffectuees/new Double(nbIteration));
+					synchronized (lockIterationEffectuees) {
+						iterationEffectuees += ((List<GenericResult>)notif.getUserData()).size();
+						
+						if(mapPourcentage != null) {
+							System.out.println(name);
+							System.out.println("iterationEffectuees : " + iterationEffectuees);
+							System.out.println("nbIterationTotal : " + nbIterationTotal);
+							System.out.println((iterationEffectuees / new Double(nbIterationTotal)) * 100 + " %");
+							
+							mapPourcentage.put(name, 
+									iterationEffectuees / new Double(nbIterationTotal));
+						}
+						
+						
+						// Une fois que le job est terminé, on va traiter et agréger les données
+						if (iterationEffectuees >= nbIterationTotal) {
+							aggregationData(shortAndFindMinCurrentTime());
+							
+							if (mapPourcentage != null) {
+								mapPourcentage.remove(name);
+							}
+						}
 					}
-					
-					
-					System.out.println(
-							"Notif content : " + ((List<GenericResult>)notif.getUserData()).get(0).getTotalScriptExecutionTime());
 				}
 			};
 			
@@ -207,8 +220,13 @@ public class GridClient {
 		
 		JPPFJob jppfJob = new JPPFJob();
 		jppfJob.setName(name);
-		this.nbIteration = nbIteration;
 		this.name = name;
+		
+		
+		if(nbInjector > nodesCount)
+			nbInjector = nodesCount;
+		
+		this.nbIterationTotal = nbIteration * nbInjector;
 		
 		
 		if(context.getAttribute("TestProgress") != null) {
@@ -221,10 +239,7 @@ public class GridClient {
 			mapPourcentage =new HashMap<String, Double>();
 			mapPourcentage.put(name, new Double(0));
 			context.setAttribute("TestProgress", mapPourcentage);
-		}
-		
-		if(nbInjector > nodesCount)
-			nbInjector = nodesCount;
+		}		
 		
 		for (int i = 0; i < nbInjector; i++) {
 			InjectionTask jppfTask = new InjectionTask(script, nbIteration, notificationInterval);
@@ -238,13 +253,12 @@ public class GridClient {
 		}
 		
 		try {
-			System.out.println("Blocking job ready for execution...");
+			System.out.println("Non-Blocking job ready for execution...");
 			
-			jppfJob.setBlocking(true);
+			jppfJob.setBlocking(false);
 			jppfClient.submitJob(jppfJob);
 			
-			// Une fois que le job est terminé, on va traiter et agréger les données
-			aggregationData(shortAndFindMinCurrentTime());
+			
 			
 		} catch (Exception e) {
 			e.printStackTrace();
