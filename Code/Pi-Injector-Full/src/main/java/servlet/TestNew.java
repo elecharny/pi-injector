@@ -44,12 +44,12 @@ public class TestNew extends HttpServlet {
 		response.setContentType("html");
 		response.setCharacterEncoding("utf-8");
 		
-		String name = StringEscapeUtils.escapeHtml(request.getParameter("form_test_name"));
+		String name = StringEscapeUtils.escapeHtml(request.getParameter("form_test_name")).trim();
 		if(name == null || name.equals("")) {
 			response.setStatus(599);
 			//return;
 		}
-		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
 		name = df.format(new Date()) + "_" + name;
 		
 		int nbInjectors = request.getParameter("form_test_nb-injectors") != null && !request.getParameter("form_test_nb-injectors").equals("") ? Integer.valueOf(request.getParameter("form_test_nb-injectors")) : -1;
@@ -58,10 +58,10 @@ public class TestNew extends HttpServlet {
 			//return;
 		}
 		
-		/*if(GridClient.getInstance().refreshNodesCount() <= 0) {
+		if(GridClient.getInstance().refreshNodesCount() <= 0) {
 			response.setStatus(597);
 			//return;
-		}*/
+		}
 		
 		int iterations = request.getParameter("form_test_iterations") != null && !request.getParameter("form_test_iterations").equals("") ? Integer.valueOf(request.getParameter("form_test_iterations")) : -1;
 		if(iterations <= 0) {
@@ -81,6 +81,7 @@ public class TestNew extends HttpServlet {
 		}
 		// ----------------------------------------- ADD NEW PROTOCOL USAGE HERE
 		
-		request.getRequestDispatcher("page/test-running.jsp").include(request, response);
+		request.getRequestDispatcher("/index.jsp?page=test-running").forward(request, response);
+		//response.sendRedirect("/index.jsp?page=test-running");
 	}
 }

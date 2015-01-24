@@ -76,9 +76,6 @@
 		</dependency>
 	</dependencies>
 
-
-
-
 	<build>
 		<finalName>Pi-Injector-Full</finalName>
 
