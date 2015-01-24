@@ -265,7 +265,8 @@ function formDisplay(a) {
 					var ctx = $("#canvas_test-display-all").get(0).getContext("2d");
 					var myLineChart = new Chart(ctx).Line(data, { scaleShowGridLines: true, pointDot: false, animation: false, scaleShowLabels: true });
 					
-					var html = '<form class="form-horizontal" role="form" id="form_display_filter" method="post" action="test-new-form">'
+					var html = '<div>Test duration : ' + data['form_display_period'] + '</div>'
+						+ '<form class="form-horizontal" role="form" id="form_display_filter" method="post" action="test-new-form">'
 						+ '<div class="form-group">'
 						+ '<label class="control-label col-sm-6" for="form_test_name">'
 						+ 'Average requests / second : ' + (Math.round(data['form_display_average'] * 100) / 100)

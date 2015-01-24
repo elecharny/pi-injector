@@ -29,12 +29,12 @@ public class TestNew extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Enumeration<String> parameterNames = request.getParameterNames();
-		while (parameterNames.hasMoreElements()) {
+		while(parameterNames.hasMoreElements()) {
 			String paramName = parameterNames.nextElement();
 			System.out.print(paramName + " : ");
 
 			String[] paramValues = request.getParameterValues(paramName);
-			for (int i = 0; i < paramValues.length; i++) {
+			for(int i = 0; i < paramValues.length; i++) {
 				String paramValue = paramValues[i];
 				System.out.println(paramValue + "\t");
 			}
@@ -82,6 +82,5 @@ public class TestNew extends HttpServlet {
 		// ----------------------------------------- ADD NEW PROTOCOL USAGE HERE
 		
 		request.getRequestDispatcher("/index.jsp?page=test-running").forward(request, response);
-		//response.sendRedirect("/index.jsp?page=test-running");
 	}
 }

@@ -70,7 +70,11 @@ public class TestDisplay extends HttpServlet {
 					form_display_seconds_1 = form_display_seconds_2;
 					form_display_seconds_2 = tmp;
 				}
-				
+				int period = form_display_seconds_2 - form_display_seconds_1;
+				int minutes = period / 60;
+				int seconds = period % 60;
+				String form_display_period = minutes + "min " + seconds + "sec";
+						
 				for(int i = 1, max = lines.size(); i < max; i++) {
 					String[] line = lines.get(i).split(";");
 					if(i % 60 == 0)
@@ -125,7 +129,8 @@ public class TestDisplay extends HttpServlet {
 				out.print("],");
 				out.print("\"form_display_average\":\"" + form_display_average + "\",");
 				out.print("\"form_display_seconds-1\":\"" + form_display_average + "\",");
-				out.print("\"form_display_seconds-2\":\"" + form_display_average + "\"");
+				out.print("\"form_display_seconds-2\":\"" + form_display_average + "\",");
+				out.print("\"form_display_period\":\"" + form_display_period + "\"");
 				out.print("}");
 				out.close();
 			}
