@@ -387,7 +387,7 @@ public class GridClient {
 		PrintWriter writer;
 		
 		try{
-			writer = new PrintWriter(".." + File.separator + "tests-results" + File.separator + "test-" + nodesCount + ".csv", "UTF-8");
+			writer = new PrintWriter(".." + File.separator + "tests-results" + File.separator + name + ".csv", "UTF-8");
 			int agreg;
 			for(Entry<Integer, List<DataByInjector>> entry : agregation.entrySet()) {
 				System.out.println(entry.getKey());
