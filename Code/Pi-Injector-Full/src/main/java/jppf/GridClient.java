@@ -192,29 +192,27 @@ public class GridClient {
 	
 	
 	
-	public void launchScriptList(AbstractScript scripts,String name,
-			int nbInjector,int nbIteration,ServletContext context) {
+	public void launchScript(AbstractScript script, String name,
+			int nbInjector, int nbIteration, ServletContext context) {
 		
 		JPPFJob jppfJob = new JPPFJob();
 		jppfJob.setName(name);
 		
-		// TODO: Modifier ici pour utiliser TOUS les scripts fournis
-		// et faire des vérifs pour savoir s'il n'y a pas plus de scripts fournis
-		// que d'injecteurs disponibles
-		
-		if(context.getAttribute("TestProgress") !=null){
+		if(context.getAttribute("TestProgress") != null){
 			@SuppressWarnings("unchecked")
 			HashMap<String, Double> map = (HashMap<String, Double>) context.getAttribute("TestProgress");
-			synchronized(map){
+			synchronized(map) {
 				map.put(name, new Double(0));
 			}
-		}else{
-			HashMap<String, Double> map =new HashMap<String, Double>();
+		}
+		else {
+			HashMap<String, Double> map = new HashMap<String, Double>();
 			map.put(name, new Double(0));
 			context.setAttribute("TestProgress", map);
 		}
+		
 		for (int i = 0; i < nbInjector; i++) {
-			InjectionTask jppfTask = new InjectionTask(scripts,nbIteration,notificationInterval);
+			InjectionTask jppfTask = new InjectionTask(script, nbIteration, notificationInterval);
 			jppfTask.setId(jppfJob.getName() + " - Task " + i);
 			try {
 				jppfJob.add(jppfTask, (Object[])null);
@@ -398,21 +396,21 @@ public class GridClient {
 		jppfClient.close();
 	}
 	
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		
 		System.out.println("Starting...");
 		
 		LDAPScript ldapScript = new LDAPScript("192.168.1.28", 10389);
 		ldapScript.addBindRequest("uid=admin,ou=system", "secret");
 		
-		/*GridClient client = new GridClient();
+		GridClient client = new GridClient();
 		//client.launchBroadcastScript(ldapScript);
 		
 		List<AbstractScript> scripts = new ArrayList<>();
 		scripts.add(ldapScript);
 		client.launchScriptList(scripts);
 		
-		System.out.println("Finishing...");*/
-	}
+		System.out.println("Finishing...");
+	}*/
 
 }
