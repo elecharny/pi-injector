@@ -34,11 +34,8 @@ public class TestNew extends HttpServlet {
 			System.out.print(paramName + " : ");
 
 			String[] paramValues = request.getParameterValues(paramName);
-			for(int i = 0; i < paramValues.length; i++) {
-				String paramValue = paramValues[i];
-				System.out.println(paramValue + "\t");
-			}
-
+			for(int i = 0; i < paramValues.length; i++)
+				System.out.println(paramValues[i] + "\t");
 		}
 		
 		response.setContentType("html");
@@ -47,7 +44,7 @@ public class TestNew extends HttpServlet {
 		String name = StringEscapeUtils.escapeHtml(request.getParameter("form_test_name")).trim();
 		if(name == null || name.equals("")) {
 			response.setStatus(599);
-			//return;
+			return;
 		}
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
 		name = df.format(new Date()) + "_" + name;
@@ -55,24 +52,24 @@ public class TestNew extends HttpServlet {
 		int nbInjectors = request.getParameter("form_test_nb-injectors") != null && !request.getParameter("form_test_nb-injectors").equals("") ? Integer.valueOf(request.getParameter("form_test_nb-injectors")) : -1;
 		if(nbInjectors <= 0) {
 			response.setStatus(598);
-			//return;
+			return;
 		}
 		
 		if(GridClient.getInstance().refreshNodesCount() <= 0) {
 			response.setStatus(597);
-			//return;
+			return;
 		}
 		
 		int iterations = request.getParameter("form_test_iterations") != null && !request.getParameter("form_test_iterations").equals("") ? Integer.valueOf(request.getParameter("form_test_iterations")) : -1;
 		if(iterations <= 0) {
 			response.setStatus(596);
-			//return;
+			return;
 		}
 		
 		String protocol = request.getParameter("form_test_protocol");
 		if(protocol == null || protocol.equals("")) {
 			response.setStatus(594);
-			//return;
+			return;
 		}
 		
 		if(protocol != null && protocol.equals("LDAP")) {

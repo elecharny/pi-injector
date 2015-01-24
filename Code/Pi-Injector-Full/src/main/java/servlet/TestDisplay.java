@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @SuppressWarnings("serial")
 public class TestDisplay extends HttpServlet {
-	// Colors used for the chart
+	// Couleurs utilisées pour les graphiques
 	String[] colors = {
 			"220,20,60", //crimson
 			"50,205,50", //lime green
@@ -71,12 +71,11 @@ public class TestDisplay extends HttpServlet {
 					form_display_seconds_2 = tmp;
 				}
 				int period = form_display_seconds_2 - form_display_seconds_1;
-				int minutes = period / 60;
-				int seconds = period % 60;
-				String form_display_period = minutes + "min " + seconds + "sec";
+				String form_display_period = (period / 60) + "min " + (period % 60) + "sec";
 						
 				for(int i = 1, max = lines.size(); i < max; i++) {
 					String[] line = lines.get(i).split(";");
+					// On affiche un label toutes les minutes
 					if(i % 60 == 0)
 						data[0].append("\"" + (i / 60) + "\",");
 					else
@@ -93,6 +92,8 @@ public class TestDisplay extends HttpServlet {
 				PrintWriter out = response.getWriter();
 				out.print("{\"labels\":[" + data[0].substring(0, data[0].length() - 1) + "],");
 				out.print("\"datasets\":[");
+				// S'il n'y a qu'un seul injecteur,
+				// on n'a pas besoin de la dernière colonne (cumul)
 				if(nbColumns == 3) {
 					String color = colors[0];
 					out.print("{"
@@ -145,6 +146,12 @@ public class TestDisplay extends HttpServlet {
 		}
 	}
 	
+	/**
+	 * Lit un fichier et retourne ses lignes.
+	 * @param file Le fichier à lire
+	 * @return La liste des lignes composants le fichier
+	 * @throws Exception
+	 */
 	public static List<String> readFile(File file) throws Exception {
 		List<String> result = new ArrayList<String>();
 		FileReader fileReader = new FileReader(file);

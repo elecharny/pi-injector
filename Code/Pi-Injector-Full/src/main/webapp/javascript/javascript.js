@@ -10,15 +10,12 @@ $(function() {
 		});
 		
 		addToPlanBind();
-		
 		removeToPlanBind();
 		
 		addAddAttributeValueBind();
-		
 		removeAddAttributeValueBind();
 		
 		addSearchAttributeValueBind();
-		
 		removeSearchAttributeValueBind();
 		
 		$('#form_test').on('submit', function(e) {
@@ -114,6 +111,10 @@ function removeToPlanBind() {
 }
 
 
+/**
+ * Ajoute une requête au plan d'action.
+ * @param action Le type de requête
+ */
 function addToPlan(action) {
 	index_plan++;
 	var tr = '<tr><td><button type="button" class="btn btn-default btn-xs form_test_remove-from-plan"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button></td><td>';
@@ -200,6 +201,9 @@ function addToPlan(action) {
 }
 
 
+/**
+ * Ajoute une ligne (attribut - valeur) au formulaire de requête Add
+ */
 function addAddAttributeValue() {
 	var nb_add = 1 + (+$('#form_test_nb-add').val());
 	for(var i = 1; i <= nb_add; i++) {
@@ -212,6 +216,9 @@ function addAddAttributeValue() {
 }
 
 
+/**
+ * Ajoute une ligne (attribut - valeur) au formulaire de requête Search
+ */
 function addSearchAttributeValue() {
 	var nb_search = 1 + (+$('#form_test_nb-search').val());
 	for(var i = 1; i <= nb_search; i++) {
@@ -225,13 +232,28 @@ function addSearchAttributeValue() {
 
 
 /* ############################################################# TEST-DISPLAY */
-function formDisplay(a) {
-	var file = a.closest('tr').attr('data-file');
+function formDisplay(elem) {
+	var file = elem.closest('tr').attr('data-file');
 	var form_display_seconds_1 = $('#form_display_seconds-1').length > 0 ? $('#form_display_seconds-1').val() : '';
 	var form_display_seconds_2 = $('#form_display_seconds-2').length > 0 ? $('#form_display_seconds-2').val() : '';
 	
-	switch(a.attr('data-action')) {
+	switch(elem.attr('data-action')) {
 		case 'delete' :
+			$.ajax({
+				url: 'test-remove-form',
+				async: true,
+				data: {
+					file: file
+				},
+				dataType: "json",
+				type: "post",
+				error: function(xhr, ajaxOptions, thrownError) {
+					console.error('Erreur formDisplay\n' + xhr.status + '\n' + thrownError);
+				},
+				success: function(data) {
+					location.reload();
+				}
+			});
 			break;
 		
 		case 'display' :
@@ -248,11 +270,11 @@ function formDisplay(a) {
 				error: function(xhr, ajaxOptions, thrownError) {
 					if(xhr.status == 599) {
 						// file not found
-						//$("#form_login_help").html("<strong class=\"text-danger\">Informations de connexion incorrectes.</strong>");
+						console.error('File not found');
 					}
 					else if(xhr.status == 598) {
 						// file empty
-						//$("#form_login_help").html("<strong class=\"text-danger\">Informations de connexion incorrectes.</strong>");
+						console.error('File empty');
 					}
 					else {
 						console.error('Erreur formDisplay\n' + xhr.status + '\n' + thrownError);

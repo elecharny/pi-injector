@@ -1,9 +1,8 @@
 package servlet;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Map;
-import java.util.Map.Entry;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -12,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 @SuppressWarnings("serial")
-public class TestRunning extends HttpServlet {
+public class TestRemove extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
@@ -23,18 +22,19 @@ public class TestRunning extends HttpServlet {
 		response.setContentType("json");
 		response.setCharacterEncoding("utf-8");
 		PrintWriter out = response.getWriter();
-		
-		out.print("{ \"tests\":{");
-		StringBuilder sb = new StringBuilder();
-		@SuppressWarnings("unchecked")
-		Map<String, Double> tests = (Map<String, Double>) request.getServletContext().getAttribute("TestProgress");
-		if(tests != null)
-			for(Entry<String, Double> test : tests.entrySet())
-				sb.append("\"" + test.getKey() + "\":\"" + test.getValue() * 100.0 + "\",");
-		
-		out.print(sb.toString().substring(0, sb.length() - 1));
-		out.print("}}");
-		
+		File file = new File(".." + File.separator + "tests-results" + File.separator + request.getParameter("file"));
+		if(file.exists()) {
+			try {
+				if(!file.delete())
+					out.print("{\"success\":\"false\"}");
+			}
+			catch(Exception e) {
+				e.printStackTrace();
+				response.setStatus(599);
+				return;
+			}
+		}
+		out.print("{\"success\":\"true\"}");
 		out.close();
 	}
 }

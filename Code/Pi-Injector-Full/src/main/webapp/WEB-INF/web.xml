@@ -11,6 +11,10 @@
 		<servlet-class>servlet.TestDisplay</servlet-class>
 	</servlet>
 	<servlet>
+		<servlet-name>TestRemove</servlet-name>
+		<servlet-class>servlet.TestRemove</servlet-class>
+	</servlet>
+	<servlet>
 		<servlet-name>TestRunning</servlet-name>
 		<servlet-class>servlet.TestRunning</servlet-class>
 	</servlet>
@@ -22,6 +26,10 @@
 	<servlet-mapping>
 		<servlet-name>TestDisplay</servlet-name>
 		<url-pattern>/test-display-form</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>TestRemove</servlet-name>
+		<url-pattern>/test-remove-form</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>TestRunning</servlet-name>
