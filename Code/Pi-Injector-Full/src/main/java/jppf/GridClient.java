@@ -28,7 +28,7 @@ import org.jppf.management.forwarding.JPPFNodeForwardingNotification;
 
 import dataExtraction.DataByInjector;
 import scripts.AbstractScript;
-import scripts.LDAPScript;
+import scripts.ldap.LDAPScript;
 
 
 public class GridClient {

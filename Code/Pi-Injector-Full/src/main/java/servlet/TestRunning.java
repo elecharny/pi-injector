@@ -24,15 +24,20 @@ public class TestRunning extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 		PrintWriter out = response.getWriter();
 		
-		out.print("{ \"tests\":[");
+		out.print("{ \"tests\":{");
 		StringBuilder sb = new StringBuilder();
 		@SuppressWarnings("unchecked")
 		Map<String, Double> tests = (Map<String, Double>) request.getServletContext().getAttribute("TestProgress");
-		for(Entry<String, Double> test : tests.entrySet()) {
-			sb.append("\"" + test.getKey() + "\":\"" + test.getValue() + "\",");
-		}
+		if(tests != null)
+			for(Entry<String, Double> test : tests.entrySet())
+				sb.append("\"" + test.getKey() + "\":\"" + test.getValue() * 100.0 + "\",");
+		
+		//TODO à supprimmer, pour les tests
+		for(int i = 0; i < 10; i++)
+			sb.append("\"Test-" + i + "\":\"" + (100-i) + ".5\",");
+		
 		out.print(sb.toString().substring(0, sb.length() - 1));
-		out.print("]}");
+		out.print("}}");
 		
 		out.close();
 	}

@@ -38,7 +38,7 @@
 			</div>
 	 	</div>
 	 	
-	 	<%@ include file="protocol/ldap.jsp" %>
+	 	<%@ include file="test-new-protocol/ldap.jsp" %>
 		
 	 	<div class="form-group">
 	 		<div class="col-sm-offset-4 col-sm-8">

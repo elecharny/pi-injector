@@ -10,6 +10,7 @@
 		<div class="navbar-collapse">
 			<ul class="nav navbar-nav">
 				<li><a href="index.jsp?page=test-display-all" id="a_test-display-all">Display tests results</a></li>
+				<li><a href="index.jsp?page=test-running" id="a_test-running">Running tests</a></li>
 			</ul>
 		</div>
 	</div>

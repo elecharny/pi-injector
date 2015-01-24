@@ -1,4 +1,4 @@
-package scripts;
+package scripts.ldap;
 
 
 public class LDAPAttribute {

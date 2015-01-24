@@ -14,6 +14,10 @@
 		<servlet-name>TestDisplay</servlet-name>
 		<servlet-class>servlet.TestDisplay</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>TestRunning</servlet-name>
+		<servlet-class>servlet.TestRunning</servlet-class>
+	</servlet>
 	
 	<servlet-mapping>
 		<servlet-name>MyServlet</servlet-name>
@@ -26,6 +30,10 @@
 	<servlet-mapping>
 		<servlet-name>TestDisplay</servlet-name>
 		<url-pattern>/test-display-form</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>TestRunning</servlet-name>
+		<url-pattern>/test-running-form</url-pattern>
 	</servlet-mapping>
 
 	<welcome-file-list>
