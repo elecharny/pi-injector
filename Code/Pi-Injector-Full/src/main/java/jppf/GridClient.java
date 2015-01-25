@@ -114,54 +114,74 @@ public class GridClient {
 				@Override
 				public void handleNotification(
 						Notification notification, Object handback) {
-					
+						
 					JPPFNodeForwardingNotification wrapping = 
 							(JPPFNodeForwardingNotification) notification;
-					
-					System.out.println(
-							"Received notification from nodeUuid : " 
-									+ wrapping.getNodeUuid());
-					
 					TaskExecutionNotification notif = 
 							(TaskExecutionNotification) wrapping.getNotification();
 					
-					synchronized(mapGenericResult){
-						if(mapGenericResult.containsKey(wrapping.getNodeUuid())){
-							mapGenericResult.get(wrapping.getNodeUuid()).addAll((List<GenericResult>)notif.getUserData());
-						}
-						else{
-							mapGenericResult.put(wrapping.getNodeUuid(), (List<GenericResult>)notif.getUserData());
-						}
-					}
 					
+					// Si userData != null alors il s'agit d'une notification à nous 
+					// (et pas une notif système)
+					if (notif.getUserData() != null) {
 					
-					// On met à jour le pourcentage
-					synchronized (lockIterationEffectuees) {
-						iterationEffectuees += ((List<GenericResult>)notif.getUserData()).size();
-						
-						System.out.println(name);
-						System.out.println("iterationEffectuees : " + iterationEffectuees);
-						System.out.println("nbIterationTotal : " + nbIterationTotal);
-						System.out.println((iterationEffectuees / new Double(nbIterationTotal)) * 100 + " %");
-						
-						if (mapPourcentage != null) {
-							synchronized (mapPourcentage) {
-								
-								mapPourcentage.put(name, 
-										iterationEffectuees / new Double(nbIterationTotal));
-								
-								// Une fois que le job est terminé, on va traiter et agréger les données
-								if (iterationEffectuees >= nbIterationTotal) {
-									aggregationData(shortAndFindMinCurrentTime());
-									
-									synchronized (mapGenericResult) {
-										mapGenericResult.clear();
+						synchronized (lockIterationEffectuees) {
+							
+							System.out.println(
+									"Received notification from nodeUuid : " 
+											+ wrapping.getNodeUuid());
+							
+							try {
+								synchronized(mapGenericResult) {
+									if(mapGenericResult.containsKey(wrapping.getNodeUuid())) {
+										mapGenericResult.get(wrapping.getNodeUuid()).addAll((List<GenericResult>)notif.getUserData());
 									}
-									
-									if (mapPourcentage != null) {
-										mapPourcentage.remove(name);
+									else {
+										mapGenericResult.put(wrapping.getNodeUuid(), (List<GenericResult>)notif.getUserData());
 									}
 								}
+							}
+							catch (Exception e) {
+								System.out.println(e);
+							}
+							
+							
+							try {
+								iterationEffectuees += ((List<GenericResult>)notif.getUserData()).size();
+								
+								System.out.println("iterationEffectuees : " + iterationEffectuees);
+								System.out.println("nbIterationTotal : " + nbIterationTotal);
+								System.out.println((iterationEffectuees / new Double(nbIterationTotal)) * 100 + " %");
+								
+								if (mapPourcentage != null) {
+									synchronized (mapPourcentage) {
+										
+										// Ajout des données d'exécution reçues
+										mapPourcentage.put(name, 
+												iterationEffectuees / new Double(nbIterationTotal));
+										
+										// Une fois que le job est terminé, on va traiter et agréger les données
+										if (iterationEffectuees >= nbIterationTotal) {
+											
+											// Aggrégation des données et écriture dans un fichier
+											aggregationData(shortAndFindMinCurrentTime());
+											
+											// Suppression des données envoyées par les noeuds
+											// pour ce test
+											if (mapGenericResult != null) {
+												synchronized (mapGenericResult) {
+													mapGenericResult.clear();
+												}
+											}
+											
+											// Suppression du pourcentage d'avancement pour ce test
+											mapPourcentage.remove(name);
+										}
+									}
+								}
+								
+							} catch (Exception e) {
+								System.out.println("Exception 2 : " + e);
 							}
 						}
 					}
