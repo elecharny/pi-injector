@@ -387,7 +387,7 @@ public class GridClient {
 		// maintenant on crée le fichier total
 		PrintWriter writer;
 		
-		try{
+		try {
 			writer = new PrintWriter(".." + File.separator + "tests-results" + File.separator + name + ".csv", "UTF-8");
 			int agreg;
 			for(Entry<Integer, List<DataByInjector>> entry : agregation.entrySet()) {

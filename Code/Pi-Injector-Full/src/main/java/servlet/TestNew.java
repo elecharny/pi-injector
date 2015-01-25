@@ -47,7 +47,7 @@ public class TestNew extends HttpServlet {
 			return;
 		}
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
-		name = df.format(new Date()) + "_" + name;
+		name = df.format(new Date()) + "_" + name.replaceAll("\\W+", "_");;
 		
 		int nbInjectors = request.getParameter("form_test_nb-injectors") != null && !request.getParameter("form_test_nb-injectors").equals("") ? Integer.valueOf(request.getParameter("form_test_nb-injectors")) : -1;
 		if(nbInjectors <= 0) {
