@@ -120,8 +120,7 @@ public class GridClient {
 					
 					System.out.println(
 							"Received notification from nodeUuid : " 
-									+ wrapping.getNodeUuid()
-									+ ", mBeanName : " + wrapping.getMBeanName());
+									+ wrapping.getNodeUuid());
 					
 					TaskExecutionNotification notif = 
 							(TaskExecutionNotification) wrapping.getNotification();
@@ -135,27 +134,34 @@ public class GridClient {
 						}
 					}
 					
-					//on met à jour le pourcentage
+					
+					// On met à jour le pourcentage
 					synchronized (lockIterationEffectuees) {
 						iterationEffectuees += ((List<GenericResult>)notif.getUserData()).size();
 						
-						if(mapPourcentage != null) {
-							System.out.println(name);
-							System.out.println("iterationEffectuees : " + iterationEffectuees);
-							System.out.println("nbIterationTotal : " + nbIterationTotal);
-							System.out.println((iterationEffectuees / new Double(nbIterationTotal)) * 100 + " %");
-							
-							mapPourcentage.put(name, 
-									iterationEffectuees / new Double(nbIterationTotal));
-						}
+						System.out.println(name);
+						System.out.println("iterationEffectuees : " + iterationEffectuees);
+						System.out.println("nbIterationTotal : " + nbIterationTotal);
+						System.out.println((iterationEffectuees / new Double(nbIterationTotal)) * 100 + " %");
 						
-						
-						// Une fois que le job est terminé, on va traiter et agréger les données
-						if (iterationEffectuees >= nbIterationTotal) {
-							aggregationData(shortAndFindMinCurrentTime());
-							
-							if (mapPourcentage != null) {
-								mapPourcentage.remove(name);
+						if (mapPourcentage != null) {
+							synchronized (mapPourcentage) {
+								
+								mapPourcentage.put(name, 
+										iterationEffectuees / new Double(nbIterationTotal));
+								
+								// Une fois que le job est terminé, on va traiter et agréger les données
+								if (iterationEffectuees >= nbIterationTotal) {
+									aggregationData(shortAndFindMinCurrentTime());
+									
+									synchronized (mapGenericResult) {
+										mapGenericResult.clear();
+									}
+									
+									if (mapPourcentage != null) {
+										mapPourcentage.remove(name);
+									}
+								}
 							}
 						}
 					}
@@ -218,7 +224,9 @@ public class GridClient {
 	public void launchScript(AbstractScript script, String name,
 			int nbInjector, int nbIteration, ServletContext context) {
 		
-		iterationEffectuees = 0;
+		synchronized (lockIterationEffectuees) {
+			iterationEffectuees = 0;
+		}
 		
 		JPPFJob jppfJob = new JPPFJob();
 		jppfJob.setName(name);
