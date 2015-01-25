@@ -32,7 +32,8 @@ public class TestRunning extends HttpServlet {
 			for(Entry<String, Double> test : tests.entrySet())
 				sb.append("\"" + test.getKey() + "\":\"" + test.getValue() * 100.0 + "\",");
 		
-		out.print(sb.toString().substring(0, sb.length() - 1));
+		if(sb.length() > 0)
+			out.print(sb.toString().substring(0, sb.length() - 1));
 		out.print("}}");
 		
 		out.close();
