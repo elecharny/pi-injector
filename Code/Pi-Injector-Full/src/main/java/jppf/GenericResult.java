@@ -5,7 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-
+/**
+ * Classe permettant d'encapsuler les résultats fournit pendant l'exécution des tasks.
+ *
+ */
 public class GenericResult implements Serializable, Comparable<GenericResult> {
 	private static final long serialVersionUID = 1L;
 	// Script UUID associated to

@@ -1,5 +1,10 @@
 package dataExtraction;
 
+/**
+ * Classe permettant d'encapsuler le couple taskID (représentant le numéro
+ * du noeud qui à exécuté une requête et le nombre de requête sur 1 secondes) 
+ *
+ */
 public class DataByInjector {
 	private String taskID;
 	private int nbRequest;

@@ -35,7 +35,10 @@ public class GridClient {
 	private static GridClient						instance;
 	private static Object							synchronizer = new Object();
 	
-	
+	/**
+	 * Permet la gestion d'un singleton
+	 * @return
+	 */
 	public static GridClient getInstance() {
 		if (instance == null) {
 			synchronized (synchronizer) {
@@ -74,7 +77,9 @@ public class GridClient {
 		mapGenericResult = new HashMap<String, List<GenericResult>>();
 	}
 
-	
+	/**
+	 * Permet de récupérer le jmx connection
+	 */
 	private void establishGridConnection() {
 		jppfClient = new JPPFClient();
 		
@@ -93,7 +98,10 @@ public class GridClient {
 		driverJmx = jppfClientConn.getConnectionPool().getJmxConnection();
 	}
 	
-	
+	/**
+	 * Permet de créé des listener qui vont permettre de récupérer les données envoyées
+	 * par les noeuds et de mettre à jour l'avancement de l'exécution dans le context servlet.
+	 */
 	private void createJMXNodeListener() {
 		if (driverJmx != null) {
 			// Select all nodes
@@ -181,7 +189,10 @@ public class GridClient {
 		}
 	}
 	
-	
+	/**
+	 * Permet d'abonner le listener mis en paramètre sur l'envoie des données
+	 * @param notifListener
+	 */
 	public void createJMXNodeListener(NotificationListener notifListener) {
 		if (driverJmx != null) {
 			// Select all nodes
@@ -201,7 +212,10 @@ public class GridClient {
 		}
 	}
 	
-	
+	/**
+	 * Permet de rafraichir le nombre de noeuds connecté sur le réseau.
+	 * @return nombre de noeuds présent.
+	 */
 	public int refreshNodesCount() {
 		if (driverJmx != null) {
 			try {
@@ -217,8 +231,9 @@ public class GridClient {
 	
 	
 	/**
-	 * 
-	 * @param script 
+	 * Permet d'envoyer le scénario sur un nombre de noeuds déterminé et d'attendre que tout les noeuds ont
+	 * terminé d'effectuer leurs tasks.
+	 * @param script script représentant
 	 * @param name nom donnée via l'interface, va nous servir pour le nom du fichier créé lors de l'agregation
 	 * @param nbInjector nombre d'injecteur utilisé pour le test
 	 * @param nbIteration nombre d'itération de scénario effectué par les injecteurs
@@ -318,7 +333,7 @@ public class GridClient {
 	public void aggregationData(Long minCurrentTime) {
 		TreeMap<Integer, List<DataByInjector>> agregation = new TreeMap<Integer, List<dataExtraction.DataByInjector>>();
 		
-		//on va stocker la liste de nom des tache
+		//on va stocker la liste de nom des taches
 		List<String> listNameTask = new ArrayList<String>();
 		
 		//maintenant, pour chaque noeuds, on va calculer le nombre de requête par seconde
