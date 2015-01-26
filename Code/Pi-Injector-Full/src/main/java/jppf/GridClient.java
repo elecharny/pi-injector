@@ -31,14 +31,12 @@ import scripts.AbstractScript;
 
 
 public class GridClient {
-	
-	/*********************************************** SINGLETON */
-	
+	/************************************************************** SINGLETON */
 	private static GridClient						instance;
 	private static Object							synchronizer = new Object();
 	
+	
 	public static GridClient getInstance() {
-		
 		if (instance == null) {
 			synchronized (synchronizer) {
 				if (instance == null) {
@@ -49,17 +47,13 @@ public class GridClient {
 
 		return instance;
 	}
-	
-	/*********************************************** SINGLETON */
-	
-	
+	/************************************************************** SINGLETON */
 	
 	
 	private int 									nodesCount = 0;
 	private JPPFClient 								jppfClient = null;
 	private AbstractJPPFClientConnection 			jppfClientConn = null;
 	private JMXDriverConnectionWrapper				driverJmx = null;
-	
 	private HashMap<String, List<GenericResult>>	mapGenericResult = null;
 	private static int								notificationInterval = 100;
 	private int										nbIterationTotal = 0;
@@ -67,6 +61,7 @@ public class GridClient {
 	private Object									lockIterationEffectuees = new Object();
 	private String									name = null;
 	HashMap<String, Double>							mapPourcentage = null;
+	
 	
 	public GridClient() {
 		// Connect to the JPPF Grid
@@ -80,9 +75,7 @@ public class GridClient {
 	}
 
 	
-	
 	private void establishGridConnection() {
-		
 		jppfClient = new JPPFClient();
 		
 		// Waiting for the client connection
@@ -102,9 +95,7 @@ public class GridClient {
 	
 	
 	private void createJMXNodeListener() {
-		
-		if (driverJmx != null) {			
-			
+		if (driverJmx != null) {
 			// Select all nodes
 			NodeSelector selector = new NodeSelector.AllNodesSelector();
 			
@@ -114,23 +105,18 @@ public class GridClient {
 				@Override
 				public void handleNotification(
 						Notification notification, Object handback) {
-						
 					JPPFNodeForwardingNotification wrapping = 
 							(JPPFNodeForwardingNotification) notification;
 					TaskExecutionNotification notif = 
 							(TaskExecutionNotification) wrapping.getNotification();
 					
-					
 					// Si userData != null alors il s'agit d'une notification à nous 
 					// (et pas une notif système)
 					if (notif.getUserData() != null) {
-					
 						synchronized (lockIterationEffectuees) {
-							
 							System.out.println(
 									"Received notification from nodeUuid : " 
 											+ wrapping.getNodeUuid());
-							
 							try {
 								synchronized(mapGenericResult) {
 									if(mapGenericResult.containsKey(wrapping.getNodeUuid())) {
@@ -145,7 +131,6 @@ public class GridClient {
 								System.out.println(e);
 							}
 							
-							
 							try {
 								iterationEffectuees += ((List<GenericResult>)notif.getUserData()).size();
 								
@@ -155,14 +140,12 @@ public class GridClient {
 								
 								if (mapPourcentage != null) {
 									synchronized (mapPourcentage) {
-										
 										// Ajout des données d'exécution reçues
 										mapPourcentage.put(name, 
 												iterationEffectuees / new Double(nbIterationTotal));
 										
 										// Une fois que le job est terminé, on va traiter et agréger les données
 										if (iterationEffectuees >= nbIterationTotal) {
-											
 											// Aggrégation des données et écriture dans un fichier
 											aggregationData(shortAndFindMinCurrentTime());
 											
@@ -179,7 +162,6 @@ public class GridClient {
 										}
 									}
 								}
-								
 							} catch (Exception e) {
 								System.out.println("Exception 2 : " + e);
 							}
@@ -201,9 +183,7 @@ public class GridClient {
 	
 	
 	public void createJMXNodeListener(NotificationListener notifListener) {
-		
-		if (driverJmx != null) {		
-			
+		if (driverJmx != null) {
 			// Select all nodes
 			NodeSelector selector = new NodeSelector.AllNodesSelector();
 			
@@ -223,9 +203,7 @@ public class GridClient {
 	
 	
 	public int refreshNodesCount() {
-		
 		if (driverJmx != null) {
-
 			try {
 				nodesCount = (Integer)driverJmx.invoke(
 						JPPFDriverAdminMBean.MBEAN_NAME, "nbIdleNodes");
@@ -238,7 +216,6 @@ public class GridClient {
 	}
 	
 	
-	
 	/**
 	 * 
 	 * @param script 
@@ -248,9 +225,13 @@ public class GridClient {
 	 * @param context context servlet, permet de mettre à jour la donnée pourcentage (contenu dans une map)
 	 */
 	@SuppressWarnings("unchecked")
-	public void launchScript(AbstractScript script, String name,
-			int nbInjector, int nbIteration, ServletContext context) {
-		
+	public void launchScript(
+			AbstractScript	script,
+			String			name,
+			int				nbInjector,
+			int				nbIteration,
+			ServletContext	context
+	) {
 		synchronized (lockIterationEffectuees) {
 			iterationEffectuees = 0;
 		}
@@ -259,12 +240,10 @@ public class GridClient {
 		jppfJob.setName(name);
 		this.name = name;
 		
-		
 		if(nbInjector > nodesCount)
 			nbInjector = nodesCount;
 		
 		this.nbIterationTotal = nbIteration * nbInjector;
-		
 		
 		if(context.getAttribute("TestProgress") != null) {
 			this.mapPourcentage = (HashMap<String, Double>) context.getAttribute("TestProgress");
@@ -294,14 +273,167 @@ public class GridClient {
 			
 			jppfJob.setBlocking(false);
 			jppfClient.submitJob(jppfJob);
-			
-			
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
+	
+	/**
+	 * 
+	 * @return Retourne La GenericResult contenu dans la liste mapGenericResult qui a le plus petit currenttime.
+	 * Cela va nous servir à choisir un temps de référence pour comparer l'exécution de tout les noeuds
+	 */
+	public long shortAndFindMinCurrentTime() {
+		// On commence par trier toutes les listes pour chaque noeud
+		for(List<GenericResult> list : mapGenericResult.values()){
+			Collections.sort(list);
+		}
+		
+		// une fois les listes triées, on va chercher la plus petite valeur 
+		// pour le current time, ce qui va nous servir de référentiel pour agréger les données
+		// (cette valeur sera donc notre temps 0) 
+		long minCurrentTime = 0;
+		for(List<GenericResult> list : mapGenericResult.values()){
+			if(list.size() != 0){
+				if(minCurrentTime != 0 && minCurrentTime > list.get(0).getStartTime())
+					minCurrentTime = list.get(0).getStartTime();
+				if(minCurrentTime == 0)
+					minCurrentTime = list.get(0).getStartTime();
+			}
+		}
+		
+		return minCurrentTime;
+	}
+	
+	
+	/**Une fois que tout les noeuds on fini leurs exécutions, on va vouloir agréger les données.
+	 * aggregationData permet donc de parcourir une liste de GenericResult et de calculer pour tout
+	 * les noeuds qui on envoyer des notifications, le nombre de requête par injecteur puis d'en
+	 * faire la somme. ce résultat sera enregistré dans un fichier de type .csv. 
+	 * 
+	 * @param minCurrentTime représente le plus petit currenttime dans les resultat (retour de la methode
+	 * shortAndFindMinCurrentTime()).
+	 */
+	public void aggregationData(Long minCurrentTime) {
+		TreeMap<Integer, List<DataByInjector>> agregation = new TreeMap<Integer, List<dataExtraction.DataByInjector>>();
+		
+		//on va stocker la liste de nom des tache
+		List<String> listNameTask = new ArrayList<String>();
+		
+		//maintenant, pour chaque noeuds, on va calculer le nombre de requête par seconde
+		for(Entry<String, List<GenericResult>> entry : mapGenericResult.entrySet()){
+			listNameTask.add(entry.getKey());
+
+			int nbRequestSec = 1;
+			long nbSec = 0;
+			
+			// premierPassage va nous servir a savoir la différence entre le premier noeud lancer et les autres
+			// on pourra donc calculer une différence de temps enter les deux
+			Boolean premierPassage = true;
+			
+			for(GenericResult result : entry.getValue()) {
+				if(premierPassage) {
+					if(minCurrentTime < result.getStartTime()) {
+						nbSec = result.getStartTime() - minCurrentTime;
+					}
+				}
+					
+				for(Long duration : result.getRequestsExecutionTimes()) {
+					if(premierPassage) {
+						premierPassage = false;
+					}
+					if((nbSec + duration)%1000000000L <= nbSec%1000000000L) {
+						nbRequestSec++;
+						nbSec+=duration;
+						System.out.println(nbSec);
+					}
+					else {
+						Integer secSearch = new Integer((int) (nbSec/1000000000L));
+						if(agregation.containsKey(secSearch)) {
+							//on vérifie que l'objet n'existe qu'en un seul exemplaire par seconde pour chaque noeud
+							// si c'est le cas, on ajoute dans l'bjet existant
+							int position = agregation.get(secSearch).indexOf(new DataByInjector(entry.getKey(), 0));
+							if(position != -1) {
+								agregation.get(secSearch).get(position).setNbRequest(agregation.get(secSearch).get(position).getNbRequest() + nbRequestSec);
+							}
+							else {
+								agregation.get(secSearch).add(new DataByInjector(entry.getKey(), nbRequestSec));
+							}
+						}
+						else {
+							ArrayList<DataByInjector> list = new ArrayList<DataByInjector>();
+							list.add(new DataByInjector(entry.getKey(), nbRequestSec));
+							agregation.put(secSearch, list);
+						}
+						nbSec+=duration;
+						nbRequestSec = 1;
+					}
+				}
+			}
+		}
+		
+		// maintenant on crée le fichier total
+		PrintWriter writer;
+		
+		try {
+			writer = new PrintWriter(".." + File.separator + "tests-results" + File.separator + name + ".csv", "UTF-8");
+			int agreg;
+			for(Entry<Integer, List<DataByInjector>> entry : agregation.entrySet()) {
+				System.out.println(entry.getKey());
+				StringBuilder str = new StringBuilder();
+				str.append(entry.getKey()+ ";");
+				agreg = 0;
+				for(String name : listNameTask){
+					Boolean isPresent = false;
+					for(DataByInjector data : entry.getValue())
+					{
+						if(data.getTaskID().equals(name)) {
+							str.append(data.getNbRequest() +";");
+							agreg += data.getNbRequest();
+							isPresent = true;
+						}
+					}
+					if(!isPresent) {
+						str.append("0;");
+					}
+				}
+				str.append(agreg);
+				writer.println(str);
+			}
+			writer.close();
+			
+		}
+		catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	public void shutdown() {
+		jppfClient.close();
+	}
+	
+	/*public static void main(String[] args) {
+		
+		System.out.println("Starting...");
+		
+		LDAPScript ldapScript = new LDAPScript("192.168.1.28", 10389);
+		ldapScript.addBindRequest("uid=admin,ou=system", "secret");
+		
+		GridClient client = new GridClient();
+		//client.launchBroadcastScript(ldapScript);
+		
+		List<AbstractScript> scripts = new ArrayList<>();
+		scripts.add(ldapScript);
+		client.launchScriptList(scripts);
+		
+		System.out.println("Finishing...");
+	}*/
+
 	
 	/*public void launchBroadcastScript(AbstractScript script) {
 		
@@ -334,161 +466,4 @@ public class GridClient {
 		jppfJob.cancel();
 		jppfJob.awaitResults();
 	}*/
-	
-	/**
-	 * 
-	 * @return Retourne La GenericResult contenu dans la liste mapGenericResult qui a le plus petit currenttime.
-	 * Cela va nous servir à choisir un temps de référence pour comparer l'exécution de tout les noeuds
-	 */
-	public long shortAndFindMinCurrentTime() {
-		
-		// On commence par trier toutes les listes pour chaque noeud
-		for(List<GenericResult> list : mapGenericResult.values()){
-			Collections.sort(list);
-		}
-		
-		//une fois les listes triées, on va chercher la plus petite valeur 
-		// pour le current time, ce qui va nous servir de référentiel pour agréger les données
-		// (cette valeur sera donc notre temps 0) 
-		long minCurrentTime = 0;
-		for(List<GenericResult> list : mapGenericResult.values()){
-			if(list.size() != 0){
-				if(minCurrentTime != 0 && minCurrentTime > list.get(0).getStartTime())
-					minCurrentTime = list.get(0).getStartTime();
-				if(minCurrentTime == 0)
-					minCurrentTime = list.get(0).getStartTime();
-			}
-		}
-		return minCurrentTime;
-	}
-	
-	
-	/**Une fois que tout les noeuds on fini leurs exécutions, on va vouloir agréger les données.
-	 * aggregationData permet donc de parcourir une liste de GenericResult et de calculer pour tout
-	 * les noeuds qui on envoyer des notifications, le nombre de requête par injecteur puis d'en
-	 * faire la somme. ce résultat sera enregistré dans un fichier de type .csv. 
-	 * 
-	 * @param minCurrentTime représente le plus petit currenttime dans les resultat (retour de la methode
-	 * shortAndFindMinCurrentTime()).
-	 */
-	public void aggregationData(Long minCurrentTime){
-
-		TreeMap<Integer, List<DataByInjector>> agregation = new TreeMap<Integer, List<dataExtraction.DataByInjector>>();
-		
-		//on va stocker la liste de nom des tache
-		List<String> listNameTask = new ArrayList<String>();
-		
-		//maintenant, pour chaque noeuds, on va calculer le nombre de requête par seconde
-		for(Entry<String, List<GenericResult>> entry : mapGenericResult.entrySet()){
-			listNameTask.add(entry.getKey());
-			
-
-			int nbRequestSec = 1;
-			long nbSec = 0;
-			
-			// premierPassage va nous servir a savoir la différence entre le premier noeud lancer et les autres
-			// on pourra donc calculer une différence de temps enter les deux
-			Boolean premierPassage = true;
-			
-			
-			for(GenericResult result : entry.getValue()){
-				
-				if(premierPassage){
-					
-					if(minCurrentTime < result.getStartTime()){
-						nbSec = result.getStartTime() - minCurrentTime;
-					}
-				}
-					
-				for(Long duration : result.getRequestsExecutionTimes()){
-					
-					if(premierPassage){
-						premierPassage = false;
-					}
-					if((nbSec + duration)%1000000000L  <= nbSec%1000000000L){
-						nbRequestSec++;
-						nbSec+=duration;
-						System.out.println(nbSec);
-					}else{
-						Integer secSearch = new Integer((int) (nbSec/1000000000L));
-						if(agregation.containsKey(secSearch)){
-							//on vérifie que l'objet n'existe qu'en un seul exemplaire par seconde pour chaque noeud
-							// si c'est le cas, on ajoute dans l'bjet existant
-							int position = agregation.get(secSearch).indexOf(new DataByInjector(entry.getKey(), 0));
-							if(position != -1){
-								agregation.get(secSearch).get(position).setNbRequest(agregation.get(secSearch).get(position).getNbRequest() + nbRequestSec);
-							}else{
-								agregation.get(secSearch).add(new DataByInjector(entry.getKey(), nbRequestSec));
-							}
-						}else{
-							ArrayList<DataByInjector> list = new ArrayList<DataByInjector>();
-							list.add(new DataByInjector(entry.getKey(), nbRequestSec));
-							agregation.put(secSearch, list);
-						}
-						nbSec+=duration;
-						nbRequestSec = 1;
-					}
-				}
-			}
-		}
-		
-		// maintenant on crée le fichier total
-		PrintWriter writer;
-		
-		try {
-			writer = new PrintWriter(".." + File.separator + "tests-results" + File.separator + name + ".csv", "UTF-8");
-			int agreg;
-			for(Entry<Integer, List<DataByInjector>> entry : agregation.entrySet()) {
-				System.out.println(entry.getKey());
-				StringBuilder str = new StringBuilder();
-				str.append(entry.getKey()+ ";");
-				agreg = 0;
-				for(String name : listNameTask){
-					Boolean isPresent = false;
-					for(DataByInjector data : entry.getValue())
-					{
-						if(data.getTaskID().equals(name)){
-							str.append(data.getNbRequest() +";");
-							agreg += data.getNbRequest();
-							isPresent = true;
-						}
-					}
-					if(!isPresent){
-						str.append("0;");
-					}
-				}
-				str.append(agreg);
-				writer.println(str);
-			}
-			writer.close();
-			
-		}catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	
-	public void shutdown(){
-		jppfClient.close();
-	}
-	
-	/*public static void main(String[] args) {
-		
-		System.out.println("Starting...");
-		
-		LDAPScript ldapScript = new LDAPScript("192.168.1.28", 10389);
-		ldapScript.addBindRequest("uid=admin,ou=system", "secret");
-		
-		GridClient client = new GridClient();
-		//client.launchBroadcastScript(ldapScript);
-		
-		List<AbstractScript> scripts = new ArrayList<>();
-		scripts.add(ldapScript);
-		client.launchScriptList(scripts);
-		
-		System.out.println("Finishing...");
-	}*/
-
 }
