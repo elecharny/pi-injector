@@ -239,7 +239,14 @@ public class GridClient {
 	
 	
 	
-
+	/**
+	 * 
+	 * @param script 
+	 * @param name nom donnée via l'interface, va nous servir pour le nom du fichier créé lors de l'agregation
+	 * @param nbInjector nombre d'injecteur utilisé pour le test
+	 * @param nbIteration nombre d'itération de scénario effectué par les injecteurs
+	 * @param context context servlet, permet de mettre à jour la donnée pourcentage (contenu dans une map)
+	 */
 	@SuppressWarnings("unchecked")
 	public void launchScript(AbstractScript script, String name,
 			int nbInjector, int nbIteration, ServletContext context) {
@@ -328,7 +335,11 @@ public class GridClient {
 		jppfJob.awaitResults();
 	}*/
 	
-	
+	/**
+	 * 
+	 * @return Retourne La GenericResult contenu dans la liste mapGenericResult qui a le plus petit currenttime.
+	 * Cela va nous servir à choisir un temps de référence pour comparer l'exécution de tout les noeuds
+	 */
 	public long shortAndFindMinCurrentTime() {
 		
 		// On commence par trier toutes les listes pour chaque noeud
@@ -351,6 +362,15 @@ public class GridClient {
 		return minCurrentTime;
 	}
 	
+	
+	/**Une fois que tout les noeuds on fini leurs exécutions, on va vouloir agréger les données.
+	 * aggregationData permet donc de parcourir une liste de GenericResult et de calculer pour tout
+	 * les noeuds qui on envoyer des notifications, le nombre de requête par injecteur puis d'en
+	 * faire la somme. ce résultat sera enregistré dans un fichier de type .csv. 
+	 * 
+	 * @param minCurrentTime représente le plus petit currenttime dans les resultat (retour de la methode
+	 * shortAndFindMinCurrentTime()).
+	 */
 	public void aggregationData(Long minCurrentTime){
 
 		TreeMap<Integer, List<DataByInjector>> agregation = new TreeMap<Integer, List<dataExtraction.DataByInjector>>();
