@@ -1,6 +1,10 @@
 package scripts.ldap;
 
 
+/**
+ * Classe permettant de réunir un doublon Attribut-Valeur, qui est une entrée
+ * commune dans le protocole LDAP
+ */
 public class LDAPAttribute {
 	private String attribute;
 	private String value;

@@ -34,12 +34,21 @@ public class LDAPScript extends AbstractScript {
 	
 	
 	// -------------------------------------------------------- SCRIPT SETTINGS
-	
+
+	/**
+	 * Permet d'instancier l'objet LdapNetworkConnection fournit par l'API
+	 * LDAP. C'est cet objet qui implémente les requêtes LDAP.
+	 * Attention, l'objet est instancié, mais la connexion n'est pas encore établie.
+	 */
 	@Override
 	public void beforeRun() {
 		connection = new LdapNetworkConnection(servername, serverport);
 	}
 	
+	/**
+	 * Permet de fermer la connexion qui a pu être établie via l'instance de l'objet
+	 * LdapNetworkConnection 
+	 */
 	@Override
 	public void afterRun() {
 		
@@ -59,6 +68,11 @@ public class LDAPScript extends AbstractScript {
 	
 	// --------------------------------------------------- REQUESTS DECLARATION
 	
+	/**
+	 * Ajoute une requête BIND au scénario
+	 * @param userDN
+	 * @param userPassword
+	 */
 	public void addBindRequest(String userDN, String userPassword) {
 		
 		List<Object> params = new ArrayList<Object>();
@@ -71,6 +85,11 @@ public class LDAPScript extends AbstractScript {
 				params);
 	}
 	
+	/**
+	 * Exécute la requête BIND
+	 * @param userDN
+	 * @param userPassword
+	 */
 	public void executeBindRequest(String userDN, String userPassword) {
 		
 		try {
@@ -80,7 +99,9 @@ public class LDAPScript extends AbstractScript {
 		}
 	}
 	
-	
+	/**
+	 * Ajoute une requête UNBIND au scénario
+	 */
 	public void addUnbindRequest() {
 		
 		addNewMethod(
@@ -89,6 +110,9 @@ public class LDAPScript extends AbstractScript {
 				new ArrayList<Object>());
 	}
 	
+	/**
+	 * Exécute la requête UNBIND
+	 */
 	public void executeUnbindRequest() {
 		
 		try {
@@ -98,7 +122,11 @@ public class LDAPScript extends AbstractScript {
 		}
 	}
 	
-	
+	/**
+	 * Ajoute une requête ADD au scénario
+	 * @param dn
+	 * @param attributes
+	 */
 	public void addAddRequest(String dn, List<LDAPAttribute> attributes) {
 		
 		List<Object> params = new ArrayList<>();
@@ -111,6 +139,11 @@ public class LDAPScript extends AbstractScript {
 				params);
 	}
 	
+	/**
+	 * Exécute la requête ADD
+	 * @param dn
+	 * @param attributes
+	 */
 	public void executeAddRequest(String dn, List<LDAPAttribute> attributes) {
 		
 		try {
@@ -129,7 +162,10 @@ public class LDAPScript extends AbstractScript {
 		}
 	}
 	
-	
+	/**
+	 * Ajoute une requête DELETE au scénario
+	 * @param dn
+	 */
 	public void addDeleteRequest(String dn) {
 		
 		List<Object> params = new ArrayList<>();
@@ -141,6 +177,10 @@ public class LDAPScript extends AbstractScript {
 				params);
 	}
 	
+	/**
+	 * Excute la requête DELETE
+	 * @param dn
+	 */
 	public void executeDeleteRequest(String dn) {
 		
 		try {
@@ -150,7 +190,13 @@ public class LDAPScript extends AbstractScript {
 		}
 	}
 	
-	
+	/**
+	 * Ajoute une requête SEARCH au scénario
+	 * @param dn
+	 * @param filter
+	 * @param scope
+	 * @param attributes
+	 */
 	public void addSearchRequest(String dn, String filter,
 			SearchScope scope, List<LDAPAttribute> attributes) {
 		
@@ -166,6 +212,13 @@ public class LDAPScript extends AbstractScript {
 				params);
 	}
 	
+	/**
+	 * Excute la requête SEARCH
+	 * @param dn
+	 * @param filter
+	 * @param scope
+	 * @param attributes
+	 */
 	public void executeSearchRequest(String dn, String filter,
 			SearchScope scope, List<LDAPAttribute> attributes) {
 		
