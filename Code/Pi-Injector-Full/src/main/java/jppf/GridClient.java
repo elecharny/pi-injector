@@ -252,7 +252,7 @@ public class GridClient {
 			}
 		}
 		else {
-			mapPourcentage =new HashMap<String, Double>();
+			mapPourcentage = new HashMap<String, Double>();
 			mapPourcentage.put(name, new Double(0));
 			context.setAttribute("TestProgress", mapPourcentage);
 		}		
