@@ -35,22 +35,17 @@ public class LDAPScriptBuilder {
 		
 		for(int i = 1; i <= nbPlan; i++) {
 			String action = request.getParameter("form_test_plan_action-" + i);
-			
 			if(action != null) {
 				switch(action) {
 					case "add" :
 						String entryDnAdd = request.getParameter("form_test_plan_entry-dn-" + i);
-						int nbAdd = request.getParameter("form_test_plan_nb-add") != null && !request.getParameter("form_test_plan_nb-add").equals("") ? Integer.valueOf(request.getParameter("form_test_plan_nb-add")) : -1;
+						int nbAdd = request.getParameter("form_test_plan_nb-add-" + i) != null && !request.getParameter("form_test_plan_nb-add-" + i).equals("") ? Integer.valueOf(request.getParameter("form_test_plan_nb-add-" + i)) : -1;
 						List<LDAPAttribute> addAttributes = new ArrayList<LDAPAttribute>();
-						System.out.println("\t\t\tfrom form = " + request.getParameter("form_test_plan_nb-add-" + i) + ", nbAdd = " + nbAdd);
 						for(int j = 1; j <= nbAdd; j++) {
 							String attributeAdd = request.getParameter("form_test_plan_attribute-" + i + "-" + j);
 							String valuesAdd = request.getParameter("form_test_plan_value-" + i + "-" + j);
-							System.out.println("\t\t\t\ti = " + i + ", " + attributeAdd + ", " + valuesAdd);
-							if(attributeAdd != null && !attributeAdd.isEmpty()) {
+							if(attributeAdd != null && !attributeAdd.isEmpty())
 								addAttributes.add(new LDAPAttribute(attributeAdd, valuesAdd));
-								System.out.println("\t\t\t\t\tnot empty");
-							}
 						}
 						script.addAddRequest(entryDnAdd, addAttributes);
 						break;
@@ -81,7 +76,7 @@ public class LDAPScriptBuilder {
 								scopeSearch = SearchScope.SUBTREE;
 								break;
 						}
-						int nbSearch = request.getParameter("form_test_plan_nb-search") != null && !request.getParameter("form_test_plan_nb-search").equals("") ? Integer.valueOf(request.getParameter("form_test_plan_nb-search")) : -1;
+						int nbSearch = request.getParameter("form_test_plan_nb-search-" + i) != null && !request.getParameter("form_test_plan_nb-search-" + i).equals("") ? Integer.valueOf(request.getParameter("form_test_plan_nb-search-" + i)) : -1;
 						List<LDAPAttribute> searchAttributes = new ArrayList<LDAPAttribute>();
 						for(int j = 1; j <= nbSearch; j++) {
 							String attributeSearch = request.getParameter("form_test_plan_attribute-" + i + "-" + j);
