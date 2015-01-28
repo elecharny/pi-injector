@@ -40,7 +40,7 @@ public class LDAPScriptBuilder {
 				switch(action) {
 					case "add" :
 						String entryDnAdd = request.getParameter("form_test_plan_entry-dn-" + i);
-						int nbAdd = request.getParameter("form_test_nb-add-" + i) != null && !request.getParameter("form_test_nb-add-" + i).equals("") ? Integer.valueOf(request.getParameter("form_test_nb-add-" + i)) : -1;
+						int nbAdd = request.getParameter("form_test_plan_nb-add-" + i) != null && !request.getParameter("form_test_plan_nb-add-" + i).equals("") ? Integer.valueOf(request.getParameter("form_test_plan_nb-add-" + i)) : -1;
 						List<LDAPAttribute> addAttributes = new ArrayList<LDAPAttribute>();
 						System.out.println("\t\t\tnbAdd = " + nbAdd);
 						for(int j = 1; j <= nbAdd; j++) {
@@ -81,7 +81,7 @@ public class LDAPScriptBuilder {
 								scopeSearch = SearchScope.SUBTREE;
 								break;
 						}
-						int nbSearch = request.getParameter("form_test_nb-search-" + i) != null && !request.getParameter("form_test_nb-search-" + i).equals("") ? Integer.valueOf(request.getParameter("form_test_nb-search-" + i)) : -1;
+						int nbSearch = request.getParameter("form_test_plan_nb-search-" + i) != null && !request.getParameter("form_test_plan_nb-search-" + i).equals("") ? Integer.valueOf(request.getParameter("form_test_plan_nb-search-" + i)) : -1;
 						List<LDAPAttribute> searchAttributes = new ArrayList<LDAPAttribute>();
 						for(int j = 1; j <= nbSearch; j++) {
 							String attributeSearch = request.getParameter("form_test_plan_attribute-" + i + "-" + j);
