@@ -92,10 +92,6 @@ public class LDAPScript extends AbstractScript {
 	 */
 	public void executeBindRequest(String userDN, String userPassword) {
 		
-		System.out.println("executeBindRequest");
-		System.out.println("\tuserDN : " + userDN);
-		System.out.println("\tuserPassword : " + userPassword);
-		
 		try {
 			connection.bind(userDN, userPassword);
 		} catch (LdapException e) {
@@ -119,8 +115,6 @@ public class LDAPScript extends AbstractScript {
 	 */
 	public void executeUnbindRequest() {
 		
-		System.out.println("executeUnbindRequest");
-		
 		try {
 			connection.unBind();
 		} catch (LdapException e) {
@@ -139,13 +133,6 @@ public class LDAPScript extends AbstractScript {
 		params.add(dn);
 		params.add(attributes);
 		
-		System.out.println("addAddRequest");
-		
-		for (LDAPAttribute attribute : attributes) {
-			System.out.println("\tattribute : " + attribute.getAttribute());
-			System.out.println("\tvalue : " + attribute.getValue());
-		}
-		
 		addNewMethod(
 				"executeAddRequest",
 				new Class[] {String.class, List.class},
@@ -163,17 +150,12 @@ public class LDAPScript extends AbstractScript {
 			
 			List<String> strings = new ArrayList<String>();
 			
-			System.out.println("executeBindRequest");
-			System.out.println("\tdn : " + dn);
-			
 			
 			for (LDAPAttribute attribute : attributes) {
 				strings.add(attribute.getAttribute() + ": " + attribute.getValue());
-				System.out.println("\tattribut : " + attribute.getAttribute() + ": " + attribute.getValue());
 			}
 			
 			Entry entry = new DefaultEntry(dn, strings.toArray());
-			System.out.println("Coucou");
 			connection.add(entry);
 		} catch (LdapException e) {
 			e.printStackTrace();

@@ -1,11 +1,16 @@
 package scripts.ldap;
 
+import java.io.Serializable;
+
 
 /**
  * Classe permettant de réunir un doublon Attribut-Valeur, qui est une entrée
  * commune dans le protocole LDAP
  */
-public class LDAPAttribute {
+public class LDAPAttribute implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+	
 	private String attribute;
 	private String value;
 	
