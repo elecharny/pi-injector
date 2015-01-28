@@ -42,11 +42,15 @@ public class LDAPScriptBuilder {
 						String entryDnAdd = request.getParameter("form_test_plan_entry-dn-" + i);
 						int nbAdd = request.getParameter("form_test_nb-add-" + i) != null && !request.getParameter("form_test_nb-add-" + i).equals("") ? Integer.valueOf(request.getParameter("form_test_nb-add-" + i)) : -1;
 						List<LDAPAttribute> addAttributes = new ArrayList<LDAPAttribute>();
+						System.out.println("\t\t\tnbAdd = " + nbAdd);
 						for(int j = 1; j <= nbAdd; j++) {
 							String attributeAdd = request.getParameter("form_test_plan_attribute-" + i + "-" + j);
 							String valuesAdd = request.getParameter("form_test_plan_value-" + i + "-" + j);
-							if(attributeAdd != null && !attributeAdd.isEmpty())
+							System.out.println("\t\t\t\ti = " + i + ", " + attributeAdd + ", " + valuesAdd);
+							if(attributeAdd != null && !attributeAdd.isEmpty()) {
 								addAttributes.add(new LDAPAttribute(attributeAdd, valuesAdd));
+								System.out.println("\t\t\t\t\tnot empty");
+							}
 						}
 						script.addAddRequest(entryDnAdd, addAttributes);
 						break;
