@@ -1,6 +1,5 @@
 <%@ page import="jppf.GridClient" %>
 
-<%-- TODO int nbInjectors = GridClient.getInstance().refreshNodesCount(); --%>
 <% int nbInjectors = GridClient.getInstance().refreshNodesCount(); %>
 
 <div class="container">

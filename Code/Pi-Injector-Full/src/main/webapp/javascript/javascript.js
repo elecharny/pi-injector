@@ -127,7 +127,7 @@ function addToPlan(action) {
 			tr += 'Add : ' + entry_dn
 				+ '<input type="hidden" id="form_test_plan_action-' + index_plan + '"  name="form_test_plan_action-' + index_plan + '" value="' + action + '">'
 				+ '<input type="hidden" id="form_test_plan_entry-dn-' + index_plan + '" name="form_test_plan_entry-dn-' + index_plan + '" value="' + entry_dn + '">'
-				+ '<input type="hidden" id="form_test_plan_nb-add-' + index_plan + '"  name="form_test_plan_add-nb-' + index_plan + '" value="' + nb_add + '">';
+				+ '<input type="hidden" id="form_test_plan_nb-add-' + index_plan + '"  name="form_test_plan_nb-add-' + index_plan + '" value="' + nb_add + '">';
 			for(var i = 1; i <= nb_add; i++) {
 				var attribute = $('#form_test_add_attribute-' + i).val();
 				$('#form_test_add_attribute-' + i).val('');
