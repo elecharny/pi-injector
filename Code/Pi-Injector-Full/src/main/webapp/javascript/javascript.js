@@ -127,7 +127,7 @@ function addToPlan(action) {
 			tr += 'Add : ' + entry_dn
 				+ '<input type="hidden" id="form_test_plan_action-' + index_plan + '"  name="form_test_plan_action-' + index_plan + '" value="' + action + '">'
 				+ '<input type="hidden" id="form_test_plan_entry-dn-' + index_plan + '" name="form_test_plan_entry-dn-' + index_plan + '" value="' + entry_dn + '">'
-				+ '<input type="hidden" id="form_test_plan_add-nb-' + index_plan + '"  name="form_test_plan_add-nb-' + index_plan + '" value="' + nb_add + '">';
+				+ '<input type="hidden" id="form_test_plan_nb-add-' + index_plan + '"  name="form_test_plan_add-nb-' + index_plan + '" value="' + nb_add + '">';
 			for(var i = 1; i <= nb_add; i++) {
 				var attribute = $('#form_test_add_attribute-' + i).val();
 				$('#form_test_add_attribute-' + i).val('');
@@ -167,12 +167,13 @@ function addToPlan(action) {
 			var filter = $('#form_test_search_filter').val();
 			$('#form_test_search_filter').val('');
 			var scope = $('#form_test_search_scope').val();
+			var nb_search = $('#form_test_nb-search').val();
 			tr += 'Search : ' + base + ' | ' + filter + ' | ' + scope
 				+ '<input type="hidden" id="form_test_plan_action-' + index_plan + '" name="form_test_plan_action-' + index_plan + '" value="' + action + '">'
 				+ '<input type="hidden" id="form_test_plan_base-' + index_plan + '" name="form_test_plan_base-' + index_plan + '" value="' + base + '">'
 				+ '<input type="hidden" id="form_test_plan_filter-' + index_plan + '" name="form_test_plan_filter-' + index_plan + '" value="' + filter + '">'
-				+ '<input type="hidden" id="form_test_plan_scope-' + index_plan + '" name="form_test_plan_scope-' + index_plan + '" value="' + scope + '">';
-			var nb_search = $('#form_test_nb-search').val();
+				+ '<input type="hidden" id="form_test_plan_scope-' + index_plan + '" name="form_test_plan_scope-' + index_plan + '" value="' + scope + '">'
+				+ '<input type="hidden" id="form_test_plan_nb-search-' + index_plan + '" name="form_test_plan_nb-search-' + index_plan + '" value="' + nb_search + '">';
 			for(var i = 1; i <= nb_search; i++) {
 				var attribute = $('#form_test_search_attribute-' + i).val();
 				$('#form_test_search_attribute-' + i).val('');

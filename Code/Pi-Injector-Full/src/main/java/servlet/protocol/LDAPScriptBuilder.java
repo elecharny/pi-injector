@@ -36,7 +36,7 @@ public class LDAPScriptBuilder {
 		for(int i = 1; i <= nbPlan; i++) {
 			String action = request.getParameter("form_test_plan_action-" + i);
 			
-			if (action != null) {
+			if(action != null) {
 				switch(action) {
 					case "add" :
 						String entryDnAdd = request.getParameter("form_test_plan_entry-dn-" + i);
