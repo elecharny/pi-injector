@@ -91,7 +91,7 @@ public class LDAPScriptBuilder {
 						script.addUnbindRequest();
 						break;
 					
-					// --------------------- AJOUTER ICI LES NOUVELLES REQUETES LDAP
+					// ----------------- AJOUTER ICI LES NOUVELLES REQUETES LDAP
 					
 					default :
 						System.out.println("Unknown request type");
