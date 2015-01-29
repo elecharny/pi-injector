@@ -7,6 +7,13 @@ import org.jppf.node.protocol.AbstractTask;
 
 import scripts.AbstractScript;
 
+/**
+ * Classe définissant les instructions à exécuter sur les noeuds
+ * sur lesquels elle sera envoyée par Serialization.
+ * Ici, cette classe va exécuter (par réflexivité Java) les méthodes
+ * stockées dans l'AbstractScript reçue en paramètre dans le constructeur,
+ * et va en calculer les temps d'exécution.
+ */
 public class InjectionTask extends AbstractTask<Void> {
 	
 	private static final long 				serialVersionUID = 1L;

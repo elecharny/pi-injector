@@ -16,6 +16,12 @@ import org.apache.directory.ldap.client.api.LdapNetworkConnection;
 
 import scripts.AbstractScript;
 
+
+
+/**
+ * Classe héritant de AbstractScript pour implémenter le protocole LDAP.
+ * Pour ce faire, cette classe utilise l'API LDAP d'Apache Directory
+ */
 public class LDAPScript extends AbstractScript {
 
 	private static final long serialVersionUID = 1L;

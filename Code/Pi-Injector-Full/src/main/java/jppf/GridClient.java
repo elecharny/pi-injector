@@ -31,14 +31,18 @@ import dataExtraction.DataByInjector;
 import scripts.AbstractScript;
 
 
+/**
+ * Classe permettant à l'interface graphique de s'abstraire complètement du fonctionnement
+ * du framework JPPF. Cette classe utilise le pattern singleton
+ */
 public class GridClient {
-	/************************************************************** SINGLETON */
+	/*-------------------------------------------------------------- SINGLETON */
 	private static GridClient						instance;
 	private static Object							synchronizer = new Object();
 	
 	/**
 	 * Permet la gestion d'un singleton
-	 * @return
+	 * @return Instance unique de GridClient
 	 */
 	public static GridClient getInstance() {
 		if (instance == null) {
@@ -51,7 +55,7 @@ public class GridClient {
 
 		return instance;
 	}
-	/************************************************************** SINGLETON */
+	/*-------------------------------------------------------------- SINGLETON */
 	
 	
 	private int 									nodesCount = 0;
