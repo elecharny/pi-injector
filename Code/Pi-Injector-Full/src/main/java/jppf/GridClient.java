@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.TreeMap;
 import java.util.Map.Entry;
 
@@ -63,7 +64,7 @@ public class GridClient {
 	private int										iterationEffectuees = 0;
 	private Object									lockIterationEffectuees = new Object();
 	private String									name = null;
-	HashMap<String, Double>							mapPourcentage = null;
+	private Map<String, Double>						mapPourcentage = null;
 	
 	
 	public GridClient() {
@@ -171,7 +172,7 @@ public class GridClient {
 									}
 								}
 							} catch (Exception e) {
-								System.out.println("Exception 2 : " + e);
+								System.out.println(e);
 							}
 						}
 					}
@@ -275,6 +276,7 @@ public class GridClient {
 		for (int i = 0; i < nbInjector; i++) {
 			InjectionTask jppfTask = new InjectionTask(script, nbIteration, notificationInterval);
 			jppfTask.setId(jppfJob.getName() + " - Task " + i);
+			jppfTask.setResubmit(false);
 			try {
 				jppfJob.add(jppfTask, (Object[])null);
 				System.out.println("Task " + jppfTask.getId() + " added to the job...");
@@ -331,7 +333,7 @@ public class GridClient {
 	 * shortAndFindMinCurrentTime()).
 	 */
 	public void aggregationData(Long minCurrentTime) {
-		TreeMap<Integer, List<DataByInjector>> agregation = new TreeMap<Integer, List<dataExtraction.DataByInjector>>();
+		Map<Integer, List<DataByInjector>> agregation = new TreeMap<Integer, List<dataExtraction.DataByInjector>>();
 		
 		//on va stocker la liste de nom des taches
 		List<String> listNameTask = new ArrayList<String>();
@@ -361,7 +363,6 @@ public class GridClient {
 					if((nbSec + duration)%1000000000L <= nbSec%1000000000L) {
 						nbRequestSec++;
 						nbSec+=duration;
-						System.out.println(nbSec);
 					}
 					else {
 						Integer secSearch = new Integer((int) (nbSec/1000000000L));
@@ -395,7 +396,6 @@ public class GridClient {
 			writer = new PrintWriter(".." + File.separator + "tests-results" + File.separator + name + ".csv", "UTF-8");
 			int agreg;
 			for(Entry<Integer, List<DataByInjector>> entry : agregation.entrySet()) {
-				System.out.println(entry.getKey());
 				StringBuilder str = new StringBuilder();
 				str.append(entry.getKey()+ ";");
 				agreg = 0;
@@ -431,54 +431,4 @@ public class GridClient {
 	public void shutdown() {
 		jppfClient.close();
 	}
-	
-	/*public static void main(String[] args) {
-		
-		System.out.println("Starting...");
-		
-		LDAPScript ldapScript = new LDAPScript("192.168.1.28", 10389);
-		ldapScript.addBindRequest("uid=admin,ou=system", "secret");
-		
-		GridClient client = new GridClient();
-		//client.launchBroadcastScript(ldapScript);
-		
-		List<AbstractScript> scripts = new ArrayList<>();
-		scripts.add(ldapScript);
-		client.launchScriptList(scripts);
-		
-		System.out.println("Finishing...");
-	}*/
-
-	
-	/*public void launchBroadcastScript(AbstractScript script) {
-		
-		JPPFJob jppfJob = new JPPFJob();
-		jppfJob.setName("LDAP Injection Job");
-		jppfJob.getSLA().setBroadcastJob(true);
-		
-		InjectionTask jppfTask = new InjectionTask(script);
-		jppfTask.setId(jppfJob.getName() + " - Task broadcasted");
-		
-		try {
-			jppfJob.add(jppfTask, (Object[])null);
-		} catch (JPPFException e1) {
-			e1.printStackTrace();
-		}
-		
-		jppfJob.setBlocking(false);
-		jppfClient.submitJob(jppfJob);
-		
-		System.out.println("Job submitted to " + refreshNodesCount() + " nodes.");
-		
-		// Do something here...
-		try {
-			Thread.sleep(30000L);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		
-		// Test du job cancel pour arrêter les noeuds
-		jppfJob.cancel();
-		jppfJob.awaitResults();
-	}*/
 }
